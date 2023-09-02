@@ -1,0 +1,5 @@
+Dependencias Necessarias
+
+- spring boot devtools
+- lombok
+- spring web
