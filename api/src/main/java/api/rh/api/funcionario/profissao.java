@@ -1,6 +1,6 @@
 package api.rh.api.funcionario;
 
-public enum profissao {
+public enum Profissao {
 
 	DESENVOLVEDOR_SOFTWARE,
 	MARKINTING,
