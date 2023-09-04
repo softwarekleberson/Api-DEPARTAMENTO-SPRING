@@ -1,5 +1,11 @@
-Dependencias Necessarias
+Dependencias Necessarias Inicio Projeto
 
 - spring boot devtools
 - lombok
 - spring web
+
+Trabalhando Com Banco De Dados
+
+- mysql driver
+- spring data jpa
+- flyway migration
