@@ -1,7 +1,20 @@
 package api.rh.api.commun.domain.humanResource.endereco;
 
-public record Endereco(String pais, String estado,
-					   String cidade, String rua,
-					   String numero, String cep) {
+import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Embeddable
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Endereco {
+
+	private String pais;
+	private String estado;
+	private String cidade;
+	private String rua;
+	private String numero;
+	private String cep;
 }

@@ -2,42 +2,17 @@ package api.rh.api.commun.domain.humanResource.cpf;
 
 import java.util.Objects;
 
+import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Embeddable
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Cpf {
 
 	private String cpf;
-	
-	public Cpf(String cpf) {
-        this.cpf = cpf;
-    }
-	
-	public String getCpf() {
-		return cpf;
-	}
-	
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	
-	@Override
-	public String toString() {
-		return getCpf();
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(cpf);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Cpf other = (Cpf) obj;
-		return Objects.equals(cpf, other.cpf);
-	}
 	
 }

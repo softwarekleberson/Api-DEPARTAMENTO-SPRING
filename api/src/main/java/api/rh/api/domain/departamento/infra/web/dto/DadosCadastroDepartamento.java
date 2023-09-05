@@ -1,11 +1,11 @@
 package api.rh.api.domain.departamento.infra.web.dto;
 
 import api.rh.api.commun.domain.humanResource.contato.Email;
-import api.rh.api.commun.domain.humanResource.contato.Telefone;
-import api.rh.api.commun.domain.humanResource.endereco.Endereco;
+import api.rh.api.commun.domain.humanResource.contato.DadosCadastroTelefone;
+import api.rh.api.commun.domain.humanResource.endereco.DadosCadastroEndereco;
 
-public record DadosCadastroDepartamento(Departamento departamento,
-		Telefone telefone, Email email,
-		Endereco endereco
+public record DadosCadastroDepartamento(DadosDepartamento departamento,
+		DadosCadastroTelefone telefone, Email email,
+		DadosCadastroEndereco endereco
 		) {
 }
