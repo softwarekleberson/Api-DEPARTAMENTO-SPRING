@@ -28,8 +28,8 @@ public class Cargo {
 	private Long id;
 	private String nome;
 	private String descricao;
-	private BigDecimal salarioBase;
-	private BigDecimal salarioMaximo;
+	private BigDecimal salario_Base;
+	private BigDecimal salario_Maximo;
 	
 	@Enumerated(EnumType.STRING)
 	private NivelEstagio nivel;
@@ -37,7 +37,8 @@ public class Cargo {
 	public Cargo(DadosCadastroCargo dados) {
 		this.nome = dados.nome();
 		this.descricao = dados.descricao();
-		this.salarioBase = dados.salarioBase();
-		this.salarioMaximo = dados.salarioMaximo();
+		this.salario_Base = dados.salarioBase();
+		this.salario_Maximo = dados.salarioMaximo();
+		this.nivel = dados.nivel();
 	}
 }
