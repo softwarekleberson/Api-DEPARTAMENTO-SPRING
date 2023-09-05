@@ -13,4 +13,8 @@ public class Email {
 
 	private String email;
 	
+	public Email(Email dados) {
+		this.email = dados.email;
+	}
+	
 }

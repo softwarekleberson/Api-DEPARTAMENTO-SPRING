@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 import api.rh.api.commun.domain.humanResource.contato.Email;
 import api.rh.api.commun.domain.humanResource.contato.Telefone;
+import api.rh.api.domain.funcionario.infra.web.dto.DadosCadastroFuncionarios;
 import api.rh.api.domain.funcionario.infra.web.dto.Profissao;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -27,7 +28,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(of = "id")
 public class Funcionario {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private LocalDate contratacao;
 	private BigDecimal salario;
@@ -44,4 +45,9 @@ public class Funcionario {
 	@Enumerated(EnumType.STRING)
 	private Profissao profissao;
 	
+	 public Funcionario(DadosCadastroFuncionarios dados) {
+		 this.contratacao = dados.funcionario().contratacao();
+		 this.salario = dados.funcionario().salario();
+		 this.pessoa = new Pessoa(dados.funcionario().pessoa());
+	 }
 }

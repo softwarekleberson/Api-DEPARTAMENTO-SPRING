@@ -14,4 +14,10 @@ public class Telefone {
 	private String ddd;
 	private String ddi;
 	private String telefone;
+	
+	public Telefone(DadosCadastroTelefone dados) {
+		this.ddd = dados.ddd();
+		this.ddd = dados.ddi();
+		this.telefone = dados.telefone();
+	}
 }

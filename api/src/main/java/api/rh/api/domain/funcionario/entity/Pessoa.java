@@ -3,6 +3,7 @@ package api.rh.api.domain.funcionario.entity;
 import java.time.LocalDate;
 
 import api.rh.api.commun.domain.humanResource.cpf.Cpf;
+import api.rh.api.domain.funcionario.infra.web.dto.DadosCadastroPessoa;
 import api.rh.api.domain.funcionario.infra.web.dto.Sexo;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
@@ -26,4 +27,11 @@ public class Pessoa {
 	
 	@Embedded
 	private Cpf cpf;
+	
+	public Pessoa(DadosCadastroPessoa dados) {
+		this.nome = dados.nome();
+		this.nascimento = dados.nascimento();
+		this.sexo = dados.sexo();
+		this.cpf = dados.cpf();
+	}
 }

@@ -2,6 +2,7 @@ package api.rh.api.domain.cargo.entity;
 
 import java.math.BigDecimal;
 
+import api.rh.api.domain.cargo.infra.web.dto.DadosCadastroCargo;
 import api.rh.api.domain.cargo.infra.web.dto.NivelEstagio;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -23,7 +24,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(of = "id")
 public class Cargo {
 	
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	private String descricao;
@@ -32,4 +33,11 @@ public class Cargo {
 	
 	@Enumerated(EnumType.STRING)
 	private NivelEstagio nivel;
+	
+	public Cargo(DadosCadastroCargo dados) {
+		this.nome = dados.nome();
+		this.descricao = dados.descricao();
+		this.salarioBase = dados.salarioBase();
+		this.salarioMaximo = dados.salarioMaximo();
+	}
 }

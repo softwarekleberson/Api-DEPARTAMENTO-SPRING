@@ -17,4 +17,13 @@ public class Endereco {
 	private String rua;
 	private String numero;
 	private String cep;
+	
+	public Endereco(DadosCadastroEndereco dados) {
+		this.pais = dados.pais();
+		this.estado = dados.estado();
+		this.cidade = dados.cidade();
+		this.rua = dados.rua();
+		this.numero = dados.numero();
+		this.cep = dados.cep();
+	}
 }
