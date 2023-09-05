@@ -1,4 +1,4 @@
-package api.rh.api.contato;
+package api.rh.api.commun.domain.humanResource.contato;
 
 public class Email {
 

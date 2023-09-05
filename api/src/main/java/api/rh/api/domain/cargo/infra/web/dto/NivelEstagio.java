@@ -1,4 +1,4 @@
-package api.rh.api.cargo;
+package api.rh.api.domain.cargo.infra.web.dto;
 
 public enum NivelEstagio {
 

@@ -1,4 +1,4 @@
-package api.rh.api.controller;
+package api.rh.api;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

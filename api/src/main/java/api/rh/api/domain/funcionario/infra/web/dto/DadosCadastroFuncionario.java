@@ -1,4 +1,5 @@
-package api.rh.api.funcionario;
+package api.rh.api.domain.funcionario.infra.web.dto;
+
 
 public record DadosCadastroFuncionario(
 		Funcionario funcionario,

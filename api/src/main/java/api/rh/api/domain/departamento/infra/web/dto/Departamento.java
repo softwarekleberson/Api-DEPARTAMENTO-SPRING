@@ -1,4 +1,4 @@
-package api.rh.api.departamento;
+package api.rh.api.domain.departamento.infra.web.dto;
 
 import java.time.LocalDate;
 

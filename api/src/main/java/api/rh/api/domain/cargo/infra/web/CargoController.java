@@ -1,18 +1,18 @@
-package api.rh.api.controller;
+package api.rh.api.domain.cargo.infra.web;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import api.rh.api.departamento.DadosCadastroDepartamento;
+import api.rh.api.domain.cargo.infra.web.dto.DadosCadastroCargo;
 
 @RestController
-@RequestMapping("departamento")
-public class DepartamentoController {
+@RequestMapping("cargo")
+public class CargoController {
 
 	@PostMapping
-	public void cadastrar(@RequestBody DadosCadastroDepartamento dados ) {
+	public void cadastrar(@RequestBody DadosCadastroCargo dados) {
 		System.out.println(dados);
 	}
 }

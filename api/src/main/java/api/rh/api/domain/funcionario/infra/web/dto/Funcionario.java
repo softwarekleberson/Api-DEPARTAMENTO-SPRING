@@ -1,4 +1,4 @@
-package api.rh.api.funcionario;
+package api.rh.api.domain.funcionario.infra.web.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
