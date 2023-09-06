@@ -1,7 +1,5 @@
 package api.rh.api.domain.funcionario.infra.web.dto;
 
-public enum Sexo {
+public record DadosCadastroEmail(String email) {
 
-	M,
-	F
 }

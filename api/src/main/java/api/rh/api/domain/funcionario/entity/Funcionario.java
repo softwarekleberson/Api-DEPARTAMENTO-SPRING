@@ -3,8 +3,6 @@ package api.rh.api.domain.funcionario.entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import api.rh.api.commun.domain.humanResource.contato.Email;
-import api.rh.api.commun.domain.humanResource.contato.Telefone;
 import api.rh.api.domain.funcionario.infra.web.dto.DadosCadastroFuncionarios;
 import api.rh.api.domain.funcionario.infra.web.dto.Profissao;
 import jakarta.persistence.Embedded;
@@ -36,12 +34,6 @@ public class Funcionario {
 	@Embedded
 	private Pessoa pessoa;
 	
-	@Embedded
-	private Email email;
-	
-	@Embedded
-	private Telefone telefone;
-	
 	@Enumerated(EnumType.STRING)
 	private Profissao profissao;
 	
@@ -49,5 +41,6 @@ public class Funcionario {
 		 this.contratacao = dados.funcionario().contratacao();
 		 this.salario = dados.funcionario().salario();
 		 this.pessoa = new Pessoa(dados.funcionario().pessoa());
+		 this.profissao = dados.profissao();
 	 }
 }

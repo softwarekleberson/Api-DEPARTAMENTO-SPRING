@@ -1,7 +1,6 @@
 package api.rh.api.commun.domain.humanResource.cpf;
 
-import java.util.Objects;
-
+import api.rh.api.domain.funcionario.infra.web.dto.DadosCadastroCpf;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,5 +13,10 @@ import lombok.NoArgsConstructor;
 public class Cpf {
 
 	private String cpf;
+	
+	public Cpf(DadosCadastroCpf  dados) {
+		this.cpf = dados.cpf();
+	}
+	
 	
 }

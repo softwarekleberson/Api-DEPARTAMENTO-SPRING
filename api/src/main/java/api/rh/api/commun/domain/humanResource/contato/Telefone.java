@@ -17,7 +17,7 @@ public class Telefone {
 	
 	public Telefone(DadosCadastroTelefone dados) {
 		this.ddd = dados.ddd();
-		this.ddd = dados.ddi();
+		this.ddi = dados.ddi();
 		this.telefone = dados.telefone();
 	}
 }

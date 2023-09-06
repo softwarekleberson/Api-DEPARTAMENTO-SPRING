@@ -2,6 +2,8 @@ package api.rh.api.domain.funcionario.entity;
 
 import java.time.LocalDate;
 
+import api.rh.api.commun.domain.humanResource.contato.Email;
+import api.rh.api.commun.domain.humanResource.contato.Telefone;
 import api.rh.api.commun.domain.humanResource.cpf.Cpf;
 import api.rh.api.domain.funcionario.infra.web.dto.DadosCadastroPessoa;
 import api.rh.api.domain.funcionario.infra.web.dto.Sexo;
@@ -28,10 +30,18 @@ public class Pessoa {
 	@Embedded
 	private Cpf cpf;
 	
+	@Embedded
+	private Email email;
+	
+	@Embedded
+	private Telefone tefone;
+	
 	public Pessoa(DadosCadastroPessoa dados) {
 		this.nome = dados.nome();
 		this.nascimento = dados.nascimento();
 		this.sexo = dados.sexo();
-		this.cpf = dados.cpf();
+		this.cpf = new Cpf(dados.cpf());
+		this.email = new Email(dados.email());
+		this.tefone = new Telefone(dados.telefone());	
 	}
 }
