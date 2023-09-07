@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import api.rh.api.domain.departamento.entity.Departamento;
 import api.rh.api.domain.departamento.infra.persistencia.jpa.DepartamentoRepoitory;
 import api.rh.api.domain.departamento.infra.web.dto.DadosCadastroDepartamento;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("departamento")
@@ -18,7 +19,7 @@ public class DepartamentoController {
 	private DepartamentoRepoitory repository;
 	
 	@PostMapping
-	public void cadastrar(@RequestBody DadosCadastroDepartamento dados ) {
+	public void cadastrar(@RequestBody @Valid DadosCadastroDepartamento dados ) {
 		repository.save(new Departamento(dados));
 	}
 }

@@ -10,6 +10,6 @@ public record DadosCadastroTelefone (
 		@Pattern(regexp = "\\d{2}")
 		String ddd,
 		
-		@Pattern(regexp = "\\d{8,9")
+		@Pattern(regexp = "\\d{8,9}")
 		String telefone) {
 }

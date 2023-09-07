@@ -2,6 +2,19 @@ package api.rh.api.domain.departamento.infra.web.dto;
 
 import java.time.LocalDate;
 
-public record DadosDepartamento(String nome, String descricao,
-						   LocalDate criacao) {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public record DadosDepartamento(
+		
+		@NotBlank
+		String nome,
+		
+		@NotBlank
+		String descricao,
+		
+		@NotNull
+		LocalDate criacao
+		
+		) {
 }

@@ -17,7 +17,7 @@ Descrição
  O sistema deve possuir a funcionalidade de cadastro dos departamentos, na qual as seguintes informações devem ser preenchidas:
 
 - Departamento: (nome, descrição, criação, telefone (ddd, ddi, telefone) e e-mail, endereço)
-- Endereço (pais, estado, cidade, rua, número, cep)
+- Endereço (pais, estado, cidade, rua, número, cep : (cep poderá ser no seguinte formato 5, 8, 9 digitos))
 Todas as informações são obrigatórias ao cadastrar departamento
 
 
