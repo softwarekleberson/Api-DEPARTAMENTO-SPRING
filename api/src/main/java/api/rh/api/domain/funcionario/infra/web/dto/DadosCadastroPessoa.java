@@ -8,12 +8,13 @@ import jakarta.validation.constraints.NotNull;
 
 public record DadosCadastroPessoa(
 					
-					  @NotBlank(message = "Nome não pode ser nulo ou vazio")
+					  @NotBlank
 					  String nome,
 					  
+					  @NotNull
 					  LocalDate nascimento,
 					  
-					  @NotNull(message = "Sexo : M ou F")
+					  @NotNull
 					  Sexo sexo,
 					  
 					  @NotNull @Valid DadosCadastroCpf cpf,

@@ -5,8 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 
 public record DadosCadastroEmail(
 		
-		@NotBlank(message = "Campo Email vazio ou nulo")
-		@Email(message = "Email no formato errado")
+		@NotBlank
+		@Email
 		String email
 		
 		) {
