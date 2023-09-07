@@ -10,6 +10,7 @@ import api.rh.api.domain.cargo.entity.Cargo;
 import api.rh.api.domain.cargo.infra.persistencia.jpa.CargoRepository;
 import api.rh.api.domain.cargo.infra.web.dto.DadosCadastroCargo;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("cargo")
@@ -20,7 +21,7 @@ public class CargoController {
 	
 	@Transactional
 	@PostMapping
-	public void cadastrar(@RequestBody DadosCadastroCargo dados) {
+	public void cadastrar(@RequestBody @Valid DadosCadastroCargo dados) {
 		repository.save(new Cargo(dados));
 	}
 }

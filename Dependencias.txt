@@ -3,6 +3,7 @@ Dependencias Necessarias Inicio Projeto
 - spring boot devtools
 - lombok
 - spring web
+- validation
 
 Trabalhando Com Banco De Dados
 

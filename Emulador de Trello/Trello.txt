@@ -1,0 +1,34 @@
+									Cadastro de Funcionário
+
+									     FUNCIONARIO
+
+Descrição
+O sistema deve possui a funcionalidade de cadastro de funcionários, na qual as seguintes informações deverão ser preenchidas:
+
+- Funcionário (nome, nascimento, sexo, cpf, e-mail, telefone (ddd, ddi, telefone) Contratação, salario, profissão)
+- Profissão (DESENVOLVEDOR SOFTWARE, MARKINTING, GERENTE PROJETO, RH, VENDAS, COMPRAS)
+Todas as informações são obrigatórias ao cadastrar funcionário exceto sexo e contato (telefone)
+
+
+								       Cadastro Departamento
+
+									   DEPARTAMENTO
+Descrição
+ O sistema deve possuir a funcionalidade de cadastro dos departamentos, na qual as seguintes informações devem ser preenchidas:
+
+- Departamento: (nome, descrição, criação, telefone (ddd, ddi, telefone) e e-mail, endereço)
+- Endereço (pais, estado, cidade, rua, número, cep)
+Todas as informações são obrigatórias ao cadastrar departamento
+
+
+
+								      Cadastro Cargo
+									
+									   CARGO
+DESCRIÇÃO
+O sistema deve possuir a funcionalidade de cadastrar cargos, na qual as seguintes informações devem ser preenchidas:
+
+- Cargo: (nome, descrição, salário base, salario máximo)
+- Nível profissão: (ESTAGIARIO, JUNIOR, PLENO, SENIOR, GERENTE)
+Todas as informações são obrigatórias ao cadastrar cargo
+

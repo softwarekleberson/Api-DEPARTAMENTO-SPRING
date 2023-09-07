@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import api.rh.api.domain.funcionario.entity.Funcionario;
 import api.rh.api.domain.funcionario.infra.persistencia.jpa.FuncionarioRepository;
 import api.rh.api.domain.funcionario.infra.web.dto.DadosCadastroFuncionarios;
+import jakarta.validation.Valid;
 
 
 @RestController
@@ -19,7 +20,7 @@ public class FuncionarioController {
 	private FuncionarioRepository repository;
 	
 	@PostMapping
-	public void cadastra(@RequestBody DadosCadastroFuncionarios dados) {
+	public void cadastra(@RequestBody @Valid DadosCadastroFuncionarios dados) {
 		repository.save(new Funcionario(dados));
 	}
 }

@@ -1,0 +1,70 @@
+CARGO
+
+{
+	"nome" : "dddddddddddd", 
+ 	"descricao" : "rrrrrrrrrrrr",
+	"salarioBase" : "1800.00",
+	"salarioMaximo" : "1111.00",
+	"nivel" : "SENIOR"
+}
+
+FUNCIONARIO 
+
+{
+		"funcionario" : {
+			"contratacao" : "2023-09-08",
+			"salario" : "850.00",
+				"pessoa" : {
+				"nome" : "Ana maria",
+				"nascimento" : "2022-09-10",
+				"sexo" : "F",
+				"cpf" : {
+					"cpf" : ""
+				}, 
+					
+				"email" : {
+					"email" :  "anapaula@gmail.com"
+				},
+					
+				"telefone" : {
+					"ddi" : "120",
+					"ddd" : "03",
+					"telefone" : "987456321"
+				}		
+			}
+	},
+	"profissao" : "COMPRAS"
+}
+
+
+DEPARTAMENTO
+
+{
+
+	"departamento" : {
+			"nome" : "Rh",
+			"descricao" : "setor responsavel or contratar",
+			"criacao" : "2023-09-01"
+	},
+	
+	"telefone" : {
+		 "ddi" : "190",
+		 "ddd" : "35",
+		 "telefone" : "987456321"
+	},
+	
+	"email" : {
+		"email" : "rh@gmail.com"
+	},
+	
+	"endereco" : {
+		"pais" : "Espanha",
+		"estado" : "Madri",
+		"cidade" : "são tiago",
+		"rua" : "rua dos jogos",
+		"numero" : "10",
+		"cep" : "00002020"
+	
+	}
+}	
+			
