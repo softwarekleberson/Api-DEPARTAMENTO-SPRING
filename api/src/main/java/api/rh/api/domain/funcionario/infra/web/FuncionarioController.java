@@ -1,8 +1,9 @@
 package api.rh.api.domain.funcionario.infra.web;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,7 +30,7 @@ public class FuncionarioController {
 	}
 	
 	@GetMapping
-	public List<DadosListagemFuncionario> listar(){
-		return repository.findAll().stream().map(DadosListagemFuncionario::new).toList();
+	public Page<DadosListagemFuncionario> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
+		return repository.findAll(paginacao).map(DadosListagemFuncionario::new);
 	}
 }

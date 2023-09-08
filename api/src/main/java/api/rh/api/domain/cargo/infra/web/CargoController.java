@@ -1,8 +1,9 @@
 package api.rh.api.domain.cargo.infra.web;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,7 +31,7 @@ public class CargoController {
 	}
 	
 	@GetMapping
-	public List<DadosListagemCargo> listar(){
-		return repository.findAll().stream().map(DadosListagemCargo::new).toList();
+	public Page<DadosListagemCargo> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
+		return repository.findAll(paginacao).map(DadosListagemCargo::new);
 	}
 }
