@@ -1,6 +1,6 @@
 package api.rh.api.commun.domain.humanResource.cpf;
 
-import api.rh.api.domain.funcionario.infra.web.dto.DadosCadastroCpf;
+import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroCpf;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

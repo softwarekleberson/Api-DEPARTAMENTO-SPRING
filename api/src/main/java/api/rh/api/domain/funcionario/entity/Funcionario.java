@@ -3,8 +3,8 @@ package api.rh.api.domain.funcionario.entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import api.rh.api.domain.funcionario.infra.web.dto.DadosCadastroFuncionarios;
-import api.rh.api.domain.funcionario.infra.web.dto.Profissao;
+import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroFuncionarios;
+import api.rh.api.domain.funcionario.infra.web.dto.post.Profissao;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

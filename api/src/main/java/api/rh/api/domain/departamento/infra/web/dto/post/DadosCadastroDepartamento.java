@@ -1,8 +1,8 @@
-package api.rh.api.domain.departamento.infra.web.dto;
+package api.rh.api.domain.departamento.infra.web.dto.post;
 
 import api.rh.api.commun.domain.humanResource.contato.DadosCadastroTelefone;
 import api.rh.api.commun.domain.humanResource.endereco.DadosCadastroEndereco;
-import api.rh.api.domain.funcionario.infra.web.dto.DadosCadastroEmail;
+import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroEmail;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 

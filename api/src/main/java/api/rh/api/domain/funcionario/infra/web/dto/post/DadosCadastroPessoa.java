@@ -1,4 +1,4 @@
-package api.rh.api.domain.funcionario.infra.web.dto;
+package api.rh.api.domain.funcionario.infra.web.dto.post;
 
 import java.time.LocalDate;
 import api.rh.api.commun.domain.humanResource.contato.DadosCadastroTelefone;
@@ -14,7 +14,6 @@ public record DadosCadastroPessoa(
 					  @NotNull
 					  LocalDate nascimento,
 					  
-					  @NotNull
 					  Sexo sexo,
 					  
 					  @NotNull @Valid DadosCadastroCpf cpf,

@@ -1,4 +1,4 @@
-package api.rh.api.domain.cargo.infra.web.dto;
+package api.rh.api.domain.cargo.infra.web.dto.post;
 
 
 import java.math.BigDecimal;

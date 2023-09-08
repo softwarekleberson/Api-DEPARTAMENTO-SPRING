@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import api.rh.api.commun.domain.humanResource.contato.Email;
 import api.rh.api.commun.domain.humanResource.contato.Telefone;
 import api.rh.api.commun.domain.humanResource.endereco.Endereco;
-import api.rh.api.domain.departamento.infra.web.dto.DadosCadastroDepartamento;
+import api.rh.api.domain.departamento.infra.web.dto.post.DadosCadastroDepartamento;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

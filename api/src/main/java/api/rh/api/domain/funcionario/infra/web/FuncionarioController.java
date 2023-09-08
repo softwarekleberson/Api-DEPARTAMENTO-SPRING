@@ -1,6 +1,9 @@
 package api.rh.api.domain.funcionario.infra.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,7 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import api.rh.api.domain.funcionario.entity.Funcionario;
 import api.rh.api.domain.funcionario.infra.persistencia.jpa.FuncionarioRepository;
-import api.rh.api.domain.funcionario.infra.web.dto.DadosCadastroFuncionarios;
+import api.rh.api.domain.funcionario.infra.web.dto.list.DadosListagemFuncionario;
+import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroFuncionarios;
 import jakarta.validation.Valid;
 
 
@@ -22,5 +26,10 @@ public class FuncionarioController {
 	@PostMapping
 	public void cadastra(@RequestBody @Valid DadosCadastroFuncionarios dados) {
 		repository.save(new Funcionario(dados));
+	}
+	
+	@GetMapping
+	public List<DadosListagemFuncionario> listar(){
+		return repository.findAll().stream().map(DadosListagemFuncionario::new).toList();
 	}
 }

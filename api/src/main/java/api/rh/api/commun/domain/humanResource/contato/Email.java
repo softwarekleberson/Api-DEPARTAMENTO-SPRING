@@ -1,6 +1,6 @@
 package api.rh.api.commun.domain.humanResource.contato;
 
-import api.rh.api.domain.funcionario.infra.web.dto.DadosCadastroEmail;
+import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroEmail;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

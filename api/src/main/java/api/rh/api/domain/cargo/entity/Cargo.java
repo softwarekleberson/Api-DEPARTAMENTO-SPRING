@@ -2,8 +2,8 @@ package api.rh.api.domain.cargo.entity;
 
 import java.math.BigDecimal;
 
-import api.rh.api.domain.cargo.infra.web.dto.DadosCadastroCargo;
-import api.rh.api.domain.cargo.infra.web.dto.NivelEstagio;
+import api.rh.api.domain.cargo.infra.web.dto.post.DadosCadastroCargo;
+import api.rh.api.domain.cargo.infra.web.dto.post.NivelEstagio;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

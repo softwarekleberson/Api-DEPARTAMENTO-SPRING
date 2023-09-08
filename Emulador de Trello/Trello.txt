@@ -1,6 +1,6 @@
-									Cadastro de Funcionário
+								     Cadastro de Funcionário
+								        FUNCIONARIO
 
-									     FUNCIONARIO
 
 Descrição
 O sistema deve possui a funcionalidade de cadastro de funcionários, na qual as seguintes informações deverão ser preenchidas:
@@ -10,9 +10,11 @@ O sistema deve possui a funcionalidade de cadastro de funcionários, na qual as 
 Todas as informações são obrigatórias ao cadastrar funcionário exceto sexo e contato (telefone)
 
 
-								       Cadastro Departamento
 
-									   DEPARTAMENTO
+								      Cadastro Departamento
+									DEPARTAMENTO
+
+
 Descrição
  O sistema deve possuir a funcionalidade de cadastro dos departamentos, na qual as seguintes informações devem ser preenchidas:
 
@@ -22,9 +24,11 @@ Todas as informações são obrigatórias ao cadastrar departamento
 
 
 
+
 								      Cadastro Cargo
-									
 									   CARGO
+
+
 DESCRIÇÃO
 O sistema deve possuir a funcionalidade de cadastrar cargos, na qual as seguintes informações devem ser preenchidas:
 
@@ -32,3 +36,56 @@ O sistema deve possuir a funcionalidade de cadastrar cargos, na qual as seguinte
 - Nível profissão: (ESTAGIARIO, JUNIOR, PLENO, SENIOR, GERENTE)
 Todas as informações são obrigatórias ao cadastrar cargo
 
+
+
+
+								      Listagem Cargo
+
+
+Descrição
+O sistema deve possuir uma funcionalidade de listagem de cargos, na qual as 
+seguintes informações de cada cargo cadastrados, deverão ser exibidas :
+
+- Nome
+- Descrição 
+- Nivel
+
+A listagem deve ser ordenada pelo nivel de serionidade (Nível), de maneira crecente
+bem como ser paginado, trazendo 10 registros por página
+
+
+
+								       Listagem Departamento
+
+Descrição
+O sistema deve possuir uma funcionalidade de listagem de departamentos, na qual as 
+seguintes informações de cada departamento cadastrado, deverão ser exibidas :
+
+- Nome
+- Descrição
+- telefone (ddd, ddi, telefone)
+- Email
+
+A listagem deve ser ordenada pelo nome, de maneira crecente
+bem como ser paginado, trazendo 10 registros por página
+										
+
+
+								
+								      Listagem Funcionarios
+
+
+
+
+Descrição
+O sistema deve possuir uma funcionalidade de listagem de funcionarios, na qual oas seguintes informações
+de cada funcionario cadastrado deverão ser exibidas :
+
+- Nome
+- Contratacao
+- salario 
+- Profissao
+- Email
+
+A listagem deve ser ordenada pelo nome, de maneira crecente
+bem como ser paginado, trazendo 10 registros por página
