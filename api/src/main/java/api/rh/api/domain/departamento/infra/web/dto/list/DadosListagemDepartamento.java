@@ -6,6 +6,7 @@ import api.rh.api.domain.departamento.entity.Departamento;
 
 public record DadosListagemDepartamento(
 		
+		Long id,
 		String nome,
 		String descricao,
 		Telefone telefone,
@@ -14,7 +15,7 @@ public record DadosListagemDepartamento(
 		) {
 	
 		public DadosListagemDepartamento(Departamento departamento) {
-			this(departamento.getNome(), departamento.getDescricao(),
+			this(departamento.getId() ,departamento.getNome(), departamento.getDescricao(),
 				departamento.getTelefone(), departamento.getEmail());
 		}
 }

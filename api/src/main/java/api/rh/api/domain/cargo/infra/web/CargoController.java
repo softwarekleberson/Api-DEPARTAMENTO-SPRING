@@ -6,6 +6,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import api.rh.api.domain.cargo.entity.Cargo;
 import api.rh.api.domain.cargo.infra.persistencia.jpa.CargoRepository;
 import api.rh.api.domain.cargo.infra.web.dto.list.DadosListagemCargo;
 import api.rh.api.domain.cargo.infra.web.dto.post.DadosCadastroCargo;
+import api.rh.api.domain.cargo.infra.web.dto.put.DadosAtualizarCargo;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
@@ -33,5 +35,11 @@ public class CargoController {
 	@GetMapping
 	public Page<DadosListagemCargo> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
 		return repository.findAll(paginacao).map(DadosListagemCargo::new);
+	}
+	
+	@Transactional
+	@PutMapping
+	public void atualizar(@RequestBody @Valid DadosAtualizarCargo dados) {
+		
 	}
 }

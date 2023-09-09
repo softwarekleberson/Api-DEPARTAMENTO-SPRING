@@ -9,6 +9,7 @@ import api.rh.api.domain.funcionario.infra.web.dto.post.Profissao;
 
 public record DadosListagemFuncionario(
 		
+		Long id,
 		String nome,
 		LocalDate cotratacao,
 		BigDecimal salario,
@@ -18,7 +19,7 @@ public record DadosListagemFuncionario(
 		) {
 
 	public DadosListagemFuncionario(Funcionario funcionario) {
-		this(funcionario.getPessoa().getNome(),
+		this(funcionario.getId() ,funcionario.getPessoa().getNome(),
 				funcionario.getContratacao(),
 				funcionario.getSalario(),
 				funcionario.getProfissao(),

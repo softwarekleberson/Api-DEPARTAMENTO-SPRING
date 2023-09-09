@@ -1,91 +1,131 @@
-								     Cadastro de Funcionário
-								        FUNCIONARIO
+								    Cadastro de Funcionário
+Descrição:
+O sistema deve oferecer a funcionalidade de cadastro de funcionários, exigindo o preenchimento das seguintes informações:
 
+- Funcionário (nome, data de nascimento, sexo, CPF, e-mail, telefone (DDD, DDI, telefone), data de contratação, salário, profissão)
+- Profissão (DESENVOLVEDOR DE SOFTWARE, MARKETING, GERENTE DE PROJETO, RH, VENDAS, COMPRAS)
 
-Descrição
-O sistema deve possui a funcionalidade de cadastro de funcionários, na qual as seguintes informações deverão ser preenchidas:
-
-- Funcionário (nome, nascimento, sexo, cpf, e-mail, telefone (ddd, ddi, telefone) Contratação, salario, profissão)
-- Profissão (DESENVOLVEDOR SOFTWARE, MARKINTING, GERENTE PROJETO, RH, VENDAS, COMPRAS)
-Todas as informações são obrigatórias ao cadastrar funcionário exceto sexo e contato (telefone)
-
-
-
-								      Cadastro Departamento
-									DEPARTAMENTO
-
-
-Descrição
- O sistema deve possuir a funcionalidade de cadastro dos departamentos, na qual as seguintes informações devem ser preenchidas:
-
-- Departamento: (nome, descrição, criação, telefone (ddd, ddi, telefone) e e-mail, endereço)
-- Endereço (pais, estado, cidade, rua, número, cep : (cep poderá ser no seguinte formato 5, 8, 9 digitos))
-Todas as informações são obrigatórias ao cadastrar departamento
+Todas as informações são obrigatórias ao cadastrar um funcionário, exceto o sexo e os contatos (telefone).
 
 
 
 
-								      Cadastro Cargo
-									   CARGO
 
+								    Cadastro de Departamento
+Descrição:
+O sistema deve disponibilizar a funcionalidade de cadastro de departamentos, com a necessidade de preenchimento das seguintes informações:
 
-DESCRIÇÃO
-O sistema deve possuir a funcionalidade de cadastrar cargos, na qual as seguintes informações devem ser preenchidas:
+- Departamento (nome, descrição, data de criação, telefone (DDD, DDI, telefone) e e-mail, endereço)
+- Endereço (país, estado, cidade, rua, número, CEP: (o CEP pode estar no seguinte formato de 5, 8 ou 9 dígitos))
 
-- Cargo: (nome, descrição, salário base, salario máximo)
-- Nível profissão: (ESTAGIARIO, JUNIOR, PLENO, SENIOR, GERENTE)
-Todas as informações são obrigatórias ao cadastrar cargo
-
-
-
-
-								      Listagem Cargo
-
-
-Descrição
-O sistema deve possuir uma funcionalidade de listagem de cargos, na qual as 
-seguintes informações de cada cargo cadastrados, deverão ser exibidas :
-
-- Nome
-- Descrição 
-- Nivel
-
-A listagem deve ser ordenada pelo nivel de serionidade (Nível), de maneira crecente
-bem como ser paginado, trazendo 10 registros por página
+Todas as informações são obrigatórias ao cadastrar um departamento.
 
 
 
-								       Listagem Departamento
 
-Descrição
-O sistema deve possuir uma funcionalidade de listagem de departamentos, na qual as 
-seguintes informações de cada departamento cadastrado, deverão ser exibidas :
+								    Cadastro de Cargo
+Descrição:
+O sistema deve incluir a funcionalidade de cadastrar cargos, exigindo o preenchimento das seguintes informações:
+
+- Cargo (nome, descrição, salário base, salário máximo)
+- Nível profissional (ESTAGIÁRIO, JÚNIOR, PLENO, SÊNIOR, GERENTE)
+
+Todas as informações são obrigatórias ao cadastrar um cargo.
+
+
+
+
+
+								    Listagem de Cargos
+Descrição:
+O sistema deve possuir uma funcionalidade de listagem de cargos, exibindo as seguintes informações de cada cargo cadastrado:
 
 - Nome
 - Descrição
-- telefone (ddd, ddi, telefone)
-- Email
+- Nível
 
-A listagem deve ser ordenada pelo nome, de maneira crecente
-bem como ser paginado, trazendo 10 registros por página
-										
-
-
-								
-								      Listagem Funcionarios
+A listagem deve ser ordenada pelo nível de senioridade (Nível), de maneira crescente, e paginada, apresentando 10 registros por página.
 
 
 
 
-Descrição
-O sistema deve possuir uma funcionalidade de listagem de funcionarios, na qual oas seguintes informações
-de cada funcionario cadastrado deverão ser exibidas :
+
+								   Listagem de Departamentos
+Descrição:
+O sistema deve dispor de uma funcionalidade de listagem de departamentos, exibindo as seguintes informações de cada departamento cadastrado:
 
 - Nome
-- Contratacao
-- salario 
-- Profissao
-- Email
+- Descrição
+- Telefone (DDD, DDI, telefone)
+- E-mail
 
-A listagem deve ser ordenada pelo nome, de maneira crecente
-bem como ser paginado, trazendo 10 registros por página
+A listagem deve ser ordenada pelo nome, de maneira crescente, e paginada, apresentando 10 registros por página.
+
+
+
+
+
+								  Listagem de Funcionários
+Descrição:
+O sistema deve possuir uma funcionalidade de listagem de funcionários, exibindo as seguintes informações de cada funcionário cadastrado:
+
+- Nome
+- Data de Contratação
+- Salário
+- Profissão
+- E-mail
+
+A listagem deve ser ordenada pelo nome, de maneira crescente, e paginada, apresentando 10 registros por página.
+
+
+
+
+								Atualizar Funcionário
+
+O sistema deve oferecer a funcionalidade de atualização de dados cadastrais de Funcionários, permitindo a modificação das seguintes informações:
+
+- Nome
+- Telefone
+- Profissão
+
+As seguintes regras de negócio devem ser validadas pelo sistema:
+
+Não permitir a alteração do e-mail do funcionário.
+Não permitir a alteração do CPF do funcionário.
+Não permitir a alteração da data de contratação do funcionário.
+Não permitir a alteração do salário do funcionário.
+Não permitir a alteração da data de nascimento do funcionário.
+
+
+
+
+							    Atualização do Departamento
+
+O sistema deve oferecer a funcionalidade de atualização dos dados cadastrais do Departamento, permitindo a modificação das seguintes informações:
+
+- Nome
+- Descrição
+- Telefone
+- Endereço
+
+As seguintes regras de negócio devem ser validadas pelo sistema:
+
+Não permitir a alteração da data de criação do Departamento.
+Não permitir a alteração do Email do Departamento
+
+
+
+
+							   Atualização do Cargo
+
+O sistema deve oferecer a funcionalidade de atualização dos dados cadastrais do cargo, permitindo a modificação das seguintes informações:
+
+- Nome
+- Descrição
+- Salário Base
+- Salário Máximo
+
+As seguintes regras de negócio devem ser validadas pelo sistema:
+
+Não permitir a alteração do nível profissional.
+
