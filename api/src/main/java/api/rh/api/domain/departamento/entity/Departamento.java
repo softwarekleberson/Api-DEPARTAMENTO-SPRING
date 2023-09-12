@@ -43,7 +43,10 @@ public class Departamento {
     @Embedded
     private Endereco endereco;
     
+    private Boolean ativo;
+    
     public Departamento(DadosCadastroDepartamento dados) {
+    	this.ativo = true;
     	this.nome = dados.departamento().nome();
     	this.descricao = dados.departamento().descricao();
     	this.criacao = dados.departamento().criacao();
@@ -66,5 +69,9 @@ public class Departamento {
 			this.endereco.atualizarInformacoes(dados.endereco());
 		}
 			
+	}
+
+	public void excluir() {
+		this.ativo = false;
 	}
 }

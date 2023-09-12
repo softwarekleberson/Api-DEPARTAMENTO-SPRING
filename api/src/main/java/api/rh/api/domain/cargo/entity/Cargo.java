@@ -36,7 +36,10 @@ public class Cargo {
 	@Enumerated(EnumType.STRING)
 	private NivelEstagio nivel;
 	
+	private Boolean ativo;
+	
 	public Cargo(DadosCadastroCargo dados) {
+		this.ativo = true;
 		this.nome = dados.nome();
 		this.descricao = dados.descricao();
 		this.salario_Base = dados.salarioBase();
@@ -58,5 +61,9 @@ public class Cargo {
 		if(dados.salarioMaximo() != null) {
 			this.salario_Maximo = dados.salarioMaximo();
 		}
+	}
+
+	public void excluir() {
+		this.ativo = false;
 	}
 }

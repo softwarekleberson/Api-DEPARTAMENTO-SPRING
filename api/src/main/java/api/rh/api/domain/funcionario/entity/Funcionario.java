@@ -39,7 +39,10 @@ public class Funcionario {
 	@Enumerated(EnumType.STRING)
 	private Profissao profissao;
 	
+	private Boolean ativo;
+	
 	 public Funcionario(DadosCadastroFuncionarios dados) {
+		 this.ativo = true;
 		 this.contratacao = dados.funcionario().contratacao();
 		 this.salario = dados.funcionario().salario();
 		 this.pessoa = new Pessoa(dados.funcionario().pessoa());
@@ -54,5 +57,9 @@ public class Funcionario {
 		if(dados.telefone() != null) {
 			this.getPessoa().getTelefone().atualizatTelefone(dados.telefone());
 		}	
+	}
+
+	public void excluir() {
+		this.ativo = false;
 	}
 }

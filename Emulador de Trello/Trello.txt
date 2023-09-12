@@ -128,3 +128,31 @@ As seguintes regras de negócio devem ser validadas pelo sistema:
 
 Não permitir a alteração do nível profissional.
 
+
+
+
+							Exclusão de Cargos
+
+O sistema deve possuir uma funcionalidade que permita a exclusão de cargos cadastrados.
+
+As seguintes regras de negócio devem sere validadas pelo sistema:
+A exclusão não deve apagar os dados do cargo, mas torná-lo como "inativo" no sistema.
+
+
+
+							Exclusão de Departamentos
+
+O sistema deve possuir uma funcionalidade que permita a exclusão de departamentos cadastrados.
+
+As seguintes regras de negócio devem sere validadas pelo sistema:
+A exclusão não deve apagar os dados do departamento, mas torná-lo como "inativo" no sistema.
+
+
+
+							Exclusão Funcionarios
+
+O sistema deve possuir uma funcionalidade que permita a exclusão de funcionarios cadastrados.
+
+As seguintes regras de negócio devem sere validadas pelo sistema:
+A exclusão não deve apagar os dados do funcionarios, mas torná-lo como "inativo" no sistema.
+							
