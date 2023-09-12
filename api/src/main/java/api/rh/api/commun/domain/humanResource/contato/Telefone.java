@@ -20,4 +20,22 @@ public class Telefone {
 		this.ddi = dados.ddi();
 		this.telefone = dados.telefone();
 	}
+
+	
+
+	public void atualizatTelefone(DadosCadastroTelefone dados) {
+		if(dados.ddd() != null) {
+			this.ddd = dados.ddd();
+		}
+		
+		if(dados.ddi() != null) {
+			this.ddi = dados.ddi();
+		}
+		
+		if(dados.telefone() != null) {
+			this.telefone = dados.telefone();
+		}
+		
+	}
+	
 }

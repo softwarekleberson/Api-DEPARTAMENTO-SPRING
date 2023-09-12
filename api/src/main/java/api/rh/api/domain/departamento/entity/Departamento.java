@@ -6,12 +6,14 @@ import api.rh.api.commun.domain.humanResource.contato.Email;
 import api.rh.api.commun.domain.humanResource.contato.Telefone;
 import api.rh.api.commun.domain.humanResource.endereco.Endereco;
 import api.rh.api.domain.departamento.infra.web.dto.post.DadosCadastroDepartamento;
+import api.rh.api.domain.departamento.infra.web.dto.put.DadosAtualizarDepartamento;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -49,5 +51,20 @@ public class Departamento {
     	this.email = new Email(dados.email());
     	this.endereco = new Endereco(dados.endereco());
     }
-    
+
+	public void atualizarInformacoes(@Valid DadosAtualizarDepartamento dados) {
+		if(dados.nome() != null) {
+			this.nome = dados.nome();
+		}
+		if(dados.descricao() != null) {
+			this.descricao = dados.descricao();
+		}
+		if(dados.telefone() != null) {
+			this.telefone.atualizatTelefone(dados.telefone());
+		}
+		if(dados.endereco() != null) {
+			this.endereco.atualizarInformacoes(dados.endereco());
+		}
+			
+	}
 }

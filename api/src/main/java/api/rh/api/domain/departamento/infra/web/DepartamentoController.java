@@ -41,6 +41,7 @@ public class DepartamentoController {
 	@Transactional
 	@PutMapping
 	public void atualizar(@RequestBody @Valid DadosAtualizarDepartamento dados) {
-		
+		var departamento = repository.getReferenceById(dados.id());
+		departamento.atualizarInformacoes(dados);
 	}
 }

@@ -34,7 +34,7 @@ public class Pessoa {
 	private Email email;
 	
 	@Embedded
-	private Telefone tefone;
+	private Telefone telefone;
 	
 	public Pessoa(DadosCadastroPessoa dados) {
 		this.nome = dados.nome();
@@ -42,6 +42,12 @@ public class Pessoa {
 		this.sexo = dados.sexo();
 		this.cpf = new Cpf(dados.cpf());
 		this.email = new Email(dados.email());
-		this.tefone = new Telefone(dados.telefone());	
+		this.telefone = new Telefone(dados.telefone());	
 	}
+
+	public void atualizarInformacoesNome(String nome) {
+		this.nome = nome;
+	}
+
+	
 }

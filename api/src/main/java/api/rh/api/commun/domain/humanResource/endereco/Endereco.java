@@ -26,4 +26,26 @@ public class Endereco {
 		this.numero = dados.numero();
 		this.cep = dados.cep();
 	}
+
+	public void atualizarInformacoes(DadosCadastroEndereco dados) {
+		
+		if(dados.pais() != null) {
+			this.pais = dados.pais();
+		}
+		if(dados.estado() != null) {
+			this.estado = dados.estado();
+		}
+		if(dados.cidade() != null) {
+			this.cidade = dados.cidade();
+		}
+		if(dados.rua() != null) {
+			this.rua = dados.rua();
+		}
+		if(dados.numero() != null) {
+			this.numero = dados.rua();
+		}
+		if(dados.cep() != null) {
+			this.cep = dados.cep();
+		}	
+	}
 }

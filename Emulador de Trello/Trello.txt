@@ -86,7 +86,6 @@ O sistema deve oferecer a funcionalidade de atualização de dados cadastrais de
 
 - Nome
 - Telefone
-- Profissão
 
 As seguintes regras de negócio devem ser validadas pelo sistema:
 

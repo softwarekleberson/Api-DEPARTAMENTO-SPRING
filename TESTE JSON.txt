@@ -1,70 +1,146 @@
-CARGO
-
-{
-	"nome" : "dddddddddddd", 
- 	"descricao" : "rrrrrrrrrrrr",
-	"salarioBase" : "1800.00",
-	"salarioMaximo" : "1111.00",
-	"nivel" : "SENIOR"
-}
-
-FUNCIONARIO 
+										Cadastrar Funcionario
 
 {
 		"funcionario" : {
-			"contratacao" : "2023-09-08",
-			"salario" : "850.00",
+			"contratacao" : "2000-08-01",
+			"salario" : "3900.04",
 				"pessoa" : {
-				"nome" : "Ana maria",
-				"nascimento" : "2022-09-10",
-				"sexo" : "F",
+				"nome" : "cleusa santos",
+				"nascimento" : "1965-08-22",
 				"cpf" : {
-					"cpf" : ""
+					"cpf" : "14785236901"
 				}, 
 					
 				"email" : {
-					"email" :  "anapaula@gmail.com"
+					"email" :  "cleusa@gmail.com"
 				},
-					
-				"telefone" : {
-					"ddi" : "120",
-					"ddd" : "03",
-					"telefone" : "987456321"
-				}		
+				
+					"telefone" : {
+						"ddd" : "99",
+						"ddi" : "222",
+						"telefone" : "88884444"
+					}
 			}
 	},
-	"profissao" : "COMPRAS"
-}
+	"profissao" : "VENDAS"
+}	
+			
+		
+		
+				
+										Cadastrar Departamento
 
-
-DEPARTAMENTO
 
 {
 
 	"departamento" : {
-			"nome" : "Rh",
-			"descricao" : "setor responsavel or contratar",
-			"criacao" : "2023-09-01"
+			"nome" : "Projetos",
+			"descricao" : "Projetos intra extra empresa",
+			"criacao" : "2023-08-08"
 	},
 	
 	"telefone" : {
-		 "ddi" : "190",
-		 "ddd" : "35",
-		 "telefone" : "987456321"
+		 "ddi" : "200",
+		 "ddd" : "20",
+		 "telefone" : "123456789"
 	},
 	
 	"email" : {
-		"email" : "rh@gmail.com"
+		"email" : "projetos@gmail.com"
 	},
 	
 	"endereco" : {
-		"pais" : "Espanha",
-		"estado" : "Madri",
-		"cidade" : "são tiago",
-		"rua" : "rua dos jogos",
-		"numero" : "10",
-		"cep" : "00002020"
+		"pais" : "Brasil",
+		"estado" : "São Paulo",
+		"cidade" : "Santos",
+		"rua" : "rua do santos",
+		"numero" : "01",
+		"cep" : "14786922"
 	
 	}
-}	
-			
+}
+
+
+
+
+
+									Cadastro Cargo
+
+
+
+{
+	"nome" : "Gestor de projetos", 
+ 	"descricao" : "Gerir projetos dentro e fora da empressa",
+	"salarioBase" : "3000.00",
+	"salarioMaximo" : "7500.99",
+	"nivel" : "SENIOR"
+}
+
+
+
+
+
+
+									Atualizar Cargo
+
+
+
+{
+
+	"id" : "8",
+	"nome" : "Gestor de patrimonio",
+	"descricao" : "Gerir todos os bens da empresa",
+	"salarioBase" : "2900.00",
+	"salarioMaximo" : "3100.01"
+
+}
+
+
+
+
+						
+									Atualizar Departamento
+
+
+
+{
+
+	"id" : "13",
+	"nome" : "Recursos Humanos",
+	"descricao" : "gerir pessoas e suas carreiras",
+	"telefone" : {
+		"ddd" : "99",
+		"ddi" : "111",
+		"telefone" : "438036548"
+	},
+	
+	"endereco" : {
+		"pais" : "França",
+		"estado" : "Paris",
+		"cidade" : "Paris san german",
+		"rua" : "parque dos principes",
+		"numero" : "98",
+		"cep" : "12345"
+	
+	}
+
+}
+
+
+
+
+
+									Atualizar Funcionarios
+
+
+
+{
+	"id" : "17",
+	"nome" : "kleberson",
+	"telefone" : {
+		"ddd" : "25",
+		"ddi" : "999",
+		"telefone" : "11112222"
+	}
+}
+									

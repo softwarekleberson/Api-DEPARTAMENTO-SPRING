@@ -40,6 +40,7 @@ public class CargoController {
 	@Transactional
 	@PutMapping
 	public void atualizar(@RequestBody @Valid DadosAtualizarCargo dados) {
-		
+		var cargo = repository.getReferenceById(dados.id());
+		cargo.atualizarInformacoes(dados);
 	}
 }
