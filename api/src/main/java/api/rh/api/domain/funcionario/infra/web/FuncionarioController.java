@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import api.rh.api.domain.funcionario.entity.Funcionario;
 import api.rh.api.domain.funcionario.infra.persistencia.jpa.FuncionarioRepository;
@@ -32,9 +33,12 @@ public class FuncionarioController {
 	private FuncionarioRepository repository;
 	
 	@PostMapping
-	public ResponseEntity cadastra(@RequestBody @Valid DadosCadastroFuncionarios dados) {
-		repository.save(new Funcionario(dados));
-		return null;
+	public ResponseEntity cadastra(@RequestBody @Valid DadosCadastroFuncionarios dados, UriComponentsBuilder uriComponentsBuilder) {
+		var funcionario = new Funcionario(dados);
+		repository.save(funcionario);
+		
+		var uri = uriComponentsBuilder.path("/funcionarios/{id}").buildAndExpand(funcionario.getId()).toUri();
+		return ResponseEntity.created(uri).body(new DadosDetalhamentoFuncionario(funcionario));
 	}
 	
 	@GetMapping
@@ -57,10 +61,9 @@ public class FuncionarioController {
 	
 	@Transactional
 	@DeleteMapping("/{id}")
-	public void excluir(@PathVariable Long id) {
+	public ResponseEntity excluir(@PathVariable Long id) {
 		var funcionarios = repository.getReferenceById(id);
 		funcionarios.excluir();
-		
-		ResponseEntity.noContent().build();
+		return ResponseEntity.noContent().build();
 	}
 }

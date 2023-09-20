@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import api.rh.api.domain.departamento.entity.Departamento;
 import api.rh.api.domain.departamento.infra.persistencia.jpa.DepartamentoRepoitory;
@@ -33,9 +34,12 @@ public class DepartamentoController {
 	
 	@Transactional
 	@PostMapping
-	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroDepartamento dados ) {
-		repository.save(new Departamento(dados));
-		return null;
+	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroDepartamento dados, UriComponentsBuilder uriBuilder) {
+		var departamento = new Departamento(dados);
+		repository.save(departamento);
+		
+		var uri = uriBuilder.path("/departamentos/{id}").buildAndExpand(departamento.getId()).toUri();
+		return ResponseEntity.created(uri).body(new DadosDetalhamentoDepartamento(departamento));
 	}
 	
 	@GetMapping

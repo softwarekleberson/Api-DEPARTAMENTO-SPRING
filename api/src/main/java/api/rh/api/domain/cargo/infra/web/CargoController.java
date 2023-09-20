@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import api.rh.api.domain.cargo.entity.Cargo;
 import api.rh.api.domain.cargo.infra.persistencia.jpa.CargoRepository;
@@ -32,9 +33,12 @@ public class CargoController {
 	
 	@Transactional
 	@PostMapping
-	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroCargo dados) {
-		repository.save(new Cargo(dados));
-		return null;
+	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroCargo dados, UriComponentsBuilder uriBuilder) {
+		var cargo = new Cargo(dados);
+		repository.save(cargo);
+		
+		var uri = uriBuilder.path("/cargos/{id}").buildAndExpand(cargo.getId()).toUri();
+		return ResponseEntity.created(uri).body(new DadosDetalhamentoCargo(cargo));
 	}
 	
 	@GetMapping
