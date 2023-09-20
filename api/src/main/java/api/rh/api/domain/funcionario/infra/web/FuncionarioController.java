@@ -48,6 +48,11 @@ public class FuncionarioController {
 		return ResponseEntity.ok(page);
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity detalharFuncionarios(@PathVariable Long id) {
+		var funcionarios = repository.getReferenceById(id);
+		return ResponseEntity.ok(new DadosDetalhamentoFuncionario(funcionarios));
+	}
 	
 	@PutMapping
 	@Transactional

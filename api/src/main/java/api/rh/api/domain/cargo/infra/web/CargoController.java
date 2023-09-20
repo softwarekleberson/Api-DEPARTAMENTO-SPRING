@@ -47,6 +47,12 @@ public class CargoController {
 		return ResponseEntity.ok(page);
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity listarCargo(@PathVariable Long id) {
+		var cargo = repository.getReferenceById(id);		
+		return ResponseEntity.ok(new DadosDetalhamentoCargo(cargo));
+	}
+	
 	@Transactional
 	@PutMapping
 	public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizarCargo dados) {

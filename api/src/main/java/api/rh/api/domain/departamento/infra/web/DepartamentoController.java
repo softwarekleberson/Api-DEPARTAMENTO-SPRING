@@ -48,6 +48,12 @@ public class DepartamentoController {
 		return ResponseEntity.ok(page);
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity detalharDepartamento(@PathVariable Long id) {
+		var departamento = repository.getReferenceById(id);
+		return ResponseEntity.ok(new DadosDetalhamentoDepartamento(departamento));
+	}
+	
 	@Transactional
 	@PutMapping
 	public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizarDepartamento dados) {
