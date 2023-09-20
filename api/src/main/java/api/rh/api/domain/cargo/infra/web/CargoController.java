@@ -3,6 +3,7 @@ package api.rh.api.domain.cargo.infra.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import api.rh.api.domain.cargo.infra.persistencia.jpa.CargoRepository;
 import api.rh.api.domain.cargo.infra.web.dto.list.DadosListagemCargo;
 import api.rh.api.domain.cargo.infra.web.dto.post.DadosCadastroCargo;
 import api.rh.api.domain.cargo.infra.web.dto.put.DadosAtualizarCargo;
+import api.rh.api.domain.cargo.infra.web.dto.put.DadosDetalhamentoCargo;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
@@ -30,26 +32,32 @@ public class CargoController {
 	
 	@Transactional
 	@PostMapping
-	public void cadastrar(@RequestBody @Valid DadosCadastroCargo dados) {
+	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroCargo dados) {
 		repository.save(new Cargo(dados));
+		return null;
 	}
 	
 	@GetMapping
-	public Page<DadosListagemCargo> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
-		return repository.findByAtivoTrue(paginacao).map(DadosListagemCargo::new);
+	public ResponseEntity<Page<DadosListagemCargo>> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
+		var page = repository.findByAtivoTrue(paginacao).map(DadosListagemCargo::new);
+		return ResponseEntity.ok(page);
 	}
 	
 	@Transactional
 	@PutMapping
-	public void atualizar(@RequestBody @Valid DadosAtualizarCargo dados) {
+	public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizarCargo dados) {
 		var cargo = repository.getReferenceById(dados.id());
 		cargo.atualizarInformacoes(dados);
+		
+		return ResponseEntity.ok(new DadosDetalhamentoCargo(cargo));
 	}
 	
 	@DeleteMapping("/{id}")
 	@Transactional
-	public void excluir(@PathVariable Long id) {
+	public ResponseEntity excluir(@PathVariable Long id) {
 		var cargo = repository.getReferenceById(id);
 		cargo.excluir();
+		
+		return ResponseEntity.noContent().build();
 	}
 }

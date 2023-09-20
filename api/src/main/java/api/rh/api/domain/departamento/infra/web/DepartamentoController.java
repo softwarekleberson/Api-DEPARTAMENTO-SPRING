@@ -4,6 +4,7 @@ package api.rh.api.domain.departamento.infra.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import api.rh.api.domain.departamento.infra.persistencia.jpa.DepartamentoRepoito
 import api.rh.api.domain.departamento.infra.web.dto.list.DadosListagemDepartamento;
 import api.rh.api.domain.departamento.infra.web.dto.post.DadosCadastroDepartamento;
 import api.rh.api.domain.departamento.infra.web.dto.put.DadosAtualizarDepartamento;
+import api.rh.api.domain.departamento.infra.web.dto.put.DadosDetalhamentoDepartamento;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
@@ -31,26 +33,30 @@ public class DepartamentoController {
 	
 	@Transactional
 	@PostMapping
-	public void cadastrar(@RequestBody @Valid DadosCadastroDepartamento dados ) {
+	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroDepartamento dados ) {
 		repository.save(new Departamento(dados));
+		return null;
 	}
 	
 	@GetMapping
-	public Page<DadosListagemDepartamento> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
-		return repository.findByAtivoTrue(paginacao).map(DadosListagemDepartamento::new);
+	public ResponseEntity<Page<DadosListagemDepartamento>> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
+		var page = repository.findByAtivoTrue(paginacao).map(DadosListagemDepartamento::new);
+		return ResponseEntity.ok(page);
 	}
 	
 	@Transactional
 	@PutMapping
-	public void atualizar(@RequestBody @Valid DadosAtualizarDepartamento dados) {
+	public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizarDepartamento dados) {
 		var departamento = repository.getReferenceById(dados.id());
 		departamento.atualizarInformacoes(dados);
+		return ResponseEntity.ok(new DadosDetalhamentoDepartamento(departamento));
 	}
 	
 	@Transactional
 	@DeleteMapping("/{id}")
-	public void excluir(@PathVariable Long id) {
+	public ResponseEntity excluir(@PathVariable Long id) {
 		var departamento = repository.getReferenceById(id);
 		departamento.excluir();
+		return ResponseEntity.noContent().build();
 	}
 }

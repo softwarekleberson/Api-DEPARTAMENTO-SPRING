@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import api.rh.api.domain.funcionario.infra.persistencia.jpa.FuncionarioRepositor
 import api.rh.api.domain.funcionario.infra.web.dto.list.DadosListagemFuncionario;
 import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroFuncionarios;
 import api.rh.api.domain.funcionario.infra.web.dto.put.DadosAtualizarFuncionario;
+import api.rh.api.domain.funcionario.infra.web.dto.put.DadosDetalhamentoFuncionario;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
@@ -30,26 +32,35 @@ public class FuncionarioController {
 	private FuncionarioRepository repository;
 	
 	@PostMapping
-	public void cadastra(@RequestBody @Valid DadosCadastroFuncionarios dados) {
+	public ResponseEntity cadastra(@RequestBody @Valid DadosCadastroFuncionarios dados) {
 		repository.save(new Funcionario(dados));
+		return null;
 	}
 	
 	@GetMapping
-	public Page<DadosListagemFuncionario> listar(@PageableDefault(size = 10, sort = {"salario"}) Pageable paginacao){
-		return repository.findByAtivoTrue(paginacao).map(DadosListagemFuncionario::new);
+	public ResponseEntity<Page<DadosListagemFuncionario>> listar(@PageableDefault(size = 10, sort = {"salario"}) Pageable paginacao){
+		var page = repository.findByAtivoTrue(paginacao).map(DadosListagemFuncionario::new);
+		
+		return ResponseEntity.ok(page);
 	}
+	
 	
 	@PutMapping
 	@Transactional
-	public void atualizarFuncionario(@RequestBody @Valid DadosAtualizarFuncionario dados) {
+	public ResponseEntity atualizarFuncionario(@RequestBody @Valid DadosAtualizarFuncionario dados) {
 		var funcionario = repository.getReferenceById(dados.id());
 		funcionario.atualizarInfomacoes(dados);
+		
+		return ResponseEntity.ok(new DadosDetalhamentoFuncionario(funcionario));
 	}
+	
 	
 	@Transactional
 	@DeleteMapping("/{id}")
 	public void excluir(@PathVariable Long id) {
 		var funcionarios = repository.getReferenceById(id);
 		funcionarios.excluir();
+		
+		ResponseEntity.noContent().build();
 	}
 }
