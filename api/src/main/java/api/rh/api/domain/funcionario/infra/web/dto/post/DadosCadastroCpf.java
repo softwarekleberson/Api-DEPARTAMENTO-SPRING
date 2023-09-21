@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Pattern;
 public record DadosCadastroCpf(
 		
 		@NotBlank
-		@Pattern(regexp = "\\d{11}")
+		@Pattern(regexp = "\\d{11}", message="Apenas digitos no cpf")
 		String cpf
 		) {
 }

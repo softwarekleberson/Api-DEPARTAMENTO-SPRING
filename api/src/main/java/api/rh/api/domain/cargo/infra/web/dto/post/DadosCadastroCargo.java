@@ -15,10 +15,10 @@ public record DadosCadastroCargo(
 		@NotBlank
 		String descricao,
 		
-		@Positive
+		@Positive(message = "Salario deve ser superior a 0")
 		BigDecimal salarioBase,
 		
-		@Positive
+		@Positive(message = "Salario deve ser superior a 0")
 		BigDecimal salarioMaximo,
 		
 		@NotNull

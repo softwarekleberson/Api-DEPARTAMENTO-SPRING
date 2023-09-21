@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 public record DadosCadastroEmail(
 		
 		@NotBlank
-		@Email
+		@Email(message = "Formato de Email incorreto")
 		String email
 		
 		) {
