@@ -55,8 +55,8 @@ public class Departamento {
     
    
     public Departamento(DadosCadastroDepartamento dados) {
+    	this.ativo = true;
     	
-    	setAtivo(ativo);
     	setNome(dados.departamento().nome());
     	setDescricao(dados.departamento().descricao());
     	setTelefone(dados.telefone());
@@ -65,10 +65,6 @@ public class Departamento {
     	setCriacao(dados.departamento().criacao());
     
     }
-    
-    public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
-	}
     
     public void setNome(String nome) {
     	String validarNome = Objects.requireNonNull(nome,"Nome não deve ser nulo");

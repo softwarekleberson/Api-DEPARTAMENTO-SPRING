@@ -15,8 +15,10 @@ public class Cpf {
 	private String cpf;
 	
 	public Cpf(DadosCadastroCpf  dados) {
-		this.cpf = dados.cpf();
+		setCpf(dados.cpf());
 	}
 	
-	
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 }
