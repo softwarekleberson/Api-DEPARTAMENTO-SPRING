@@ -5,16 +5,16 @@ import jakarta.validation.constraints.Pattern;
 
 public record DadosCadastroEndereco(
 		
-		@NotBlank
+		@NotBlank(message = "Pais deve conter : " + Endereco.MENOR_STRING_PAIS_LENGT + " caracteres")
 		String pais,
 		
-		@NotBlank
+		@NotBlank(message = "Estado deve conter : " + Endereco.MENOR_COMPRIMENTO_STRING + " caracteres")
 		String estado,
 		
-		@NotBlank
+		@NotBlank(message = "Cidade deve conter : " + Endereco.MENOR_COMPRIMENTO_STRING + " caracteres")
 		String cidade,
 		
-		@NotBlank
+		@NotBlank(message = "Rua deve conter : " + Endereco.MENOR_COMPRIMENTO_STRING + " caracteres")
 		String rua,
 		
 		@NotBlank

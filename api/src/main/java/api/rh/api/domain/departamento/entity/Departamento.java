@@ -1,12 +1,16 @@
 package api.rh.api.domain.departamento.entity;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
+import api.rh.api.commun.domain.humanResource.contato.DadosCadastroTelefone;
 import api.rh.api.commun.domain.humanResource.contato.Email;
 import api.rh.api.commun.domain.humanResource.contato.Telefone;
+import api.rh.api.commun.domain.humanResource.endereco.DadosCadastroEndereco;
 import api.rh.api.commun.domain.humanResource.endereco.Endereco;
 import api.rh.api.domain.departamento.infra.web.dto.post.DadosCadastroDepartamento;
 import api.rh.api.domain.departamento.infra.web.dto.put.DadosAtualizarDepartamento;
+import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroEmail;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,9 +34,13 @@ public class Departamento {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+    private Boolean ativo;
+	
+	public static final int MAXIMO_NOME_LENGTH = 100;
     private String nome;
+    
+    public static final int MAXIMO_DESCRICAO_LENGTH = 1000;
     private String descricao;
-    private LocalDate criacao;
     
     @Embedded
     private Telefone telefone;
@@ -43,17 +51,58 @@ public class Departamento {
     @Embedded
     private Endereco endereco;
     
-    private Boolean ativo;
+    private LocalDate criacao;
     
+   
     public Departamento(DadosCadastroDepartamento dados) {
-    	this.ativo = true;
-    	this.nome = dados.departamento().nome();
-    	this.descricao = dados.departamento().descricao();
-    	this.criacao = dados.departamento().criacao();
-    	this.telefone = new Telefone(dados.telefone());
-    	this.email = new Email(dados.email());
-    	this.endereco = new Endereco(dados.endereco());
+    	
+    	setAtivo(ativo);
+    	setNome(dados.departamento().nome());
+    	setDescricao(dados.departamento().descricao());
+    	setTelefone(dados.telefone());
+    	setEmail(dados.email());
+    	setEndereco(dados.endereco());
+    	setCriacao(dados.departamento().criacao());
+    
     }
+    
+    public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+    
+    public void setNome(String nome) {
+    	String validarNome = Objects.requireNonNull(nome,"Nome não deve ser nulo");
+    	if(validarNome.length() > MAXIMO_NOME_LENGTH) {
+    		throw new IllegalArgumentException("Nome não deve ser maior que : " + MAXIMO_NOME_LENGTH + " caracteres");
+    	}
+		this.nome = nome;
+	}
+    
+    public void setDescricao(String descricao) {
+    	String validarDescricao = Objects.requireNonNull(descricao,"Descricão não deve ser nulo");
+    	if(validarDescricao.length() > MAXIMO_DESCRICAO_LENGTH) {
+    		throw new IllegalArgumentException("Descrição não deve ser maior que : " + MAXIMO_DESCRICAO_LENGTH + " caracteres");
+    	}
+		this.descricao = descricao;
+	}
+    
+    public void setCriacao(LocalDate criacao) {
+    	System.out.println(criacao);
+		this.criacao = criacao;
+	}
+    
+    public void setTelefone(DadosCadastroTelefone dadosCadastroTelefone) {
+    	this.telefone = new Telefone(dadosCadastroTelefone);
+	}
+    
+    public void setEmail(DadosCadastroEmail dados) {
+		this.email = new Email(dados.email());
+	}
+    
+    public void setEndereco(DadosCadastroEndereco dados) {
+		this.endereco = new Endereco(dados);
+	}
+    
 
 	public void atualizarInformacoes(@Valid DadosAtualizarDepartamento dados) {
 		if(dados.nome() != null) {

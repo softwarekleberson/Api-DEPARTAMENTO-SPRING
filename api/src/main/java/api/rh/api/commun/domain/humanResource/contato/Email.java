@@ -1,5 +1,7 @@
 package api.rh.api.commun.domain.humanResource.contato;
 
+import java.util.regex.Pattern;
+
 import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroEmail;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
@@ -15,7 +17,15 @@ public class Email {
 	private String email;
 	
 	public Email(DadosCadastroEmail dados) {
-		this.email = dados.email();
+		setEmail(dados.email());
+	}
+	
+	public void setEmail(String email) {
+		String regex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+	      if (!Pattern.matches(regex, email)) {
+	          throw new IllegalArgumentException("Endereço de e-mail inválido.");
+	        }
+		this.email = email;
 	}
 		
 }
