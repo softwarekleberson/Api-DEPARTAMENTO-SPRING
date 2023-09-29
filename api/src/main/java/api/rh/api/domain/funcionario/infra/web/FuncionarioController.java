@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,14 +14,17 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import api.rh.api.domain.cargo.usecase.CrudCargo;
 import api.rh.api.domain.funcionario.entity.Funcionario;
 import api.rh.api.domain.funcionario.infra.persistencia.jpa.FuncionarioRepository;
 import api.rh.api.domain.funcionario.infra.web.dto.list.DadosListagemFuncionario;
 import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroFuncionarios;
 import api.rh.api.domain.funcionario.infra.web.dto.put.DadosAtualizarFuncionario;
 import api.rh.api.domain.funcionario.infra.web.dto.put.DadosDetalhamentoFuncionario;
+import api.rh.api.domain.funcionario.usecase.CrudFuncionario;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
@@ -34,8 +38,9 @@ public class FuncionarioController {
 	
 	@PostMapping
 	public ResponseEntity cadastra(@RequestBody @Valid DadosCadastroFuncionarios dados, UriComponentsBuilder uriComponentsBuilder) {
-		var funcionario = new Funcionario(dados);
-		repository.save(funcionario);
+		
+		var funcionario = new Funcionario(dados);		
+		new CrudFuncionario(repository).criarFuncionario(funcionario);
 		
 		var uri = uriComponentsBuilder.path("/funcionarios/{id}").buildAndExpand(funcionario.getId()).toUri();
 		return ResponseEntity.created(uri).body(new DadosDetalhamentoFuncionario(funcionario));
@@ -43,22 +48,24 @@ public class FuncionarioController {
 	
 	@GetMapping
 	public ResponseEntity<Page<DadosListagemFuncionario>> listar(@PageableDefault(size = 10, sort = {"salario"}) Pageable paginacao){
-		var page = repository.findByAtivoTrue(paginacao).map(DadosListagemFuncionario::new);
-		
+		var page = new CrudFuncionario(repository).listarAtivo(paginacao);
 		return ResponseEntity.ok(page);
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity detalharFuncionarios(@PathVariable Long id) {
-		var funcionarios = repository.getReferenceById(id);
-		return ResponseEntity.ok(new DadosDetalhamentoFuncionario(funcionarios));
+		var funcionario = new CrudFuncionario(repository).detalharFuncionario(id);
+		return ResponseEntity.ok(new DadosDetalhamentoFuncionario(funcionario));
 	}
 	
 	@PutMapping
 	@Transactional
 	public ResponseEntity atualizarFuncionario(@RequestBody @Valid DadosAtualizarFuncionario dados) {
-		var funcionario = repository.getReferenceById(dados.id());
-		funcionario.atualizarInfomacoes(dados);
+		
+		var funcionario = new CrudFuncionario(repository).atualizarFuncionario(dados);
+		if(funcionario == null) {
+        	throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
 		
 		return ResponseEntity.ok(new DadosDetalhamentoFuncionario(funcionario));
 	}
@@ -67,8 +74,7 @@ public class FuncionarioController {
 	@Transactional
 	@DeleteMapping("/{id}")
 	public ResponseEntity excluir(@PathVariable Long id) {
-		var funcionarios = repository.getReferenceById(id);
-		funcionarios.excluir();
+		new CrudFuncionario(repository).exclusaoLogica(id);
 		return ResponseEntity.noContent().build();
 	}
 }

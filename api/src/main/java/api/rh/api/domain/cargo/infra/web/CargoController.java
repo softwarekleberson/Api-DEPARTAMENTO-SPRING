@@ -59,7 +59,6 @@ public class CargoController {
 	@Transactional
 	@PutMapping
 	public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizarCargo dados) {
-		
 		var cargo = new CrudCargo(repository).atualizarDados(dados);
 		if(cargo == null) {
         	throw new ResponseStatusException(HttpStatus.NOT_FOUND);

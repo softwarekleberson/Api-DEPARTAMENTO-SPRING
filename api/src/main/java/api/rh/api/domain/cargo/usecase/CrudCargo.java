@@ -33,10 +33,24 @@ public class CrudCargo {
 		
 		if(opDataBaseCargo.isPresent()) {
 			Cargo databaseCargo = opDataBaseCargo.get();
-			databaseCargo.setNome(dados.nome());
-			databaseCargo.setDescricao(dados.descricao());
-			databaseCargo.setSalario_Base(dados.salarioBase());
-			databaseCargo.setSalario_Maximo(dados.salarioMaximo());
+			
+			if(dados.nome() != null) {
+				databaseCargo.setNome(dados.nome());
+			}
+			
+			if(dados.descricao() != null) {
+				databaseCargo.setDescricao(dados.descricao());
+			}
+			
+			if(dados.salarioBase() != null) {
+				databaseCargo.setSalario_Base(dados.salarioBase());
+			}
+			
+			if(dados.salarioMaximo() != null) {
+				databaseCargo.setSalario_Maximo(dados.salarioMaximo());
+			}
+			
+			cargorepositoty.save(databaseCargo);
 			return databaseCargo;
 		}
 		return null;

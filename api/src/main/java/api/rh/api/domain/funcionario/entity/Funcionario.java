@@ -47,13 +47,18 @@ public class Funcionario {
 	private Boolean ativo;
 	
 	 public Funcionario(DadosCadastroFuncionarios dados) {
-		 this.ativo = true;
 		 
+		 setAtivo(true);
 		 setContratacao(dados.funcionario().contratacao());
 		 setSalario(dados.funcionario().salario());
 		 setPessoa(dados.funcionario().pessoa());
 		 setProfissao(dados.profissao());
 	 }
+	 
+	 
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
 	 
 	public void setContratacao(LocalDate contratacao) {
 		this.contratacao = contratacao;
@@ -75,17 +80,4 @@ public class Funcionario {
 		this.profissao = profissao;
 	}
 
-	public void atualizarInfomacoes(@Valid DadosAtualizarFuncionario dados) {
-		if(dados.nome() != null) {
-			this.getPessoa().atualizarInformacoesNome(dados.nome());
-		}
-		
-		if(dados.telefone() != null) {
-			this.getPessoa().getTelefone().atualizatTelefone(dados.telefone());
-		}	
-	}
-
-	public void excluir() {
-		this.ativo = false;
-	}
 }

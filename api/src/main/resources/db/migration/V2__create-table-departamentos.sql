@@ -9,7 +9,7 @@ CREATE TABLE departamentos (
     telefone varchar(9) not null, 
     email varchar(50) not null,
     pais varchar(100) not null,
-    estado varchar(100) not null,
+    estado  varchar(100) not null,
     cidade varchar(100) not null,
     rua varchar(200) not null,
     numero varchar(20) not null,

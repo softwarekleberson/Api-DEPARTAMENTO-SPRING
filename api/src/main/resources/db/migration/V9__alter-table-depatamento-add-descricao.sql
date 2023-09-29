@@ -1,0 +1,1 @@
+alter table departamentos add complemento varchar(400);

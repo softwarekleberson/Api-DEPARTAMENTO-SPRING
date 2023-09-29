@@ -41,7 +41,7 @@ public class Telefone {
 	public void setDdi(String ddi) {
 		String validarDdi = Objects.requireNonNull(ddi,"ddi não deve ser nulo");
 		if(validarDdi.length() != TAMANHO_DDI) {
-			throw new IllegalArgumentException("ddi deve conter : " + TAMANHO_DDI + " caracteres");
+			throw new IllegalArgumentException("ddi deve conter : " + TAMANHO_DDI + " caracteres" + ddi);
 		}
 		this.ddi = ddi;
 	}
@@ -55,19 +55,17 @@ public class Telefone {
 	}
 	
 	
-	public void atualizatTelefone(DadosCadastroTelefone dados) {
+	public void atualizarTelefone(DadosCadastroTelefone dados) {
 		if(dados.ddd() != null) {
-			this.ddd = dados.ddd();
+			setDdd(dados.ddd());
 		}
 		
 		if(dados.ddi() != null) {
-			this.ddi = dados.ddi();
+			setDdi(dados.ddi());
 		}
 		
 		if(dados.telefone() != null) {
-			this.telefone = dados.telefone();
-		}
-		
+			setTelefone(dados.telefone());
+		}		
 	}
-	
 }

@@ -48,29 +48,13 @@ public class Cargo {
 	private Boolean ativo;
 	
 	public Cargo(DadosCadastroCargo dados) {
-		this.ativo = true;
-		
+
+		setAtivo(true);
 		setNome(dados.nome());
 		setDescricao(dados.descricao());
 		setSalario_Base(dados.salarioBase());
 		setSalario_Maximo(dados.salarioMaximo());
 		setNivel(dados.nivel());
-	}
-	
-	public void atualizarInformacoes(@Valid DadosAtualizarCargo dados) {
-		
-		if (dados.nome() != null) {
-			this.nome = dados.nome();
-		}
-		if(dados.descricao() != null) {
-			this.descricao = dados.descricao();
-		}
-		if(dados.salarioBase() != null) {
-			this.salario_Base = dados.salarioBase();
-		}
-		if(dados.salarioMaximo() != null) {
-			this.salario_Maximo = dados.salarioMaximo();
-		}
 	}
 	
 	public void setAtivo(Boolean ativo) {
@@ -82,7 +66,6 @@ public class Cargo {
 		if(verificaNome.length() > MAXIMO_NOME_LENGTH) {
 			throw new IllegalArgumentException("Nome não deve ser maior que : " + MAXIMO_NOME_LENGTH + " caracteres");
 		}
-		this.nome = nome;
 	}
 	
 	public void setDescricao(String descricao) {

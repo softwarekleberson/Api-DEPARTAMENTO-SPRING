@@ -2,6 +2,7 @@ package api.rh.api.commun.domain.humanResource.endereco;
 
 import java.util.Objects;
 
+import api.rh.api.domain.departamento.entity.Departamento;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,6 +21,7 @@ public class Endereco {
 	private String estado;
 	private String cidade;
 	private String rua;
+	private String complemento;
 	private String numero;
 	private String cep;
 	
@@ -31,6 +33,7 @@ public class Endereco {
 		setRua(dados.rua());
 		setNumero(dados.numero());
 		setCep(dados.cep());
+		setComplemento(dados.complemento());
 	}
 
 	public void setPais(String pais) {
@@ -39,6 +42,13 @@ public class Endereco {
 			throw new IllegalArgumentException("Pais deve conter no minimo : " + MENOR_STRING_PAIS_LENGT + " caracteres");
 		}
 		this.pais = pais;
+	}
+	
+	public void setComplemento(String complemento) {
+		if(complemento == null) {
+			this.complemento = null;
+		}
+		this.complemento = complemento;
 	}
 	
 	public void setEstado(String estado) {
@@ -66,6 +76,9 @@ public class Endereco {
 	}
 	
 	public void setNumero(String numero) {
+		if(numero == null) {
+			this.numero = null;
+		}
 		this.numero = numero;
 	}
 	
@@ -77,25 +90,28 @@ public class Endereco {
 		this.cep = cep;
 	}
 	
-	public void atualizarInformacoes(DadosCadastroEndereco dados) {
+	public void atualizarEndereco(DadosCadastroEndereco dados) {
 		
 		if(dados.pais() != null) {
-			this.pais = dados.pais();
+			setPais(dados.pais());
 		}
 		if(dados.estado() != null) {
-			this.estado = dados.estado();
+			setEstado(dados.estado());
 		}
 		if(dados.cidade() != null) {
-			this.cidade = dados.cidade();
+			setCidade(dados.cidade());
 		}
 		if(dados.rua() != null) {
-			this.rua = dados.rua();
+			setRua(dados.rua());
 		}
 		if(dados.numero() != null) {
-			this.numero = dados.rua();
+			setNumero(dados.numero());
+		}
+		if(dados.complemento() != null) {
+			setComplemento(dados.complemento());
 		}
 		if(dados.cep() != null) {
-			this.cep = dados.cep();
-		}	
+			setCep(dados.cep());
+		}			
 	}
 }
