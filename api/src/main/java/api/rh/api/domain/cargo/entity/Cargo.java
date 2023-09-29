@@ -72,9 +72,9 @@ public class Cargo {
 			this.salario_Maximo = dados.salarioMaximo();
 		}
 	}
-
-	public void excluir() {
-		this.ativo = false;
+	
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 	
 	public void setNome(String nome) {
