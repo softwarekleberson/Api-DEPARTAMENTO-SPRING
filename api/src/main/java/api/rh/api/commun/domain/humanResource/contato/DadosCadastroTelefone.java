@@ -10,6 +10,8 @@ public record DadosCadastroTelefone (
 		@Pattern(regexp = "\\d{2}", message = "Necessario 2 digitos")
 		String ddd,
 		
-		@Pattern(regexp = "\\d{8,9}", message ="Necesario 8 ou 9 digitos")
-		String telefone) {
+		@Pattern(regexp = "\\d{8}|\\d{9}", message ="Necesario 8 ou 9 digitos")
+		String telefone) 
+																			
+																			{
 }

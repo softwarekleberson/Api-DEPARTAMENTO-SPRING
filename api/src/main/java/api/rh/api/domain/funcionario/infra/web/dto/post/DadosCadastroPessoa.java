@@ -8,18 +8,15 @@ import jakarta.validation.constraints.NotNull;
 
 public record DadosCadastroPessoa(
 					
-					  @NotBlank
-					  String nome,
+	@NotBlank
+	String nome,
 					  
-					  @NotNull
-					  LocalDate nascimento,
+	@NotNull
+	LocalDate nacimento,
 					  
-					  Sexo sexo,
+	Sexo sexo,
 					  
-					  @NotNull @Valid DadosCadastroCpf cpf,
-					  
-					  @NotNull @Valid DadosCadastroEmail email,
-					  
-					  @NotNull @Valid DadosCadastroTelefone telefone) {
+	@NotNull @Valid DadosCadastroCpf cpf
+					  										) {
 
 }

@@ -39,11 +39,11 @@ public class CrudFuncionario {
 			Funcionario databaseFuncionario = optDataBase.get();
 			
 			if(dados.nome() != null) {
-				databaseFuncionario.getPessoa().setNome(dados.nome());
+				databaseFuncionario.setNome(dados.nome());
 			}
 			
 			if(dados.telefone() != null) {
-				databaseFuncionario.getPessoa().getTelefone().atualizarTelefone(dados.telefone());
+				databaseFuncionario.getTelefone().atualizarTelefone(dados.telefone());
 			}
 
 			funcionarioRepository.save(databaseFuncionario);

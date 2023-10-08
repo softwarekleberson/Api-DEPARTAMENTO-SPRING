@@ -66,6 +66,7 @@ public class Cargo {
 		if(verificaNome.length() > MAXIMO_NOME_LENGTH) {
 			throw new IllegalArgumentException("Nome não deve ser maior que : " + MAXIMO_NOME_LENGTH + " caracteres");
 		}
+		this.nome = nome;
 	}
 	
 	public void setDescricao(String descricao) {

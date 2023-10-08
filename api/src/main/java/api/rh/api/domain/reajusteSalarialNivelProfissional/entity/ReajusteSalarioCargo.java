@@ -31,7 +31,7 @@ public class ReajusteSalarioCargo {
 	
 	private BigDecimal valorReajuste;
 	
-	private Funcionario funcionario;
+	//private Funcionario funcionario;
 	
 	public ReajusteSalarioCargo(DadosCadastroReajusteSalarioal dados) {
 		setDiaReajuste(dados.diaAtualizacao());

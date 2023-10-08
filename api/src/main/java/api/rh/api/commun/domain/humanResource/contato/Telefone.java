@@ -1,7 +1,5 @@
 package api.rh.api.commun.domain.humanResource.contato;
 
-import java.util.Objects;
-
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,14 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Telefone {
 
-	public static final int TAMANHO_DDD = 2;
-	private String ddd;
-	
-	public static final int TAMANHO_DDI = 3;
+	private String ddd;	
 	private String ddi;
-	
-	public static final int TAMANHO_MAXIMO_TELEFONE = 9;
-	public static final int TAMANHO_MINIMO_TELEFONE = 8;
 	private String telefone;
 	
 	public Telefone(DadosCadastroTelefone dados) {
@@ -31,25 +23,22 @@ public class Telefone {
 	}
 
 	public void setDdd(String ddd) {
-		String validarDDD = Objects.requireNonNull(ddd,"ddd não deve ser nulo");
-		if(validarDDD.length() != TAMANHO_DDD) {
-			throw new IllegalArgumentException("ddd deve ter : " + TAMANHO_DDD + " caracteres");
+		if(ddd == null || !ddd.matches("\\d{2}")) {
+			throw new IllegalArgumentException("ddd deve conter : 2 digitos");
 		}
 		this.ddd = ddd;
 	}
 	
 	public void setDdi(String ddi) {
-		String validarDdi = Objects.requireNonNull(ddi,"ddi não deve ser nulo");
-		if(validarDdi.length() != TAMANHO_DDI) {
-			throw new IllegalArgumentException("ddi deve conter : " + TAMANHO_DDI + " caracteres" + ddi);
+		if(ddi == null || !ddi.matches("\\d{3}")) {
+			throw new IllegalArgumentException("ddi deve conter : 3 digitos");
 		}
 		this.ddi = ddi;
 	}
 	
 	public void setTelefone(String telefone) {
-		String validarTelefone = Objects.requireNonNull(telefone,"Telefone não deve ser nulo");
-		if(!(validarTelefone.length() == TAMANHO_MAXIMO_TELEFONE) || (validarTelefone.length() == TAMANHO_MINIMO_TELEFONE)) {
-			throw new IllegalArgumentException("Telefone deve conter : " + TAMANHO_MAXIMO_TELEFONE + " ou " + TAMANHO_MINIMO_TELEFONE + " caracteres");
+		if(telefone == null || !telefone.matches("\\d{8}|\\d{9}")) {
+			throw new IllegalArgumentException("Telefone deve conter 8 ou 9 digitos ");
 		}
 		this.telefone = telefone;
 	}

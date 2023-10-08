@@ -19,11 +19,11 @@ public record DadosListagemFuncionario(
 		) {
 
 	public DadosListagemFuncionario(Funcionario funcionario) {
-		this(funcionario.getId() ,funcionario.getPessoa().getNome(),
+		this(funcionario.getId() ,funcionario.getNome(),
 				funcionario.getContratacao(),
 				funcionario.getSalario(),
 				funcionario.getProfissao(),
-				funcionario.getPessoa().getEmail()
+				funcionario.getEmail()
 		);
 	}
 }

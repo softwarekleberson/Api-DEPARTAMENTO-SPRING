@@ -5,9 +5,8 @@ import jakarta.validation.constraints.NotNull;
 
 public record DadosCadastroFuncionarios(
 		
-		@NotNull @Valid DadosCadastroFuncionario funcionario,
-		
-		@NotNull(message = "Profissão deve ser valida")
-		Profissao profissao
-		) {
+		@NotNull @Valid DadosCadastroFuncionario funcionario
+				
+										) 
+{
 }

@@ -4,8 +4,11 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import api.rh.api.commun.domain.humanResource.contato.DadosCadastroTelefone;
+import api.rh.api.commun.domain.humanResource.contato.Email;
+import api.rh.api.commun.domain.humanResource.contato.Telefone;
+import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroEmail;
 import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroFuncionarios;
-import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroPessoa;
 import api.rh.api.domain.funcionario.infra.web.dto.post.Profissao;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -26,7 +29,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Funcionario {
+public class Funcionario extends Pessoa {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -37,7 +40,10 @@ public class Funcionario {
 	private BigDecimal salario;
 	
 	@Embedded
-	private Pessoa pessoa;
+	private Email email;
+	
+	@Embedded
+	private Telefone telefone;
 	
 	@Enumerated(EnumType.STRING)
 	private Profissao profissao;
@@ -46,11 +52,13 @@ public class Funcionario {
 	
 	 public Funcionario(DadosCadastroFuncionarios dados) {
 		 
+		 super(dados.funcionario().pessoa());
 		 setAtivo(true);
 		 setContratacao(dados.funcionario().contratacao());
 		 setSalario(dados.funcionario().salario());
-		 setPessoa(dados.funcionario().pessoa());
-		 setProfissao(dados.profissao());
+		 setEmail(dados.funcionario().email());
+		 setTelefone(dados.funcionario().telefone());
+		 setProfissao(dados.funcionario().profissao());
 	 }
 	 
 	 
@@ -69,13 +77,19 @@ public class Funcionario {
 		this.salario = salario;
 	}
 	
-	public void setPessoa(DadosCadastroPessoa dados) {
-		this.pessoa = new Pessoa(dados);
-	}
-	
 	public void setProfissao(Profissao profissao) {
 		String validarProsissao = Objects.requireNonNull("Profissão não deve ser nulo");
 		this.profissao = profissao;
+	}
+	
+	public void setEmail(DadosCadastroEmail dados) {
+		this.email = new Email(dados);
+	}
+	
+	public void setTelefone(DadosCadastroTelefone dados) {
+		if(dados != null) {
+			this.telefone = new Telefone(dados);
+		}
 	}
 
 }
