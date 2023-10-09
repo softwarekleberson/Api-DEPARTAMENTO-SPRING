@@ -18,12 +18,12 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import api.rh.api.domain.cargo.entity.Cargo;
-import api.rh.api.domain.cargo.infra.persistencia.jpa.CargoRepository;
+import api.rh.api.domain.cargo.infra.persistencia.jpa.CargoRepositoryJpa;
 import api.rh.api.domain.cargo.infra.web.dto.list.DadosListagemCargo;
 import api.rh.api.domain.cargo.infra.web.dto.post.DadosCadastroCargo;
 import api.rh.api.domain.cargo.infra.web.dto.put.DadosAtualizarCargo;
 import api.rh.api.domain.cargo.infra.web.dto.put.DadosDetalhamentoCargo;
-import api.rh.api.domain.cargo.usecase.CrudCargo;
+import api.rh.api.domain.cargo.usecase.crud.CargoDaoJpa;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
@@ -32,13 +32,13 @@ import jakarta.validation.Valid;
 public class CargoController {
 	
 	@Autowired
-	private CargoRepository repository;
+	private CargoRepositoryJpa repository;
 	
 	@Transactional
 	@PostMapping
 	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroCargo dados, UriComponentsBuilder uriBuilder) {
 		var cargo = new Cargo(dados);
-		new CrudCargo(repository).executeCreate(cargo);
+		new CargoDaoJpa(repository).executeCreate(cargo);
 		
 		var uri = uriBuilder.path("/cargos/{id}").buildAndExpand(cargo.getId()).toUri();
 		return ResponseEntity.created(uri).body(new DadosDetalhamentoCargo(cargo));
@@ -46,20 +46,20 @@ public class CargoController {
 	
 	@GetMapping
 	public ResponseEntity<Page<DadosListagemCargo>> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
-		var page = new CrudCargo(repository).listarAtivos(paginacao);
+		var page = new CargoDaoJpa(repository).listAssets(paginacao);
 		return ResponseEntity.ok(page);
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity listarCargo(@PathVariable Long id) {
-		var cargo = new CrudCargo(repository).listAll(id);
+		var cargo = new CargoDaoJpa(repository).listAllDate(id);
 		return ResponseEntity.ok(new DadosDetalhamentoCargo(cargo));
 	}
 	
 	@Transactional
 	@PutMapping
 	public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizarCargo dados) {
-		var cargo = new CrudCargo(repository).atualizarDados(dados);
+		var cargo = new CargoDaoJpa(repository).updateData(dados);
 		if(cargo == null) {
         	throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
@@ -70,7 +70,7 @@ public class CargoController {
 	@DeleteMapping("/{id}")
 	@Transactional
 	public ResponseEntity excluir(@PathVariable Long id) {
-		new CrudCargo(repository).exclusaoLogica(id);		
+		new CargoDaoJpa(repository).exclusionLogic(id);		
 		return ResponseEntity.noContent().build();
 	}
 }

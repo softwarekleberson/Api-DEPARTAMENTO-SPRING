@@ -1,4 +1,4 @@
-package api.rh.api.domain.cargo.usecase;
+package api.rh.api.domain.cargo.usecase.crud;
 
 import java.util.Optional;
 
@@ -6,29 +6,33 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import api.rh.api.domain.cargo.entity.Cargo;
-import api.rh.api.domain.cargo.infra.persistencia.jpa.CargoRepository;
+import api.rh.api.domain.cargo.infra.persistencia.jpa.CargoRepositoryJpa;
 import api.rh.api.domain.cargo.infra.web.dto.list.DadosListagemCargo;
 import api.rh.api.domain.cargo.infra.web.dto.put.DadosAtualizarCargo;
+import api.rh.api.domain.cargo.usecase.CargoRepository;
 import jakarta.validation.Valid;
 
-public class CrudCargo {
+public class CargoDaoJpa implements CargoRepository{
 
-	private CargoRepository cargorepositoty;
+	private CargoRepositoryJpa cargorepositoty;
 	
-	public CrudCargo(CargoRepository cargoRepository) {
+	public CargoDaoJpa(CargoRepositoryJpa cargoRepository) {
 		this.cargorepositoty = cargoRepository;
 	}
 	
+	@Override
 	public void executeCreate(Cargo cargo) {
 		cargorepositoty.save(cargo);
 	}
 
-	public Cargo listAll(Long id) {
+	@Override
+	public Cargo listAllDate(Long id) {
 		var cargo = cargorepositoty.getReferenceById(id);
 		return cargo;
 	}
 
-	public Cargo atualizarDados(@Valid DadosAtualizarCargo dados) {
+	@Override
+	public Cargo updateData(@Valid DadosAtualizarCargo dados) {
 		Optional<Cargo> opDataBaseCargo = cargorepositoty.findById(dados.id());
 		
 		if(opDataBaseCargo.isPresent()) {
@@ -56,16 +60,19 @@ public class CrudCargo {
 		return null;
 	}
 
-	public void exclusaoLogica(Long id) {
+	@Override
+	public void exclusionLogic(Long id) {
 		var cargo = cargorepositoty.getReferenceById(id);
-		excluir(cargo);
+		exclusion(cargo);
 	}
 	
-	private void excluir(Cargo cargo) {
+	@Override
+	public void exclusion(Cargo cargo) {
 		cargo.setAtivo(false);
 	}
 
-	public Page listarAtivos(Pageable paginacao) {
+	@Override
+	public Page listAssets(Pageable paginacao) {
 		return cargorepositoty.findByAtivoTrue(paginacao).map(DadosListagemCargo::new);
 	}
 }

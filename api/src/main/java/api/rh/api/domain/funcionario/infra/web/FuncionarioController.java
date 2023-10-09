@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import api.rh.api.domain.cargo.usecase.CrudCargo;
+import api.rh.api.domain.cargo.usecase.crud.CargoDaoJpa;
 import api.rh.api.domain.funcionario.entity.Funcionario;
 import api.rh.api.domain.funcionario.infra.persistencia.jpa.FuncionarioRepository;
 import api.rh.api.domain.funcionario.infra.web.dto.list.DadosListagemFuncionario;

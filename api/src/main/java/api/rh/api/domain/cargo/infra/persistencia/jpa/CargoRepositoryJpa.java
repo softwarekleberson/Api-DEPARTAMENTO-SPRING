@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import api.rh.api.domain.cargo.entity.Cargo;
 
-public interface CargoRepository extends JpaRepository<Cargo, Long>{
+public interface CargoRepositoryJpa extends JpaRepository<Cargo, Long>{
 
 	Page<Cargo> findByAtivoTrue(Pageable paginacao);
 
