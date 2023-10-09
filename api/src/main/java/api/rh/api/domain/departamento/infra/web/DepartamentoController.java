@@ -19,12 +19,12 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import api.rh.api.domain.departamento.entity.Departamento;
-import api.rh.api.domain.departamento.infra.persistencia.jpa.DepartamentoRepoitory;
+import api.rh.api.domain.departamento.infra.persistencia.jpa.DepartamentoRepoitoryJpa;
 import api.rh.api.domain.departamento.infra.web.dto.list.DadosListagemDepartamento;
 import api.rh.api.domain.departamento.infra.web.dto.post.DadosCadastroDepartamento;
 import api.rh.api.domain.departamento.infra.web.dto.put.DadosAtualizarDepartamento;
 import api.rh.api.domain.departamento.infra.web.dto.put.DadosDetalhamentoDepartamento;
-import api.rh.api.domain.departamento.usecase.CrudDepartamento;
+import api.rh.api.domain.departamento.usecase.crud.DepartamentoDaoJpa;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
@@ -33,14 +33,14 @@ import jakarta.validation.Valid;
 public class DepartamentoController {
 
 	@Autowired
-	private DepartamentoRepoitory repository;
+	private DepartamentoRepoitoryJpa repository;
 	
 	@Transactional
 	@PostMapping
 	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroDepartamento dados, UriComponentsBuilder uriBuilder) {
 		
 		var departamento = new Departamento(dados);
-		new CrudDepartamento(repository).criarDepartamento(departamento);		
+		new DepartamentoDaoJpa(repository).executeCreate(departamento);		
 		
 		var uri = uriBuilder.path("/departamentos/{id}").buildAndExpand(departamento.getId()).toUri();
 		return ResponseEntity.created(uri).body(new DadosDetalhamentoDepartamento(departamento));
@@ -48,13 +48,13 @@ public class DepartamentoController {
 	
 	@GetMapping
 	public ResponseEntity<Page<DadosListagemDepartamento>> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
-		var page = new CrudDepartamento(repository).listarAtivo(paginacao);
+		var page = new DepartamentoDaoJpa(repository).listAssets(paginacao);
 		return ResponseEntity.ok(page);
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity detalharDepartamento(@PathVariable Long id) {
-		var departamenento = new CrudDepartamento(repository).listarAll(id);
+		var departamenento = new DepartamentoDaoJpa(repository).listarAllDate(id);
 		return ResponseEntity.ok(new DadosDetalhamentoDepartamento(departamenento));
 	}
 	
@@ -62,7 +62,7 @@ public class DepartamentoController {
 	@PutMapping
 	public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizarDepartamento dados) {
 		
-		var departamento = new CrudDepartamento(repository).atualizarDados(dados);
+		var departamento = new DepartamentoDaoJpa(repository).updateDate(dados);
 		if(departamento == null) {
         	throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
@@ -73,7 +73,7 @@ public class DepartamentoController {
 	@Transactional
 	@DeleteMapping("/{id}")
 	public ResponseEntity excluir(@PathVariable Long id) {
-		new CrudDepartamento(repository).exclusaoLogica(id);
+		new DepartamentoDaoJpa(repository).exclusionLogics(id);
 		return ResponseEntity.noContent().build();
 	}
 }

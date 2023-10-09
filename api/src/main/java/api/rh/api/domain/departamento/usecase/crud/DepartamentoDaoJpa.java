@@ -1,4 +1,4 @@
-package api.rh.api.domain.departamento.usecase;
+package api.rh.api.domain.departamento.usecase.crud;
 
 import java.util.Optional;
 
@@ -6,32 +6,37 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import api.rh.api.domain.departamento.entity.Departamento;
-import api.rh.api.domain.departamento.infra.persistencia.jpa.DepartamentoRepoitory;
+import api.rh.api.domain.departamento.infra.persistencia.jpa.DepartamentoRepoitoryJpa;
 import api.rh.api.domain.departamento.infra.web.dto.list.DadosListagemDepartamento;
 import api.rh.api.domain.departamento.infra.web.dto.put.DadosAtualizarDepartamento;
+import api.rh.api.domain.departamento.usecase.DepartamentoRepository;
 import jakarta.validation.Valid;
 
-public class CrudDepartamento {
+public class DepartamentoDaoJpa implements DepartamentoRepository{
 
-	private DepartamentoRepoitory departamentoRepoitory;
+	private DepartamentoRepoitoryJpa departamentoRepoitory;
 	
-	public CrudDepartamento( DepartamentoRepoitory departamentoRepoitory) {
+	public DepartamentoDaoJpa( DepartamentoRepoitoryJpa departamentoRepoitory) {
 		this.departamentoRepoitory = departamentoRepoitory;
 	}
 
-	public void criarDepartamento(Departamento departamento) {
+	@Override
+	public void executeCreate(Departamento departamento) {
 		departamentoRepoitory.save(departamento);
 	}
 
-	public Page listarAtivo(Pageable paginacao) {
+	@Override
+	public Page listAssets(Pageable paginacao) {
 		return departamentoRepoitory.findByAtivoTrue(paginacao).map(DadosListagemDepartamento::new);
 	}
 
-	public Departamento listarAll(Long id) {
+	@Override
+	public Departamento listarAllDate(Long id) {
 		return departamentoRepoitory.getReferenceById(id);
 	}
 
-	public Departamento atualizarDados(@Valid DadosAtualizarDepartamento dados) {
+	@Override
+	public Departamento updateDate(@Valid DadosAtualizarDepartamento dados) {
 		Optional<Departamento> optDataBase = departamentoRepoitory.findById(dados.id());
 		
 		if(optDataBase.isPresent()){
@@ -59,14 +64,13 @@ public class CrudDepartamento {
 		return null;
 	}
 
-	public void exclusaoLogica(Long id) {
+	public void exclusionLogics(Long id) {
 		var departamento = departamentoRepoitory.getReferenceById(id);
-		excluir(departamento);
+		exclusion(departamento);
 	}
 	
-	private void excluir(Departamento departamento) {
+	public void exclusion(Departamento departamento) {
 		departamento.setAtivo(false);
 	}
-	
-	
+		
 }
