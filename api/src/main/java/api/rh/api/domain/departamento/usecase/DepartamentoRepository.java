@@ -11,7 +11,7 @@ public interface DepartamentoRepository {
 
 	void executeCreate(Departamento departamento);
 	Page listAssets(Pageable paginacao);
-	Departamento listarAllDate(Long id);
+	Departamento listAllDate(Long id);
 	Departamento updateDate(@Valid DadosAtualizarDepartamento dados);
 	void exclusionLogics(Long id);
 	void exclusion(Departamento departamento);

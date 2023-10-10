@@ -1,38 +1,43 @@
-package api.rh.api.domain.funcionario.usecase;
+package api.rh.api.domain.funcionario.usecase.crud;
 
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import api.rh.api.domain.departamento.entity.Departamento;
 import api.rh.api.domain.funcionario.entity.Funcionario;
-import api.rh.api.domain.funcionario.infra.persistencia.jpa.FuncionarioRepository;
+import api.rh.api.domain.funcionario.infra.persistencia.jpa.FuncionarioRepositoryJpa;
 import api.rh.api.domain.funcionario.infra.web.dto.list.DadosListagemFuncionario;
 import api.rh.api.domain.funcionario.infra.web.dto.put.DadosAtualizarFuncionario;
+import api.rh.api.domain.funcionario.usecase.FuncionarioRepository;
 import jakarta.validation.Valid;
 
-public class CrudFuncionario {
+public class CrudFuncionarioJpa implements FuncionarioRepository{
 
-	private FuncionarioRepository funcionarioRepository;
+	private FuncionarioRepositoryJpa funcionarioRepository;
 	
-	public CrudFuncionario(FuncionarioRepository repository) {
+	public CrudFuncionarioJpa(FuncionarioRepositoryJpa repository) {
 		this.funcionarioRepository = repository;
 	}
 
-	public void criarFuncionario(Funcionario funcionario) {
+	@Override
+	public void executeCreate(Funcionario funcionario) {
 		funcionarioRepository.save(funcionario);
 	}
+	
 
-	public Page listarAtivo(Pageable paginacao) {
+	@Override
+	public Page listAssets(Pageable paginacao) {
 		return funcionarioRepository.findByAtivoTrue(paginacao).map(DadosListagemFuncionario ::new);
 	}
 
-	public Funcionario detalharFuncionario(Long id) {
+	@Override
+	public Funcionario listAllDate(Long id) {
 		return funcionarioRepository.getReferenceById(id);
 	}
 
-	public Funcionario atualizarFuncionario(@Valid DadosAtualizarFuncionario dados) {
+	@Override
+	public Funcionario updateDate(@Valid DadosAtualizarFuncionario dados) {
 		
 		Optional<Funcionario> optDataBase = funcionarioRepository.findById(dados.id());
 		if(optDataBase.isPresent()) {
@@ -43,7 +48,7 @@ public class CrudFuncionario {
 			}
 			
 			if(dados.telefone() != null) {
-				databaseFuncionario.getTelefone().atualizarTelefone(dados.telefone());
+				databaseFuncionario.setTelefone(dados.telefone());
 			}
 
 			funcionarioRepository.save(databaseFuncionario);
@@ -53,15 +58,15 @@ public class CrudFuncionario {
 		return null;
 	}
 
-	public void exclusaoLogica(Long id) {
+	@Override
+	public void exclusionLogics(Long id) {
 		var funcionario = funcionarioRepository.getReferenceById(id);
-		excluir(funcionario);
+		exclusion(funcionario);
 	}
 	
-	private void excluir(Funcionario funcionario) {
+	@Override
+	public void exclusion(Funcionario funcionario) {
 		funcionario.setAtivo(false);
 	}
 
-	
-	
 }

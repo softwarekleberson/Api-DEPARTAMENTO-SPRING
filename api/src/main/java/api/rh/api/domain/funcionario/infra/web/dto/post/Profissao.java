@@ -3,9 +3,9 @@ package api.rh.api.domain.funcionario.infra.web.dto.post;
 
 public enum Profissao {
 
-	DESENVOLVEDORSOFTWARE,
+	DESENVOLVEDOR_SOFTWARE,
 	MARKINTING,
-	GERENTEPROJETO,
+	GERENTE_PROJETO,
 	RH,
 	VENDAS,
 	COMPRAS

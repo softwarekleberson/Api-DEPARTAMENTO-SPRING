@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import api.rh.api.domain.departamento.entity.Departamento;
-import api.rh.api.domain.departamento.infra.persistencia.jpa.DepartamentoRepoitoryJpa;
+import api.rh.api.domain.departamento.infra.persistencia.jpa.DepartamentoRepositoryJpa;
 import api.rh.api.domain.departamento.infra.web.dto.list.DadosListagemDepartamento;
 import api.rh.api.domain.departamento.infra.web.dto.put.DadosAtualizarDepartamento;
 import api.rh.api.domain.departamento.usecase.DepartamentoRepository;
@@ -14,30 +14,30 @@ import jakarta.validation.Valid;
 
 public class DepartamentoDaoJpa implements DepartamentoRepository{
 
-	private DepartamentoRepoitoryJpa departamentoRepoitory;
+	private DepartamentoRepositoryJpa departamentoRepository;
 	
-	public DepartamentoDaoJpa( DepartamentoRepoitoryJpa departamentoRepoitory) {
-		this.departamentoRepoitory = departamentoRepoitory;
+	public DepartamentoDaoJpa( DepartamentoRepositoryJpa departamentoRepoitory) {
+		this.departamentoRepository = departamentoRepoitory;
 	}
 
 	@Override
 	public void executeCreate(Departamento departamento) {
-		departamentoRepoitory.save(departamento);
+		departamentoRepository.save(departamento);
 	}
 
 	@Override
 	public Page listAssets(Pageable paginacao) {
-		return departamentoRepoitory.findByAtivoTrue(paginacao).map(DadosListagemDepartamento::new);
+		return departamentoRepository.findByAtivoTrue(paginacao).map(DadosListagemDepartamento::new);
 	}
 
 	@Override
-	public Departamento listarAllDate(Long id) {
-		return departamentoRepoitory.getReferenceById(id);
+	public Departamento listAllDate(Long id) {
+		return departamentoRepository.getReferenceById(id);
 	}
 
 	@Override
 	public Departamento updateDate(@Valid DadosAtualizarDepartamento dados) {
-		Optional<Departamento> optDataBase = departamentoRepoitory.findById(dados.id());
+		Optional<Departamento> optDataBase = departamentoRepository.findById(dados.id());
 		
 		if(optDataBase.isPresent()){
 			Departamento databaseDepartamento = optDataBase.get();
@@ -51,21 +51,21 @@ public class DepartamentoDaoJpa implements DepartamentoRepository{
 			}
 			
 			if(dados.endereco() != null) {
-				databaseDepartamento.getEndereco().atualizarEndereco(dados.endereco());
+				databaseDepartamento.setEndereco(dados.endereco());
 			}
 			
 			if(dados.telefone() != null) {
-				databaseDepartamento.getTelefone().atualizarTelefone(dados.telefone());
+				databaseDepartamento.setTelefone(dados.telefone());
 			}
 			
-			departamentoRepoitory.save(databaseDepartamento);
+			departamentoRepository.save(databaseDepartamento);
 			return databaseDepartamento;
 		}
 		return null;
 	}
 
 	public void exclusionLogics(Long id) {
-		var departamento = departamentoRepoitory.getReferenceById(id);
+		var departamento = departamentoRepository.getReferenceById(id);
 		exclusion(departamento);
 	}
 	

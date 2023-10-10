@@ -43,18 +43,4 @@ public class Telefone {
 		this.telefone = telefone;
 	}
 	
-	
-	public void atualizarTelefone(DadosCadastroTelefone dados) {
-		if(dados.ddd() != null) {
-			setDdd(dados.ddd());
-		}
-		
-		if(dados.ddi() != null) {
-			setDdi(dados.ddi());
-		}
-		
-		if(dados.telefone() != null) {
-			setTelefone(dados.telefone());
-		}		
-	}
 }

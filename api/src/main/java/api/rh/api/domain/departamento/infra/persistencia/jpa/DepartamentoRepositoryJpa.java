@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import api.rh.api.domain.departamento.entity.Departamento;
 
-public interface DepartamentoRepoitoryJpa extends JpaRepository<Departamento, Long>{
+public interface DepartamentoRepositoryJpa extends JpaRepository<Departamento, Long>{
 
 	Page<Departamento> findByAtivoTrue(Pageable paginacao);
 

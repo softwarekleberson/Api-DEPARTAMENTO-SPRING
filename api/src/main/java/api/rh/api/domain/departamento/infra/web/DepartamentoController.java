@@ -19,7 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import api.rh.api.domain.departamento.entity.Departamento;
-import api.rh.api.domain.departamento.infra.persistencia.jpa.DepartamentoRepoitoryJpa;
+import api.rh.api.domain.departamento.infra.persistencia.jpa.DepartamentoRepositoryJpa;
 import api.rh.api.domain.departamento.infra.web.dto.list.DadosListagemDepartamento;
 import api.rh.api.domain.departamento.infra.web.dto.post.DadosCadastroDepartamento;
 import api.rh.api.domain.departamento.infra.web.dto.put.DadosAtualizarDepartamento;
@@ -33,7 +33,7 @@ import jakarta.validation.Valid;
 public class DepartamentoController {
 
 	@Autowired
-	private DepartamentoRepoitoryJpa repository;
+	private DepartamentoRepositoryJpa repository;
 	
 	@Transactional
 	@PostMapping
@@ -54,7 +54,7 @@ public class DepartamentoController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity detalharDepartamento(@PathVariable Long id) {
-		var departamenento = new DepartamentoDaoJpa(repository).listarAllDate(id);
+		var departamenento = new DepartamentoDaoJpa(repository).listAllDate(id);
 		return ResponseEntity.ok(new DadosDetalhamentoDepartamento(departamenento));
 	}
 	
