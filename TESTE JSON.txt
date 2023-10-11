@@ -1,146 +1,147 @@
-										Cadastrar Funcionario
+                                          GET
+http://localhost:8080/funcionario/1
+http://localhost:8080/departamento/1
+http://localhost:8080/cargo/1
+
+
+				         DELETE
+http://localhost:8080/funcionario/2
+http://localhost:8080/departamento/1
+http://localhost:8080/cargo/2
+
+					PUT (FUNCIONARIO)
 
 {
-		"funcionario" : {
-			"contratacao" : "2000-08-01",
-			"salario" : "3900.04",
-				"pessoa" : {
-				"nome" : "cleusa santos",
-				"nascimento" : "1965-08-22",
-				"cpf" : {
-					"cpf" : "14785236901"
-				}, 
-					
-				"email" : {
-					"email" :  "cleusa@gmail.com"
-				},
-				
-					"telefone" : {
-						"ddd" : "99",
-						"ddi" : "222",
-						"telefone" : "88884444"
-					}
-			}
-	},
-	"profissao" : "VENDAS"
-}	
-			
-		
-		
-				
-										Cadastrar Departamento
+	"id" : "1",
+	"nome" : "Antonio",
+	"telefone" : {
+		"ddd" : "99",
+		"ddi" : "001",
+		"telefone" : "111122223"
+	}
+}
 
+
+
+					PUT (DEPARTAMENTO)
+
+{
+
+	"id" : "2",
+	"nome" : "Modelagem de dados",
+	"descricao" : "Banco de dados",
+		"telefone" : {
+		 "ddd" : "00",
+		 "ddi" : "888",
+		 "telefone" : "513265400"
+	},
+	
+	"endereco" : {
+		"pais" : "Argentina",
+		"estado" : "Buenos Aeres",
+		"cidade" : "Capital",
+		"rua" : "premier league",
+		"numero" : "01",
+		"cep" : "95120"
+	
+	}
+
+}
+
+
+					PUT (CARGO)
+{
+
+	"id" : 1,
+	"nome" : "Marinheiro",
+	"descricao" : "Navegador do Good Marry",
+	"salarioBase" : "6500.01",
+	"salarioMaximo" : "7000.09"
+
+}
+
+
+
+					POST (CARGO)
+
+{
+	"nome" : "Administrador do faceboock", 
+ 	"descricao" : "Administra contas no faceboock add",
+	"salarioBase" : "8500.05",
+	"salarioMaximo" : "10500.77",
+	"nivel" : "SENIOR"
+}
+
+				
+					POST (DEPARTAMENTO)
 
 {
 
 	"departamento" : {
-			"nome" : "Projetos",
-			"descricao" : "Projetos intra extra empresa",
-			"criacao" : "2023-08-08"
+			"nome" : "Departamento de turismo",
+			"descricao" : "Criar programa de turismo no pais",
+			"criacao" : "2010-04-07"
 	},
 	
 	"telefone" : {
-		 "ddi" : "200",
-		 "ddd" : "20",
-		 "telefone" : "123456789"
+		 "ddd" : "15",
+		 "ddi" : "014",
+		 "telefone" : "99995555"
 	},
 	
 	"email" : {
-		"email" : "projetos@gmail.com"
-	},
-	
-	"endereco" : {
-		"pais" : "Brasil",
-		"estado" : "São Paulo",
-		"cidade" : "Santos",
-		"rua" : "rua do santos",
-		"numero" : "01",
-		"cep" : "14786922"
-	
-	}
-}
-
-
-
-
-
-									Cadastro Cargo
-
-
-
-{
-	"nome" : "Gestor de projetos", 
- 	"descricao" : "Gerir projetos dentro e fora da empressa",
-	"salarioBase" : "3000.00",
-	"salarioMaximo" : "7500.99",
-	"nivel" : "SENIOR"
-}
-
-
-
-
-
-
-									Atualizar Cargo
-
-
-
-{
-
-	"id" : "8",
-	"nome" : "Gestor de patrimonio",
-	"descricao" : "Gerir todos os bens da empresa",
-	"salarioBase" : "2900.00",
-	"salarioMaximo" : "3100.01"
-
-}
-
-
-
-
-						
-									Atualizar Departamento
-
-
-
-{
-
-	"id" : "13",
-	"nome" : "Recursos Humanos",
-	"descricao" : "gerir pessoas e suas carreiras",
-	"telefone" : {
-		"ddd" : "99",
-		"ddi" : "111",
-		"telefone" : "438036548"
+		"email" : "turismo@gmail.com"
 	},
 	
 	"endereco" : {
 		"pais" : "França",
-		"estado" : "Paris",
-		"cidade" : "Paris san german",
-		"rua" : "parque dos principes",
-		"numero" : "98",
-		"cep" : "12345"
+		"estado" : "Hexes",
+		"cidade" : "Paris",
+		"rua" : "Rua dos Cawboys",
+		"complemento" : "perto do estadio dos cowboys",
+		"numero" : "123",
+		"cep" : "96800"
 	
 	}
-
 }
 
 
 
-
-
-									Atualizar Funcionarios
-
-
+					POST(FUNCIONARIO)
 
 {
-	"id" : "17",
-	"nome" : "kleberson",
-	"telefone" : {
-		"ddd" : "25",
-		"ddi" : "999",
-		"telefone" : "11112222"
+
+	"funcionario" : {
+		"pessoa" : {
+		"nome" : "Kleberson",
+		"nacimento" : "1994-10-05",
+		
+		"cpf" : {
+			"cpf" : "XXXXXXXXXXX"	
+			}
+		},
+
+		"contratacao" : "2014-07-15",
+		"salario" : "9200.00",
+
+		"email" : {
+			"email" : "klebersonsilva@gmail.com"
+		},
+		
+		"profissao" : "DESENVOLVEDOR_SOFTWARE"
 	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
 									

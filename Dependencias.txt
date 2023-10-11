@@ -10,3 +10,8 @@ Trabalhando Com Banco De Dados
 - mysql driver
 - spring data jpa
 - flyway migration
+
+
+Validador de Cpf
+
+- caelum stella
