@@ -5,6 +5,9 @@ import jakarta.validation.constraints.NotNull;
 
 public record DadosCadastroFuncionarios(
 		
+		@NotNull
+		Long idCargo,
+		
 		@NotNull @Valid DadosCadastroFuncionario funcionario
 				
 										) 

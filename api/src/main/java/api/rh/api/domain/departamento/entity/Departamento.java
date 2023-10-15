@@ -1,6 +1,7 @@
 package api.rh.api.domain.departamento.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 import api.rh.api.commun.domain.humanResource.contato.DadosCadastroTelefone;
@@ -8,16 +9,17 @@ import api.rh.api.commun.domain.humanResource.contato.Email;
 import api.rh.api.commun.domain.humanResource.contato.Telefone;
 import api.rh.api.commun.domain.humanResource.endereco.DadosCadastroEndereco;
 import api.rh.api.commun.domain.humanResource.endereco.Endereco;
+import api.rh.api.domain.cargo.entity.Cargo;
 import api.rh.api.domain.departamento.infra.web.dto.post.DadosCadastroDepartamento;
-import api.rh.api.domain.departamento.infra.web.dto.put.DadosAtualizarDepartamento;
 import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroEmail;
+import api.rh.api.domain.projetos.entity.Projeto;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -31,8 +33,8 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(of = "id")
 public class Departamento {
 
-	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
     private Boolean ativo;
 	
@@ -41,6 +43,8 @@ public class Departamento {
     
     public static final int MAXIMO_DESCRICAO_LENGTH = 1000;
     private String descricao;
+    
+    private LocalDate criacao;
     
     @Embedded
     private Telefone telefone;
@@ -51,7 +55,14 @@ public class Departamento {
     @Embedded
     private Endereco endereco;
     
-    private LocalDate criacao;
+    @Embedded
+    private Orcamento orcamento;
+    
+    @OneToMany(mappedBy = "departamento")
+    private List<Cargo> cargo;
+    
+    @OneToMany(mappedBy = "departamento")
+    private List<Projeto> projeto;
     
    
     public Departamento(DadosCadastroDepartamento dados) {
@@ -87,7 +98,6 @@ public class Departamento {
 	}
     
     public void setCriacao(LocalDate criacao) {
-    	System.out.println(criacao);
 		this.criacao = criacao;
 	}
     

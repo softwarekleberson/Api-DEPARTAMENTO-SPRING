@@ -8,6 +8,9 @@ import jakarta.validation.constraints.NotNull;
 public record DadosCadastroReajusteSalarioal(
 		
 		@NotNull
+		Long idFuncionario,
+		
+		@NotNull
 		BigDecimal novoSalario,	
 		
 		@NotNull

@@ -2,14 +2,18 @@ package api.rh.api.domain.funcionario.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
+
 
 import api.rh.api.commun.domain.humanResource.contato.DadosCadastroTelefone;
 import api.rh.api.commun.domain.humanResource.contato.Email;
 import api.rh.api.commun.domain.humanResource.contato.Telefone;
+import api.rh.api.domain.cargo.entity.Cargo;
 import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroEmail;
 import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroFuncionarios;
 import api.rh.api.domain.funcionario.infra.web.dto.post.Profissao;
+import api.rh.api.domain.reajusteSalarialNivelProfissional.entity.ReajusteSalarioCargo;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -17,6 +21,9 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -31,7 +38,8 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(of = "id")
 public class Funcionario extends Pessoa {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private LocalDate contratacao;
@@ -49,6 +57,13 @@ public class Funcionario extends Pessoa {
 	private Profissao profissao;
 	
 	private Boolean ativo;
+	
+	@ManyToOne
+	@JoinColumn(name = "cargo_id")
+	private Cargo cargo;
+	
+	@OneToMany(mappedBy = "funcionario")
+	private List<ReajusteSalarioCargo> reajuste;
 	
 	 public Funcionario(DadosCadastroFuncionarios dados) {
 		 
@@ -78,7 +93,7 @@ public class Funcionario extends Pessoa {
 	}
 	
 	public void setProfissao(Profissao profissao) {
-		String validarProsissao = Objects.requireNonNull("Profissão não deve ser nulo");
+		String validarProfissao = Objects.requireNonNull("Profissão não deve ser nulo");
 		this.profissao = profissao;
 	}
 	

@@ -21,7 +21,10 @@ public record DadosCadastroCargo(
 		BigDecimal salarioMaximo,
 		
 		@NotNull(message = "Nível não deve ser nulo")
-		NivelEstagio nivel
+		NivelEstagio nivel,
+		
+		@NotNull
+		Long idDepartamento
 		
 		) {
 }

@@ -1,19 +1,24 @@
 package api.rh.api.domain.cargo.entity;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
+
 
 import api.rh.api.domain.cargo.infra.web.dto.post.DadosCadastroCargo;
 import api.rh.api.domain.cargo.infra.web.dto.post.NivelEstagio;
-import api.rh.api.domain.cargo.infra.web.dto.put.DadosAtualizarCargo;
+import api.rh.api.domain.departamento.entity.Departamento;
+import api.rh.api.domain.funcionario.entity.Funcionario;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -27,7 +32,8 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(of = "id")
 public class Cargo {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	public static final int MAXIMO_NOME_LENGTH = 100;
@@ -42,10 +48,18 @@ public class Cargo {
 	public static final BigDecimal SALARIO_MAXIMO = new BigDecimal("18000");
 	private BigDecimal salario_Maximo;
 	
+	private Boolean ativo;
+	
 	@Enumerated(EnumType.STRING)
 	private NivelEstagio nivel;
 	
-	private Boolean ativo;
+	@OneToMany(mappedBy = "cargo")
+	private List<Funcionario> funcionario;
+	
+	@ManyToOne
+	@JoinColumn(name = "departamento_id")
+	private Departamento departamento;
+	
 	
 	public Cargo(DadosCadastroCargo dados) {
 
