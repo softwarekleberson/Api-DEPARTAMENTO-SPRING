@@ -22,6 +22,6 @@ public record DadosDetalhamentoProjeto(
 			this(projeto.getId(),projeto.getNome(),
 				projeto.getDescricao(), projeto.getCustoProjeto(),
 				projeto.getStatusProjeto(), projeto.getInicioProjeto(),
-				projeto.getTempoTerminarProjeto());
+				projeto.getTerminoProjeto());
 		}
 }

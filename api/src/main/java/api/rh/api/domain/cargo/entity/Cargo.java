@@ -57,20 +57,31 @@ public class Cargo {
 	private List<Funcionario> funcionario;
 	
 	@ManyToOne
-	@JoinColumn(name = "departamento_id")
+	@JoinColumn(name = "departamentos_id")
 	private Departamento departamento;
 	
 	
 	public Cargo(DadosCadastroCargo dados) {
 
 		setAtivo(true);
+		setDepartamento(dados.idDepartamento());
 		setNome(dados.nome());
 		setDescricao(dados.descricao());
 		setSalario_Base(dados.salarioBase());
 		setSalario_Maximo(dados.salarioMaximo());
 		setNivel(dados.nivel());
+		setDepartamento(dados.idDepartamento());
 	}
 	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	private void setDepartamento(Long idDepartamento) {
+		this.departamento = new Departamento();
+		departamento.setId(idDepartamento);
+	}
+
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
@@ -108,4 +119,5 @@ public class Cargo {
 	public void setNivel(NivelEstagio nivel) {
 		this.nivel = Objects.requireNonNull(nivel, "Nivel não deve ser nulo");
 	}
+	
 }

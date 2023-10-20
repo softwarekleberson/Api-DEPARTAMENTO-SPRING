@@ -8,7 +8,7 @@ public record DadosCadastroFuncionarios(
 		@NotNull
 		Long idCargo,
 		
-		@NotNull @Valid DadosCadastroFuncionario funcionario
+		@NotNull @Valid DadosCadastroFuncionario funcionario		
 				
 										) 
 {

@@ -11,6 +11,7 @@ import api.rh.api.commun.domain.humanResource.endereco.DadosCadastroEndereco;
 import api.rh.api.commun.domain.humanResource.endereco.Endereco;
 import api.rh.api.domain.cargo.entity.Cargo;
 import api.rh.api.domain.departamento.infra.web.dto.post.DadosCadastroDepartamento;
+import api.rh.api.domain.departamento.infra.web.dto.post.DadosCadastroOrcamento;
 import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroEmail;
 import api.rh.api.domain.projetos.entity.Projeto;
 import jakarta.persistence.Embedded;
@@ -27,9 +28,9 @@ import lombok.NoArgsConstructor;
 
 @Table(name = "departamentos")
 @Entity(name = "Departamento")
-@Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 @EqualsAndHashCode(of = "id")
 public class Departamento {
 
@@ -67,6 +68,7 @@ public class Departamento {
    
     public Departamento(DadosCadastroDepartamento dados) {
     	
+    	setId(id);
     	setAtivo(true);
     	setNome(dados.departamento().nome());
     	setDescricao(dados.departamento().descricao());
@@ -74,8 +76,17 @@ public class Departamento {
     	setEmail(dados.email());
     	setEndereco(dados.endereco());
     	setCriacao(dados.departamento().criacao());
+    	setOrcamento(dados.orcamento());
     
     }
+    
+   public void setId(Long id) {
+	   this.id = id;
+   }
+    
+    public void setCargo(List<Cargo> cargo) {
+		this.cargo = cargo;
+	}
     
     public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
@@ -113,4 +124,8 @@ public class Departamento {
 		this.endereco = new Endereco(dados);
 	}
 
+    public void setOrcamento(DadosCadastroOrcamento dados) {
+		this.orcamento = new Orcamento(dados);
+	}
+	
 }

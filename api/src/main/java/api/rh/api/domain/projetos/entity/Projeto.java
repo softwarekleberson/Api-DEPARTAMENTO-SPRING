@@ -7,6 +7,7 @@ import java.util.Objects;
 
 import api.rh.api.domain.departamento.entity.Departamento;
 import api.rh.api.domain.projetos.infra.web.dto.post.DadosCadastroProjeto;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -32,34 +33,34 @@ public class Projeto {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	private boolean ativo;
-	
 	private String nome;
-	
 	private String descricao;
-	
 	private BigDecimal custoProjeto;
-	
 	private LocalDate inicioProjeto;
-	
-	private LocalDate tempoTerminarProjeto;
+	private LocalDate terminoProjeto;
 	
 	@Enumerated(EnumType.STRING)
 	private SatatusProjeto statusProjeto;
 	
 	@ManyToOne
-	@JoinColumn(name = "departamento_id")
+	@JoinColumn(name = "departamentos_id")
 	private Departamento departamento;
 	
 	public Projeto(DadosCadastroProjeto dados) {
 		
 		setNome(dados.nome());
 		setAtivo(true);
+		setStatusProjeto(statusProjeto.INICIALIZADO);
 		setDescricao(dados.descricao());
 		setCustoProjeto(dados.custo());
 		setInicioProjeto(LocalDate.now());
-		setTempoTerminarProjeto(dados.terminoProjeto());
+		setTerminoProjeto(dados.terminoProjeto());
+		setDepartamento(dados.idDepartamento());
+	}
+	
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 	
 	public void setNome(String nome) {
@@ -67,8 +68,9 @@ public class Projeto {
 		this.nome = nome;
 	}
 	
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
+	public void setDepartamento(Long idDepartamento) {
+		this.departamento = new Departamento();
+		departamento.setId(idDepartamento);
 	}
 	
 	public void setDescricao(String descricao) {
@@ -92,7 +94,7 @@ public class Projeto {
 		this.inicioProjeto = inicioProjeto;
 	}
 	
-	public void setTempoTerminarProjeto(LocalDate tempoTerminarProjeto) {
-		this.tempoTerminarProjeto = tempoTerminarProjeto;
+	public void setTerminoProjeto(LocalDate terminoProjeto) {
+		this.terminoProjeto = terminoProjeto;
 	}
 }

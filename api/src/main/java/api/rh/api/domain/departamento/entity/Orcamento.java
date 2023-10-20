@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+import api.rh.api.domain.departamento.infra.web.dto.post.DadosCadastroOrcamento;
 import api.rh.api.domain.projetos.entity.Projeto;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
@@ -25,9 +26,10 @@ public class Orcamento {
 	
 	private BigDecimal saldo;
 	
-	public Orcamento(LocalDate ano, BigDecimal orcamento) {
-		setAno(ano);
-		setOrcamento(orcamento);
+	public Orcamento(DadosCadastroOrcamento dados) {
+		setAno(dados.ano());
+		setOrcamento(dados.orcamento());
+		saldoInicial();
 	}
 	
 	public void setAno(LocalDate ano) {
@@ -38,7 +40,7 @@ public class Orcamento {
 		this.orcamento = orcamento;
 	}
 	
-	public void setSaldo(BigDecimal saldo) {
-		this.saldo = saldo;
+	public void saldoInicial() {
+		this.saldo = getOrcamento();
 	}
 }

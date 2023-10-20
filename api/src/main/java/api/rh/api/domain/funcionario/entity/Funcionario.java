@@ -59,7 +59,7 @@ public class Funcionario extends Pessoa {
 	private Boolean ativo;
 	
 	@ManyToOne
-	@JoinColumn(name = "cargo_id")
+	@JoinColumn(name = "cargos_id")
 	private Cargo cargo;
 	
 	@OneToMany(mappedBy = "funcionario")
@@ -74,6 +74,7 @@ public class Funcionario extends Pessoa {
 		 setEmail(dados.funcionario().email());
 		 setTelefone(dados.funcionario().telefone());
 		 setProfissao(dados.funcionario().profissao());
+		 setCargo(dados.idCargo());
 	 }
 	 
 	 
@@ -81,6 +82,11 @@ public class Funcionario extends Pessoa {
 		this.ativo = ativo;
 	}
 	 
+	public void setCargo(Long idCargo) {
+		this.cargo = new Cargo();
+		cargo.setId(idCargo);
+	}
+	
 	public void setContratacao(LocalDate contratacao) {
 		this.contratacao = contratacao;
 	}

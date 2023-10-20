@@ -38,23 +38,18 @@ public abstract class Pessoa {
 	
 	public void setNome(String nome) {
 		this.nome = nome;
-		System.out.println("nome esta aqui " + this.nome);
-
 	}
 	
 	public void setNacimento(LocalDate nacimento) {
 		this.nacimento = nacimento;
-		System.out.println("Nacimento " + this.nacimento);
 	}
 	
 	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
-		System.out.println("sexo : " + this.sexo);
 	}
 	
 	public void setCpf(DadosCadastroCpf dados) {
 		this.cpf = new Cpf(dados);
-		System.out.println("cpf " + this.cpf);
 	}
 	
 	public void atualizarInformacoesNome(String nome) {

@@ -14,7 +14,9 @@ public record DadosCadastroDepartamento(
 		
 		@NotNull @Valid DadosCadastroEmail email,
 		
-		@NotNull @Valid DadosCadastroEndereco endereco
+		@NotNull @Valid DadosCadastroEndereco endereco,
+		
+		@NotNull @Valid DadosCadastroOrcamento orcamento
 		
 		) {
 }
