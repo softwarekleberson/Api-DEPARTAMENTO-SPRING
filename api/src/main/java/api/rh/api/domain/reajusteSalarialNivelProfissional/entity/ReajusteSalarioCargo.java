@@ -40,6 +40,12 @@ public class ReajusteSalarioCargo {
 	public ReajusteSalarioCargo(DadosCadastroReajusteSalarioal dados) {
 		setDiaReajuste(dados.diaAtualizacao());
 		setValorReajuste(dados.novoSalario());
+		setFuncionario(dados.idFuncionario());
+	}
+	
+	public void setFuncionario(Long idFuncionario) {
+		this.funcionario = new Funcionario();
+		funcionario.setId(idFuncionario);
 	}
 	
 	public void setDiaReajuste(LocalDate diaReajuste) {

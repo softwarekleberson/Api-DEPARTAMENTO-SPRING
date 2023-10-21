@@ -9,7 +9,6 @@ import jakarta.validation.Valid;
 
 public interface ProjetoRepository {
 
-
 	void executeCreate(Projeto projeto);
 	Projeto listAllDate(Long id);
 	Projeto updateData(@Valid DadosAtualizarProjeto dados);
