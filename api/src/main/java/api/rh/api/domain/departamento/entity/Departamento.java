@@ -57,7 +57,7 @@ public class Departamento {
     private Endereco endereco;
     
     @Embedded
-    private Orcamento orcamento;
+    private OrcamentoDepartamento orcamento;
     
     @OneToMany(mappedBy = "departamento")
     private List<Cargo> cargo;
@@ -125,7 +125,7 @@ public class Departamento {
 	}
 
     public void setOrcamento(DadosCadastroOrcamento dados) {
-		this.orcamento = new Orcamento(dados);
+		this.orcamento = new OrcamentoDepartamento(dados);
 	}
 	
 }

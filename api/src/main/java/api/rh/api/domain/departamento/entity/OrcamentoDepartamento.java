@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Embeddable
-public class Orcamento {
+public class OrcamentoDepartamento {
 
 	private LocalDate ano;
 	
@@ -26,7 +26,7 @@ public class Orcamento {
 	
 	private BigDecimal saldo;
 	
-	public Orcamento(DadosCadastroOrcamento dados) {
+	public OrcamentoDepartamento(DadosCadastroOrcamento dados) {
 		setAno(dados.ano());
 		setOrcamento(dados.orcamento());
 		saldoInicial();
