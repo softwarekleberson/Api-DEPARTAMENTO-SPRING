@@ -3,7 +3,7 @@ package api.rh.api.domain.cargo.entity;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
-
+import java.util.Set;
 
 import api.rh.api.domain.cargo.infra.web.dto.post.DadosCadastroCargo;
 import api.rh.api.domain.cargo.infra.web.dto.post.NivelEstagio;
@@ -20,7 +20,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +28,6 @@ import lombok.NoArgsConstructor;
 @Entity(name = "Cargo")
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Cargo {
 	
@@ -55,7 +53,7 @@ public class Cargo {
 	private NivelEstagio nivel;
 	
 	@OneToMany(mappedBy = "cargo")
-	private List<Funcionario> funcionario;
+	private Set<Funcionario> funcionario;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "departamentos_id")
@@ -63,22 +61,23 @@ public class Cargo {
 	
 	
 	public Cargo(DadosCadastroCargo dados) {
-
-		setAtivo(true);
-		setDepartamento(dados.idDepartamento());
+		
 		setNome(dados.nome());
 		setDescricao(dados.descricao());
 		setSalario_Base(dados.salarioBase());
 		setSalario_Maximo(dados.salarioMaximo());
+		setAtivo(true);
 		setNivel(dados.nivel());
 		setDepartamento(dados.idDepartamento());
+
 	}
+	
 	
 	public void setId(Long id) {
 		this.id = id;
 	}
 	
-	private void setDepartamento(Long idDepartamento) {
+	public void setDepartamento(Long idDepartamento) {
 		this.departamento = new Departamento();
 		departamento.setId(idDepartamento);
 	}
@@ -120,5 +119,6 @@ public class Cargo {
 	public void setNivel(NivelEstagio nivel) {
 		this.nivel = Objects.requireNonNull(nivel, "Nivel não deve ser nulo");
 	}
+
 	
 }

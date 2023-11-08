@@ -7,7 +7,6 @@ import java.util.Objects;
 
 import api.rh.api.domain.departamento.entity.Departamento;
 import api.rh.api.domain.projetos.infra.web.dto.post.DadosCadastroProjeto;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

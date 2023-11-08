@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
-
+import java.util.Set;
 
 import api.rh.api.commun.domain.humanResource.contato.DadosCadastroTelefone;
 import api.rh.api.commun.domain.humanResource.contato.Email;
@@ -64,7 +64,7 @@ public class Funcionario extends Pessoa {
 	private Cargo cargo;
 	
 	@OneToMany(mappedBy = "funcionario")
-	private List<ReajusteSalarioCargo> reajuste;
+	private Set<ReajusteSalarioCargo> reajuste;
 	
 	 public Funcionario(DadosCadastroFuncionarios dados) {
 		 

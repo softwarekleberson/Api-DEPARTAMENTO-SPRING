@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import api.rh.api.domain.cargo.entity.Cargo;
 import api.rh.api.domain.cargo.infra.persistencia.jpa.CargoRepositoryJpa;
@@ -12,6 +13,7 @@ import api.rh.api.domain.cargo.infra.web.dto.put.DadosAtualizarCargo;
 import api.rh.api.domain.cargo.usecase.CargoRepository;
 import jakarta.validation.Valid;
 
+@Service
 public class CargoDaoJpa implements CargoRepository{
 
 	private CargoRepositoryJpa cargorepositoty;

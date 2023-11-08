@@ -3,6 +3,7 @@ package api.rh.api.domain.departamento.entity;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import api.rh.api.commun.domain.humanResource.contato.DadosCadastroTelefone;
 import api.rh.api.commun.domain.humanResource.contato.Email;
@@ -29,7 +30,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "departamentos")
 @Entity(name = "Departamento")
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @EqualsAndHashCode(of = "id")
 public class Departamento {
@@ -60,10 +60,10 @@ public class Departamento {
     private OrcamentoDepartamento orcamento;
     
     @OneToMany(mappedBy = "departamento")
-    private List<Cargo> cargo;
+    private Set<Cargo> cargo;
     
     @OneToMany(mappedBy = "departamento")
-    private List<Projeto> projeto;
+    private Set<Projeto> projeto;
     
    
     public Departamento(DadosCadastroDepartamento dados) {
@@ -84,7 +84,7 @@ public class Departamento {
 	   this.id = id;
    }
     
-    public void setCargo(List<Cargo> cargo) {
+    public void setCargo(Set<Cargo> cargo) {
 		this.cargo = cargo;
 	}
     

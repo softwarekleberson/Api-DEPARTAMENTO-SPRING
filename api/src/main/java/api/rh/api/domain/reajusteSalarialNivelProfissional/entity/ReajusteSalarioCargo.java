@@ -57,5 +57,4 @@ public class ReajusteSalarioCargo {
 		this.valorReajuste = valorReajuste;
 	}
 	
-	
 }

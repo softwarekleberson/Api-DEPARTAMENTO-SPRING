@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import api.rh.api.domain.departamento.entity.Departamento;
 import api.rh.api.domain.departamento.infra.persistencia.jpa.DepartamentoRepositoryJpa;
@@ -12,6 +13,7 @@ import api.rh.api.domain.departamento.infra.web.dto.put.DadosAtualizarDepartamen
 import api.rh.api.domain.departamento.usecase.DepartamentoRepository;
 import jakarta.validation.Valid;
 
+@Service
 public class DepartamentoDaoJpa implements DepartamentoRepository{
 
 	private DepartamentoRepositoryJpa departamentoRepository;
