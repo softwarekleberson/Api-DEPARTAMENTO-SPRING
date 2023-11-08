@@ -12,6 +12,7 @@ import api.rh.api.domain.funcionario.entity.Funcionario;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -56,7 +57,7 @@ public class Cargo {
 	@OneToMany(mappedBy = "cargo")
 	private List<Funcionario> funcionario;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "departamentos_id")
 	private Departamento departamento;
 	

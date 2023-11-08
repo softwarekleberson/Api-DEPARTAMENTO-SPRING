@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import api.rh.api.domain.funcionario.entity.Funcionario;
 import api.rh.api.domain.reajusteSalarialNivelProfissional.infra.web.dto.post.DadosCadastroReajusteSalarioal;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,7 +34,7 @@ public class ReajusteSalarioCargo {
 	
 	private BigDecimal valorReajuste;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "funcionario_id")
 	private Funcionario funcionario;
 	
