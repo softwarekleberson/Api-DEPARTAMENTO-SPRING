@@ -155,4 +155,58 @@ O sistema deve possuir uma funcionalidade que permita a exclusão de funcionario
 
 As seguintes regras de negócio devem sere validadas pelo sistema:
 A exclusão não deve apagar os dados do funcionarios, mas torná-lo como "inativo" no sistema.
-							
+
+
+
+
+
+
+	--------------------------------------------------------------- Validações ------------------------------------------------------------------------
+
+
+
+						Validar as seguites regras ao cadastrar Cargo
+
+
+Não podem existir dois cargos com o mesmo nome dentro da organização.
+Salario base não deve ser maior ou igual ao salario maximo
+
+Relacionamento com Funcionários: 
+	Um funcionário só pode ocupar um cargo por vez.
+	Um funcionario não pode estar duplamente registrado no mesmo cargo
+
+Relacionamento com Departamento:
+	Cargo deve estar ativo associado a departamento ativo
+	Cargo deve ter um GERENTE e um estagiario antes de se associarem ao Departamento
+		
+				
+
+
+						Validar exclusão de Cargo
+
+Cargo deve ser inativado e não deve ter nenhumm funcionario registrado nele
+
+
+
+
+					Validar as seguintes regras ao Cadastrar Departamento
+
+Não podem exitir dois departamentos com o mesmo nome dentro da organização.
+Departamento deve possuir no minimo 1 cargo registrado 
+
+
+	
+					Validar Exluclusão Departamento
+
+Departamento não deve ter cargo ativo 
+
+
+					Validar Funcionario
+
+Ao cadastrar funcionario a idade minima para o trabalho deve ser 15 anos 
+Salario deve ser superior ao minimo
+
+
+						
+
+
