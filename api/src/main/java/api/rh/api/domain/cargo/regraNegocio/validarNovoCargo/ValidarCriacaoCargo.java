@@ -1,4 +1,4 @@
-package api.rh.api.domain.cargo.validacoes.validarNovoCargo;
+package api.rh.api.domain.cargo.regraNegocio.validarNovoCargo;
 
 import api.rh.api.domain.cargo.infra.web.dto.post.DadosCadastroCargo;
 

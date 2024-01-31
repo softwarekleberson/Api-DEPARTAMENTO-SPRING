@@ -168,23 +168,23 @@ A exclusão não deve apagar os dados do funcionarios, mas torná-lo como "inati
 						Validar as seguites regras ao cadastrar Cargo
 
 
-Não podem existir dois cargos com o mesmo nome dentro da organização.
-Salario base não deve ser maior ou igual ao salario maximo
+Não podem existir dois cargos com o mesmo nome dentro da organização. (OK)
+Salario base não deve ser maior ou igual ao salario maximo. (OK)
 
 Relacionamento com Funcionários: 
-	Um funcionário só pode ocupar um cargo por vez.
-	Um funcionario não pode estar duplamente registrado no mesmo cargo
+	Um funcionário só pode ocupar um cargo por vez. (OK)
+	Um funcionario não pode estar duplamente registrado no mesmo cargo (OK)
 
 Relacionamento com Departamento:
-	Cargo deve estar ativo associado a departamento ativo
-	Cargo deve ter um GERENTE e um estagiario antes de se associarem ao Departamento
+	Cargo deve estar associado a departamento ativo (OK)
+	Cargo deve ter um GERENTE antes de se associar ao Departamento (OK)
 		
 				
 
 
 						Validar exclusão de Cargo
 
-Cargo deve ser inativado e não deve ter nenhumm funcionario registrado nele
+Cargo deve ser inativo e não deve conter nenhum funcionario registrado nele
 
 
 

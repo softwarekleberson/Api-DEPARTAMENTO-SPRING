@@ -10,4 +10,6 @@ public interface DepartamentoRepositoryJpa extends JpaRepository<Departamento, L
 
 	Page<Departamento> findByAtivoTrue(Pageable paginacao);
 
+	boolean existsByAtivoTrueAndId(Long id);
+
 }

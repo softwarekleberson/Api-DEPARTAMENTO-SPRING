@@ -1,4 +1,4 @@
-package api.rh.api.domain.cargo.usecase;
+package api.rh.api.domain.cargo.usecaseCrud;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,4 +15,5 @@ public interface CargoRepository {
 	void exclusionLogic(Long id);
 	void exclusion(Cargo cargo);
 	Page listAssets (Pageable paginacao);
+	
 }

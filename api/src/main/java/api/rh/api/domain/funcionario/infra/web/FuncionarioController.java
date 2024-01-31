@@ -23,7 +23,7 @@ import api.rh.api.domain.funcionario.infra.web.dto.list.DadosListagemFuncionario
 import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroFuncionarios;
 import api.rh.api.domain.funcionario.infra.web.dto.put.DadosAtualizarFuncionario;
 import api.rh.api.domain.funcionario.infra.web.dto.put.DadosDetalhamentoFuncionario;
-import api.rh.api.domain.funcionario.usecase.crud.CrudFuncionarioJpa;
+import api.rh.api.domain.funcionario.usecaseCrud.crud.CrudFuncionarioJpa;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 

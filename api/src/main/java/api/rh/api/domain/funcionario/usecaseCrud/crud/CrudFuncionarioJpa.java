@@ -1,4 +1,4 @@
-package api.rh.api.domain.funcionario.usecase.crud;
+package api.rh.api.domain.funcionario.usecaseCrud.crud;
 
 import java.util.Optional;
 
@@ -9,7 +9,7 @@ import api.rh.api.domain.funcionario.entity.Funcionario;
 import api.rh.api.domain.funcionario.infra.persistencia.jpa.FuncionarioRepositoryJpa;
 import api.rh.api.domain.funcionario.infra.web.dto.list.DadosListagemFuncionario;
 import api.rh.api.domain.funcionario.infra.web.dto.put.DadosAtualizarFuncionario;
-import api.rh.api.domain.funcionario.usecase.FuncionarioRepository;
+import api.rh.api.domain.funcionario.usecaseCrud.FuncionarioRepository;
 import jakarta.validation.Valid;
 
 public class CrudFuncionarioJpa implements FuncionarioRepository{

@@ -5,9 +5,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import api.rh.api.domain.cargo.entity.Cargo;
+import api.rh.api.domain.cargo.infra.web.dto.post.NivelEstagio;
 
 public interface CargoRepositoryJpa extends JpaRepository<Cargo, Long>{
 
 	Page<Cargo> findByAtivoTrue(Pageable paginacao);
 
+	boolean existsByNome(String nome);
+
+	boolean existsByNivel(NivelEstagio existeGerente);
+	
 }

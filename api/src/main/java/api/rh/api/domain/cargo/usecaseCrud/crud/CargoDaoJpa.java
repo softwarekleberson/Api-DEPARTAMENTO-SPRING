@@ -1,5 +1,6 @@
-package api.rh.api.domain.cargo.usecase.crud;
+package api.rh.api.domain.cargo.usecaseCrud.crud;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -10,32 +11,32 @@ import api.rh.api.domain.cargo.entity.Cargo;
 import api.rh.api.domain.cargo.infra.persistencia.jpa.CargoRepositoryJpa;
 import api.rh.api.domain.cargo.infra.web.dto.list.DadosListagemCargo;
 import api.rh.api.domain.cargo.infra.web.dto.put.DadosAtualizarCargo;
-import api.rh.api.domain.cargo.usecase.CargoRepository;
+import api.rh.api.domain.cargo.usecaseCrud.CargoRepository;
 import jakarta.validation.Valid;
 
 @Service
 public class CargoDaoJpa implements CargoRepository{
 
-	private CargoRepositoryJpa cargorepositoty;
+	private CargoRepositoryJpa cargorepository;
 	
 	public CargoDaoJpa(CargoRepositoryJpa cargoRepository) {
-		this.cargorepositoty = cargoRepository;
+		this.cargorepository = cargoRepository;
 	}
 	
 	@Override
 	public void executeCreate(Cargo cargo) {
-		cargorepositoty.save(cargo);
+		cargorepository.save(cargo);
 	}
 
 	@Override
 	public Cargo listAllDate(Long id) {
-		var cargo = cargorepositoty.getReferenceById(id);
+		var cargo = cargorepository.getReferenceById(id);
 		return cargo;
 	}
 
 	@Override
 	public Cargo updateData(@Valid DadosAtualizarCargo dados) {
-		Optional<Cargo> opDataBaseCargo = cargorepositoty.findById(dados.id());
+		Optional<Cargo> opDataBaseCargo = cargorepository.findById(dados.id());
 		
 		if(opDataBaseCargo.isPresent()) {
 			Cargo databaseCargo = opDataBaseCargo.get();
@@ -56,7 +57,7 @@ public class CargoDaoJpa implements CargoRepository{
 				databaseCargo.setSalario_Maximo(dados.salarioMaximo());
 			}
 			
-			cargorepositoty.save(databaseCargo);
+			cargorepository.save(databaseCargo);
 			return databaseCargo;
 		}
 		return null;
@@ -64,7 +65,7 @@ public class CargoDaoJpa implements CargoRepository{
 
 	@Override
 	public void exclusionLogic(Long id) {
-		var cargo = cargorepositoty.getReferenceById(id);
+		var cargo = cargorepository.getReferenceById(id);
 		exclusion(cargo);
 	}
 	
@@ -75,6 +76,11 @@ public class CargoDaoJpa implements CargoRepository{
 
 	@Override
 	public Page listAssets(Pageable paginacao) {
-		return cargorepositoty.findByAtivoTrue(paginacao).map(DadosListagemCargo::new);
+		return cargorepository.findByAtivoTrue(paginacao).map(DadosListagemCargo::new);
 	}
+	
+	public boolean existsByNome(String nome) {
+		return cargorepository.existsByNome(nome);
+	}
+	
 }
