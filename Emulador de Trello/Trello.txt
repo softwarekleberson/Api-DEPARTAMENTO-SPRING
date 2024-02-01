@@ -184,27 +184,26 @@ Relacionamento com Departamento:
 
 						Validar exclusão de Cargo
 
-Cargo deve ser inativo e não deve conter nenhum funcionario registrado nele
+Para inativar cargo nenhum funcionario deve estar associado ao cargo inativado
 
 
 
 
 					Validar as seguintes regras ao Cadastrar Departamento
 
-Não podem exitir dois departamentos com o mesmo nome dentro da organização.
-Departamento deve possuir no minimo 1 cargo registrado 
+Não podem exitir dois departamentos com o mesmo nome dentro da organização. (OK) 
 
 
 	
 					Validar Exluclusão Departamento
 
-Departamento não deve ter cargo ativo 
+Para inativar departamento todos os cargos referentes a ele devem ser inativados 
 
 
 					Validar Funcionario
 
-Ao cadastrar funcionario a idade minima para o trabalho deve ser 15 anos 
-Salario deve ser superior ao minimo
+Ao cadastrar funcionario a idade minima para o trabalho deve ser 15 anos (Ok)
+Salario deve ser superior ao minimo (OK)
 
 
 						

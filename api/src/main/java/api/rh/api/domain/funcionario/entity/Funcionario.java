@@ -2,7 +2,6 @@ package api.rh.api.domain.funcionario.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -45,7 +44,6 @@ public class Funcionario extends Pessoa {
 	
 	private LocalDate contratacao;
 	
-	public static final BigDecimal VALIDACAO_SALARIO_FUNCIONARIO = new BigDecimal("1320");
 	private BigDecimal salario;
 	
 	@Embedded
@@ -96,9 +94,6 @@ public class Funcionario extends Pessoa {
 	}
 	
 	public void setSalario(BigDecimal salario) {
-		if(VALIDACAO_SALARIO_FUNCIONARIO.compareTo(salario) > 0) {
-			throw new IllegalArgumentException("Salario abaixo do minimo");
-		}
 		this.salario = salario;
 	}
 	
@@ -116,5 +111,4 @@ public class Funcionario extends Pessoa {
 			this.telefone = new Telefone(dados);
 		}
 	}
-
 }

@@ -34,6 +34,8 @@ public class ReajusteSalarioCargo {
 	
 	private BigDecimal valorReajuste;
 	
+	private String motivoPromocao;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "funcionario_id")
 	private Funcionario funcionario;
