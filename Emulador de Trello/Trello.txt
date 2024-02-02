@@ -170,6 +170,8 @@ A exclusão não deve apagar os dados do funcionarios, mas torná-lo como "inati
 
 Não podem existir dois cargos com o mesmo nome dentro da organização. (OK)
 Salario base não deve ser maior ou igual ao salario maximo. (OK)
+Salario minimo do cargo não deve ser inferior ao minimo nacional (OK)
+Salario maximo não deve ser superior a 30000.00 reais (OK)
 
 Relacionamento com Funcionários: 
 	Um funcionário só pode ocupar um cargo por vez. (OK)

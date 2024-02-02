@@ -1,8 +1,11 @@
 package api.rh.api.domain.cargo.regraNegocio.validarNovoCargo;
 
+import org.springframework.stereotype.Service;
+
 import api.rh.api.commun.domain.humanResource.ValidacaoException;
 import api.rh.api.domain.cargo.infra.web.dto.post.DadosCadastroCargo;
 
+@Service
 public class ValidarDiferencaEntreSalarioMaximoEMinimo implements ValidarCriacaoCargo{
 
 	@Override

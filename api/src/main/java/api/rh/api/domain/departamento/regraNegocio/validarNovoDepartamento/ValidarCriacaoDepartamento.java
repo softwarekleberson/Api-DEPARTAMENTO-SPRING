@@ -1,4 +1,5 @@
-package api.rh.api.domain.departamento.entity.regraNegocio.validarNovoDepartamento;
+package api.rh.api.domain.departamento.regraNegocio.validarNovoDepartamento;
+
 
 import api.rh.api.domain.departamento.infra.web.dto.post.DadosCadastroDepartamento;
 

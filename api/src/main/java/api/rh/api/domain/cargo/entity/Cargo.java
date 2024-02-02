@@ -40,10 +40,8 @@ public class Cargo {
 	public static final int MAXIMO_DESCRICAO_LENGTH = 1000;
 	private String descricao;
 	
-	public static final BigDecimal SALARIO_MINIMO = new BigDecimal("1320");
 	private BigDecimal salario_Base;
 	
-	public static final BigDecimal SALARIO_MAXIMO = new BigDecimal("18000");
 	private BigDecimal salario_Maximo;
 	
 	private Boolean ativo;
@@ -70,7 +68,6 @@ public class Cargo {
 		setDepartamento(dados.idDepartamento());
 
 	}
-	
 	
 	public void setId(Long id) {
 		this.id = id;
@@ -102,22 +99,14 @@ public class Cargo {
 	}
 	
 	public void setSalario_Base(BigDecimal salario_Base) {
-		if(SALARIO_MINIMO.compareTo(salario_Base) > 0) {
-			throw new IllegalArgumentException("Salário mínimo menor do que o piso");
-		}
 		this.salario_Base = salario_Base;
 	}
 	
 	public void setSalario_Maximo(BigDecimal salario_Maximo) {
-		if(salario_Maximo.compareTo(SALARIO_MAXIMO) > 0) {
-			throw new IllegalArgumentException("O salário máximo não deve ser maior do que : " + SALARIO_MAXIMO);
-		}
 		this.salario_Maximo = salario_Maximo;
 	}
 	
 	public void setNivel(NivelEstagio nivel) {
 		this.nivel = Objects.requireNonNull(nivel, "Nivel não deve ser nulo");
 	}
-
-	
 }

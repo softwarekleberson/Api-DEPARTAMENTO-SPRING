@@ -2,9 +2,12 @@ package api.rh.api.domain.funcionario.regrasNegocio.ValidarNovoFuncionario;
 
 import java.math.BigDecimal;
 
+import org.springframework.stereotype.Service;
+
 import api.rh.api.commun.domain.humanResource.ValidacaoException;
 import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroFuncionarios;
 
+@Service
 public class ValidarSalarioMinimoFuncionario implements ValidarCriacaoFuncionario {
 
 	private static final BigDecimal SALARIO_MINIMO = new BigDecimal("1412.00");

@@ -3,9 +3,12 @@ package api.rh.api.domain.funcionario.regrasNegocio.ValidarNovoFuncionario;
 import java.time.LocalDate;
 import java.time.Period;
 
+import org.springframework.stereotype.Service;
+
 import api.rh.api.commun.domain.humanResource.ValidacaoException;
 import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroFuncionarios;
 
+@Service
 public class ValidarIdadeMinimaFuncionario implements ValidarCriacaoFuncionario{
 
 	public static final int IDADE_MINIMA = 15;

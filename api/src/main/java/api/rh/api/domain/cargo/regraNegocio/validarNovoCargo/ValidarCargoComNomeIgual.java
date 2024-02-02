@@ -1,11 +1,13 @@
 package api.rh.api.domain.cargo.regraNegocio.validarNovoCargo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import api.rh.api.commun.domain.humanResource.ValidacaoException;
 import api.rh.api.domain.cargo.infra.persistencia.jpa.CargoRepositoryJpa;
 import api.rh.api.domain.cargo.infra.web.dto.post.DadosCadastroCargo;
 
+@Service
 public class ValidarCargoComNomeIgual implements ValidarCriacaoCargo{
 
 	@Autowired
@@ -13,8 +15,8 @@ public class ValidarCargoComNomeIgual implements ValidarCriacaoCargo{
 	
 	@Override
 	public void validar(DadosCadastroCargo dados) {
-		var nome = dados.nome().trim();
 		
+		var nome = dados.nome().trim();
 		boolean cargoCadastradoAnteriormente = repository.existsByNome(nome);
 		if(cargoCadastradoAnteriormente) {
 			throw new ValidacaoException("Cargo cadastrado anteriormente");

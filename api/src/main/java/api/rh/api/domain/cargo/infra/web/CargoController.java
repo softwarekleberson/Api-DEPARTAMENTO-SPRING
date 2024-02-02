@@ -23,6 +23,7 @@ import api.rh.api.domain.cargo.infra.web.dto.list.DadosListagemCargo;
 import api.rh.api.domain.cargo.infra.web.dto.post.DadosCadastroCargo;
 import api.rh.api.domain.cargo.infra.web.dto.put.DadosAtualizarCargo;
 import api.rh.api.domain.cargo.infra.web.dto.put.DadosDetalhamentoCargo;
+import api.rh.api.domain.cargo.regraNegocio.ServiceCargo;
 import api.rh.api.domain.cargo.usecaseCrud.crud.CargoDaoJpa;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -34,15 +35,14 @@ public class CargoController {
 	@Autowired
 	private CargoRepositoryJpa repository;
 	
+	@Autowired
+	private ServiceCargo service;
+	
 	@Transactional
 	@PostMapping
 	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroCargo dados, UriComponentsBuilder uriBuilder) {
-				
-		var cargo = new Cargo(dados);
-		new CargoDaoJpa(repository).executeCreate(cargo);
-		
-		var uri = uriBuilder.path("/cargos/{id}").buildAndExpand(cargo.getId()).toUri();
-		return ResponseEntity.created(uri).body(new DadosDetalhamentoCargo(cargo));
+		var dto = service.criar(dados);
+		return ResponseEntity.ok(dto);
 	}
 	
 	@GetMapping
