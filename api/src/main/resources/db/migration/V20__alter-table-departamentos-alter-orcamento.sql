@@ -1,3 +1,0 @@
-ALTER TABLE departamentos
-MODIFY COLUMN orcamento DECIMAL(10, 4),
-MODIFY COLUMN saldo DECIMAL(10, 4);

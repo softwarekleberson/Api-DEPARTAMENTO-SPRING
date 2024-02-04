@@ -1,5 +1,7 @@
 package api.rh.api.domain.funcionario.infra.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,6 +25,8 @@ import api.rh.api.domain.funcionario.infra.web.dto.list.DadosListagemFuncionario
 import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroFuncionarios;
 import api.rh.api.domain.funcionario.infra.web.dto.put.DadosAtualizarFuncionario;
 import api.rh.api.domain.funcionario.infra.web.dto.put.DadosDetalhamentoFuncionario;
+import api.rh.api.domain.funcionario.regrasNegocio.ServiceFuncionario;
+import api.rh.api.domain.funcionario.regrasNegocio.ValidarNovoFuncionario.ValidarCriacaoFuncionario;
 import api.rh.api.domain.funcionario.usecaseCrud.crud.CrudFuncionarioJpa;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -35,13 +39,13 @@ public class FuncionarioController {
 	@Autowired
 	private FuncionarioRepositoryJpa repository;
 	
+	@Autowired
+	private ServiceFuncionario service;
+	
 	@PostMapping
 	public ResponseEntity cadastra(@RequestBody @Valid DadosCadastroFuncionarios dados, UriComponentsBuilder uriComponentsBuilder) {
-		var funcionario = new Funcionario(dados);		
-		new CrudFuncionarioJpa(repository).executeCreate(funcionario);
-		
-		var uri = uriComponentsBuilder.path("/funcionarios/{id}").buildAndExpand(funcionario.getId()).toUri();
-		return ResponseEntity.created(uri).body(new DadosDetalhamentoFuncionario(funcionario));
+		var dto = service.criar(dados);
+		return ResponseEntity.ok(dto);
 	}
 	
 	@GetMapping

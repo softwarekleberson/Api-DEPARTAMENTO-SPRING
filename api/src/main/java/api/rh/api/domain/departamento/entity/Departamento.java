@@ -1,7 +1,6 @@
 package api.rh.api.domain.departamento.entity;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -22,7 +21,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

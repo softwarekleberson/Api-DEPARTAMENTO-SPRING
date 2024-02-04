@@ -1,6 +1,5 @@
 package api.rh.api.domain.cargo.usecaseCrud.crud;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;

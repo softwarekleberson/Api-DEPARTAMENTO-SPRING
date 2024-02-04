@@ -24,6 +24,7 @@ import api.rh.api.domain.departamento.infra.web.dto.list.DadosListagemDepartamen
 import api.rh.api.domain.departamento.infra.web.dto.post.DadosCadastroDepartamento;
 import api.rh.api.domain.departamento.infra.web.dto.put.DadosAtualizarDepartamento;
 import api.rh.api.domain.departamento.infra.web.dto.put.DadosDetalhamentoDepartamento;
+import api.rh.api.domain.departamento.regraNegocio.ServiceDepartamento;
 import api.rh.api.domain.departamento.usecaseCrud.crud.DepartamentoDaoJpa;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -35,15 +36,16 @@ public class DepartamentoController {
 	@Autowired
 	private DepartamentoRepositoryJpa repository;
 	
+	
+	@Autowired
+	private ServiceDepartamento service;
+	
 	@Transactional
 	@PostMapping
 	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroDepartamento dados, UriComponentsBuilder uriBuilder) {
 		
-		var departamento = new Departamento(dados);
-		new DepartamentoDaoJpa(repository).executeCreate(departamento);		
-		
-		var uri = uriBuilder.path("/departamentos/{id}").buildAndExpand(departamento.getId()).toUri();
-		return ResponseEntity.created(uri).body(new DadosDetalhamentoDepartamento(departamento));
+		var dto = service.criar(dados);
+		return ResponseEntity.ok(dto);
 	}
 	
 	@GetMapping

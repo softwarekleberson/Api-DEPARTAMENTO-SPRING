@@ -58,7 +58,7 @@ public class Funcionario extends Pessoa {
 	private Boolean ativo;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "cargos_id")
+	@JoinColumn(name = "cargo_id")
 	private Cargo cargo;
 	
 	@OneToMany(mappedBy = "funcionario")

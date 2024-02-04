@@ -9,11 +9,11 @@ import api.rh.api.commun.domain.humanResource.ValidacaoException;
 import api.rh.api.domain.cargo.entity.Cargo;
 import api.rh.api.domain.cargo.infra.persistencia.jpa.CargoRepositoryJpa;
 import api.rh.api.domain.cargo.infra.web.dto.post.DadosCadastroCargo;
+import api.rh.api.domain.cargo.infra.web.dto.post.NivelEstagio;
 import api.rh.api.domain.cargo.infra.web.dto.put.DadosDetalhamentoCargo;
 import api.rh.api.domain.cargo.regraNegocio.validarNovoCargo.ValidarCriacaoCargo;
 import api.rh.api.domain.cargo.usecaseCrud.crud.CargoDaoJpa;
 import api.rh.api.domain.departamento.infra.persistencia.jpa.DepartamentoRepositoryJpa;
-import api.rh.api.domain.departamento.usecaseCrud.crud.DepartamentoDaoJpa;
 
 @Service
 public class ServiceCargo {
@@ -31,8 +31,16 @@ public class ServiceCargo {
 	private List<ValidarCriacaoCargo> validadores;
 	
 	public DadosDetalhamentoCargo criar(DadosCadastroCargo dados) {
+		
 		if(!departamentRepository.existsById(dados.idDepartamento())) {
 			throw new ValidacaoException("Id do departamento inexistente");
+		}
+				
+		boolean gerentePresenteEmInput = (dados.nivel() == NivelEstagio.GERENTE);
+
+		if(!gerentePresenteEmInput) {
+			throw new ValidacaoException("Para que cargo pertença a departamento"
+									   + " é necessario ao menos um gerente");
 		}
 		
 		validadores.forEach(v -> v.validar(dados));

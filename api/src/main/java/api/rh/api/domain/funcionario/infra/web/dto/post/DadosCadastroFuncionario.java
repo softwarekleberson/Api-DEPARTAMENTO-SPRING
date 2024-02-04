@@ -16,7 +16,6 @@ public record DadosCadastroFuncionario(
 		@NotNull
 		LocalDate contratacao,
 		
-	    @DecimalMin(value = "1412.00", inclusive = true, message = "O salario minimo é de 1412.00")
 		BigDecimal salario,
 	
 		@NotNull @Valid

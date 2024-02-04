@@ -20,7 +20,7 @@ public record DadosDetalhamentoFuncionario(Long id, LocalDate contratacao,
 	public DadosDetalhamentoFuncionario(Funcionario funcionarios) {
 		this(funcionarios.getId(), funcionarios.getContratacao(),
 			funcionarios.getSalario(), funcionarios.getNome(),
-			funcionarios.getNacimento(),
+			funcionarios.getNascimento(),
 			funcionarios.getSexo(),
 			funcionarios.getCpf(),
 			funcionarios.getEmail(),

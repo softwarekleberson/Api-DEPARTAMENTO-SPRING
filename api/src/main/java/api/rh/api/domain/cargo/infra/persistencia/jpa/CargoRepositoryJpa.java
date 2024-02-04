@@ -3,6 +3,7 @@ package api.rh.api.domain.cargo.infra.persistencia.jpa;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import api.rh.api.domain.cargo.entity.Cargo;
 import api.rh.api.domain.cargo.infra.web.dto.post.NivelEstagio;
@@ -14,5 +15,11 @@ public interface CargoRepositoryJpa extends JpaRepository<Cargo, Long>{
 	boolean existsByNome(String nome);
 
 	boolean existsByNivel(NivelEstagio existeGerente);
-	
+
+	@Query("""
+			select c from Cargo c
+			where c.id = :idFuncionario
+			""")
+	Cargo recuperaCargo(Long idFuncionario);
+
 }

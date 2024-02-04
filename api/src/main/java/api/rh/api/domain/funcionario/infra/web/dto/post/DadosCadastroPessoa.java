@@ -12,7 +12,7 @@ public record DadosCadastroPessoa(
 	String nome,
 					  
 	@NotNull
-	LocalDate nacimento,
+	LocalDate nascimento,
 					  
 	Sexo sexo,
 					  

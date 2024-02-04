@@ -16,7 +16,7 @@ public class ValidarIdadeMinimaFuncionario implements ValidarCriacaoFuncionario{
 	@Override
 	public void validar(DadosCadastroFuncionarios dados) {
 				
-		LocalDate nacimentoFuncionario = dados.funcionario().pessoa().nacimento();
+		LocalDate nacimentoFuncionario = dados.funcionario().pessoa().nascimento();
 		LocalDate anoAtual = LocalDate.now();
 		
 		Period idade = Period.between(nacimentoFuncionario, anoAtual);

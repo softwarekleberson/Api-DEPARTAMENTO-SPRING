@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 public abstract class Pessoa {
 
 	private String nome;
-	private LocalDate nacimento; 
+	private LocalDate nascimento; 
 	
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
@@ -31,7 +31,7 @@ public abstract class Pessoa {
 
 	public Pessoa(DadosCadastroPessoa dados) {
 		setNome(dados.nome());
-		setNacimento(dados.nacimento());
+		setNascimento(dados.nascimento());
 		setSexo(dados.sexo());
 		setCpf(dados.cpf());
 	}
@@ -40,8 +40,8 @@ public abstract class Pessoa {
 		this.nome = nome;
 	}
 	
-	public void setNacimento(LocalDate nacimento) {
-		this.nacimento = nacimento;
+	public void setNascimento(LocalDate nascimento) {
+		this.nascimento = nascimento;
 	}
 	
 	public void setSexo(Sexo sexo) {

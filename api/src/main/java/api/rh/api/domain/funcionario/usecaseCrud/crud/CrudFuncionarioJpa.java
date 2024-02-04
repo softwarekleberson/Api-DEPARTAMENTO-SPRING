@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import api.rh.api.domain.funcionario.entity.Funcionario;
 import api.rh.api.domain.funcionario.infra.persistencia.jpa.FuncionarioRepositoryJpa;
@@ -12,6 +13,7 @@ import api.rh.api.domain.funcionario.infra.web.dto.put.DadosAtualizarFuncionario
 import api.rh.api.domain.funcionario.usecaseCrud.FuncionarioRepository;
 import jakarta.validation.Valid;
 
+@Service
 public class CrudFuncionarioJpa implements FuncionarioRepository{
 
 	private FuncionarioRepositoryJpa funcionarioRepository;

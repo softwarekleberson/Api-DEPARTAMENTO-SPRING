@@ -53,7 +53,7 @@ public class Cargo {
 	private Set<Funcionario> funcionario;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "departamentos_id")
+	@JoinColumn(name = "departamento_id")
 	private Departamento departamento;
 	
 	
