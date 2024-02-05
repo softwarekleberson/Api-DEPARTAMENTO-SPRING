@@ -1,4 +1,4 @@
-package api.rh.api.domain.departamento.usecaseCrud.crud;
+package api.rh.api.domain.departamento.usecase.crud;
 
 import java.util.Optional;
 
@@ -10,7 +10,7 @@ import api.rh.api.domain.departamento.entity.Departamento;
 import api.rh.api.domain.departamento.infra.persistencia.jpa.DepartamentoRepositoryJpa;
 import api.rh.api.domain.departamento.infra.web.dto.list.DadosListagemDepartamento;
 import api.rh.api.domain.departamento.infra.web.dto.put.DadosAtualizarDepartamento;
-import api.rh.api.domain.departamento.usecaseCrud.DepartamentoRepository;
+import api.rh.api.domain.departamento.usecase.DepartamentoRepository;
 import jakarta.validation.Valid;
 
 @Service

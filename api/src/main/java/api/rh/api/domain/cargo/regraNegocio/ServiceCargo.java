@@ -12,7 +12,7 @@ import api.rh.api.domain.cargo.infra.web.dto.post.DadosCadastroCargo;
 import api.rh.api.domain.cargo.infra.web.dto.post.NivelEstagio;
 import api.rh.api.domain.cargo.infra.web.dto.put.DadosDetalhamentoCargo;
 import api.rh.api.domain.cargo.regraNegocio.validarNovoCargo.ValidarCriacaoCargo;
-import api.rh.api.domain.cargo.usecaseCrud.crud.CargoDaoJpa;
+import api.rh.api.domain.cargo.usecase.crud.CargoDaoJpa;
 import api.rh.api.domain.departamento.infra.persistencia.jpa.DepartamentoRepositoryJpa;
 
 @Service
@@ -32,19 +32,23 @@ public class ServiceCargo {
 	
 	public DadosDetalhamentoCargo criar(DadosCadastroCargo dados) {
 		
-		if(!departamentRepository.existsById(dados.idDepartamento())) {
+		Long idDepartamento = dados.idDepartamento();
+		boolean gerentePresenteEmInput = (dados.nivel() == NivelEstagio.GERENTE);
+		boolean verificaExistenciaGerente = cargoRepository.verificaExistenciaGerente(idDepartamento);
+		
+		
+		System.out.println("A gerente no banco " + verificaExistenciaGerente );
+		
+		if(!departamentRepository.existsById(idDepartamento)) {
 			throw new ValidacaoException("Id do departamento inexistente");
 		}
 				
-		boolean gerentePresenteEmInput = (dados.nivel() == NivelEstagio.GERENTE);
-
-		if(!gerentePresenteEmInput) {
+		if(!gerentePresenteEmInput && !verificaExistenciaGerente) {
 			throw new ValidacaoException("Para que cargo pertença a departamento"
 									   + " é necessario ao menos um gerente");
 		}
 		
-		validadores.forEach(v -> v.validar(dados));
-		
+		validadores.forEach(v -> v.validar(dados));		
 		var cargo = new Cargo(dados);
 		daoCargo.executeCreate(cargo);
 		

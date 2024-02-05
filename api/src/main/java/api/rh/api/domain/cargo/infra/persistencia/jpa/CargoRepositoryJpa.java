@@ -13,13 +13,25 @@ public interface CargoRepositoryJpa extends JpaRepository<Cargo, Long>{
 	Page<Cargo> findByAtivoTrue(Pageable paginacao);
 
 	boolean existsByNome(String nome);
-
 	boolean existsByNivel(NivelEstagio existeGerente);
 
 	@Query("""
+			
 			select c from Cargo c
 			where c.id = :idFuncionario
+			
 			""")
 	Cargo recuperaCargo(Long idFuncionario);
+	
+	
+	@Query("""
+			
+			SELECT COUNT(c) > 0
+			FROM Cargo c
+			WHERE c.nivel = GERENTE
+			AND c.departamento.id = :idDepartamento
 
+		   """)
+	boolean verificaExistenciaGerente(Long idDepartamento);
+	
 }

@@ -1,4 +1,4 @@
-package api.rh.api.domain.departamento.usecaseCrud;
+package api.rh.api.domain.departamento.usecase;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

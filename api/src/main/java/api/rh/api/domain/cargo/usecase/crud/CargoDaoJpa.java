@@ -1,4 +1,4 @@
-package api.rh.api.domain.cargo.usecaseCrud.crud;
+package api.rh.api.domain.cargo.usecase.crud;
 
 import java.util.Optional;
 
@@ -10,7 +10,7 @@ import api.rh.api.domain.cargo.entity.Cargo;
 import api.rh.api.domain.cargo.infra.persistencia.jpa.CargoRepositoryJpa;
 import api.rh.api.domain.cargo.infra.web.dto.list.DadosListagemCargo;
 import api.rh.api.domain.cargo.infra.web.dto.put.DadosAtualizarCargo;
-import api.rh.api.domain.cargo.usecaseCrud.CargoRepository;
+import api.rh.api.domain.cargo.usecase.CargoRepository;
 import jakarta.validation.Valid;
 
 @Service

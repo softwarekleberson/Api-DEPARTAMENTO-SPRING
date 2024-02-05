@@ -9,7 +9,7 @@ import api.rh.api.domain.departamento.entity.Departamento;
 import api.rh.api.domain.departamento.infra.web.dto.post.DadosCadastroDepartamento;
 import api.rh.api.domain.departamento.infra.web.dto.put.DadosDetalhamentoDepartamento;
 import api.rh.api.domain.departamento.regraNegocio.validarNovoDepartamento.ValidarCriacaoDepartamento;
-import api.rh.api.domain.departamento.usecaseCrud.crud.DepartamentoDaoJpa;
+import api.rh.api.domain.departamento.usecase.crud.DepartamentoDaoJpa;
 
 @Service
 public class ServiceDepartamento {

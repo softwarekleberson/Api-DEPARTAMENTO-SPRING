@@ -25,7 +25,7 @@ import api.rh.api.domain.departamento.infra.web.dto.post.DadosCadastroDepartamen
 import api.rh.api.domain.departamento.infra.web.dto.put.DadosAtualizarDepartamento;
 import api.rh.api.domain.departamento.infra.web.dto.put.DadosDetalhamentoDepartamento;
 import api.rh.api.domain.departamento.regraNegocio.ServiceDepartamento;
-import api.rh.api.domain.departamento.usecaseCrud.crud.DepartamentoDaoJpa;
+import api.rh.api.domain.departamento.usecase.crud.DepartamentoDaoJpa;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 

@@ -24,7 +24,7 @@ import api.rh.api.domain.cargo.infra.web.dto.post.DadosCadastroCargo;
 import api.rh.api.domain.cargo.infra.web.dto.put.DadosAtualizarCargo;
 import api.rh.api.domain.cargo.infra.web.dto.put.DadosDetalhamentoCargo;
 import api.rh.api.domain.cargo.regraNegocio.ServiceCargo;
-import api.rh.api.domain.cargo.usecaseCrud.crud.CargoDaoJpa;
+import api.rh.api.domain.cargo.usecase.crud.CargoDaoJpa;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
