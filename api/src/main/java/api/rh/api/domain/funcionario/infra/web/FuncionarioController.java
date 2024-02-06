@@ -1,7 +1,5 @@
 package api.rh.api.domain.funcionario.infra.web;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,14 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import api.rh.api.domain.funcionario.entity.Funcionario;
 import api.rh.api.domain.funcionario.infra.persistencia.jpa.FuncionarioRepositoryJpa;
 import api.rh.api.domain.funcionario.infra.web.dto.list.DadosListagemFuncionario;
 import api.rh.api.domain.funcionario.infra.web.dto.post.DadosCadastroFuncionarios;
 import api.rh.api.domain.funcionario.infra.web.dto.put.DadosAtualizarFuncionario;
 import api.rh.api.domain.funcionario.infra.web.dto.put.DadosDetalhamentoFuncionario;
 import api.rh.api.domain.funcionario.regrasNegocio.ServiceFuncionario;
-import api.rh.api.domain.funcionario.regrasNegocio.ValidarNovoFuncionario.ValidarCriacaoFuncionario;
 import api.rh.api.domain.funcionario.usecaseCrud.crud.CrudFuncionarioJpa;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

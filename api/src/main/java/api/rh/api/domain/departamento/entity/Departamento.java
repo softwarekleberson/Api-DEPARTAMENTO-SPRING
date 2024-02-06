@@ -1,5 +1,6 @@
 package api.rh.api.domain.departamento.entity;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
@@ -124,6 +125,10 @@ public class Departamento {
 
     public void setOrcamento(DadosCadastroOrcamento dados) {
 		this.orcamento = new OrcamentoDepartamento(dados);
+	}
+
+	public void setOrcamento(BigDecimal novoOrcamento) {
+		this.orcamento.setOrcamento(novoOrcamento);		
 	}
 	
 }

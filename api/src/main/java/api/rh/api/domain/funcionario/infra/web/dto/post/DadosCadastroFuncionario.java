@@ -5,7 +5,6 @@ import java.time.LocalDate;
 
 import api.rh.api.commun.domain.humanResource.contato.DadosCadastroTelefone;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 
 public record DadosCadastroFuncionario(

@@ -14,4 +14,6 @@ public interface DepartamentoRepositoryJpa extends JpaRepository<Departamento, L
 
 	boolean existsByNome(String nomeDepartamento);
 
+	Departamento findByIdAndAtivoTrue(Long idDepartamento);
+	
 }

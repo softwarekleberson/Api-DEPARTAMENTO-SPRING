@@ -11,5 +11,5 @@ public record DadosCadastroFuncionarios(
 		@NotNull @Valid DadosCadastroFuncionario funcionario		
 				
 										) 
-{
+										{
 }

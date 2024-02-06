@@ -7,7 +7,6 @@ import api.rh.api.commun.domain.humanResource.contato.Email;
 import api.rh.api.commun.domain.humanResource.contato.Telefone;
 import api.rh.api.commun.domain.humanResource.cpf.Cpf;
 import api.rh.api.domain.funcionario.entity.Funcionario;
-import api.rh.api.domain.funcionario.entity.Pessoa;
 import api.rh.api.domain.funcionario.infra.web.dto.post.Profissao;
 import api.rh.api.domain.funcionario.infra.web.dto.post.Sexo;
 

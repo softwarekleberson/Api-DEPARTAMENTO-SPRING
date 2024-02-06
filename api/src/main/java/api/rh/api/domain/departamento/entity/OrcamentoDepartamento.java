@@ -2,14 +2,9 @@ package api.rh.api.domain.departamento.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 
 import api.rh.api.domain.departamento.infra.web.dto.post.DadosCadastroOrcamento;
-import api.rh.api.domain.projetos.entity.Projeto;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

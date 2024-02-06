@@ -8,5 +8,6 @@ public record DadosCadastroCpf(
 		@NotBlank
 		@Pattern(regexp = "^\\d{11}", message="Apenas digitos")
 		String cpf
+		
 		) {
 }

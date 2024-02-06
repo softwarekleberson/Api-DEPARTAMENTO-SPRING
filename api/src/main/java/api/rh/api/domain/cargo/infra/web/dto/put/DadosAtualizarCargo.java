@@ -14,6 +14,6 @@ public record DadosAtualizarCargo (
 		BigDecimal salarioBase,
 		BigDecimal salarioMaximo
 		
-		) {
+								  ) {
 
 }

@@ -1,5 +1,7 @@
 package api.rh.api.domain.departamento.usecase;
 
+import java.math.BigDecimal;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -15,4 +17,5 @@ public interface DepartamentoRepository {
 	Departamento updateDate(@Valid DadosAtualizarDepartamento dados);
 	void exclusionLogics(Long id);
 	void exclusion(Departamento departamento);
+	void subtrairCustosDoOrcamento(Departamento departamento, BigDecimal orcamentoAtualizado);
 }

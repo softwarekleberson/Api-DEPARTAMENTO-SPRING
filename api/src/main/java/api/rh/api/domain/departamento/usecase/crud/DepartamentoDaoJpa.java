@@ -1,5 +1,6 @@
 package api.rh.api.domain.departamento.usecase.crud;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -66,13 +67,20 @@ public class DepartamentoDaoJpa implements DepartamentoRepository{
 		return null;
 	}
 
+	@Override
 	public void exclusionLogics(Long id) {
 		var departamento = departamentoRepository.getReferenceById(id);
 		exclusion(departamento);
 	}
 	
+	@Override
 	public void exclusion(Departamento departamento) {
 		departamento.setAtivo(false);
 	}
-		
+
+	@Override
+	public void subtrairCustosDoOrcamento(Departamento departamento, BigDecimal orcamentoAtualizado) {
+		System.out.println("Orcamento atual" + orcamentoAtualizado);
+		departamento.setOrcamento(orcamentoAtualizado);
+	}
 }

@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import api.rh.api.domain.projetos.entity.Projeto;
 import api.rh.api.domain.projetos.infra.persistencia.jpa.ProjetoRepositoryJpa;
@@ -12,6 +13,7 @@ import api.rh.api.domain.projetos.infra.web.dto.put.DadosAtualizarProjeto;
 import api.rh.api.domain.projetos.usecase.ProjetoRepository;
 import jakarta.validation.Valid;
 
+@Service
 public class ProjetoDaoJpa implements ProjetoRepository{
 
 	private ProjetoRepositoryJpa projetoRepository;

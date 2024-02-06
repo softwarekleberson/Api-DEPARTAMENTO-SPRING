@@ -1,7 +1,6 @@
 package api.rh.api.domain.funcionario.regrasNegocio.ValidarNovoFuncionario;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import api.rh.api.commun.domain.humanResource.ValidacaoException;

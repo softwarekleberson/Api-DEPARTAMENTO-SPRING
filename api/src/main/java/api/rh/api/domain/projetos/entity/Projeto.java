@@ -89,7 +89,6 @@ public class Projeto {
 		this.statusProjeto = statusProjeto;
 	}
 	
-	
 	public void setInicioProjeto(LocalDate inicioProjeto) {
 		this.inicioProjeto = inicioProjeto;
 	}

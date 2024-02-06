@@ -1,7 +1,6 @@
 package api.rh.api.domain.departamento.regraNegocio.validarNovoDepartamento;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 import org.springframework.stereotype.Service;
 

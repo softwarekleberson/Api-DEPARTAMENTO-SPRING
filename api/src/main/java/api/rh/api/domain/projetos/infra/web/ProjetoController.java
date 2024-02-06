@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import api.rh.api.domain.projetos.entity.Projeto;
 import api.rh.api.domain.projetos.infra.persistencia.jpa.ProjetoRepositoryJpa;
 import api.rh.api.domain.projetos.infra.web.dto.list.DadosListagemProjeto;
 import api.rh.api.domain.projetos.infra.web.dto.post.DadosCadastroProjeto;
 import api.rh.api.domain.projetos.infra.web.dto.put.DadosAtualizarProjeto;
 import api.rh.api.domain.projetos.infra.web.dto.put.DadosDetalhamentoProjeto;
+import api.rh.api.domain.projetos.regrasNegocio.ServiceProjeto;
 import api.rh.api.domain.projetos.usecase.crud.ProjetoDaoJpa;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -34,16 +34,16 @@ public class ProjetoController {
 	@Autowired
 	private ProjetoRepositoryJpa repository;
 	
+	@Autowired
+	private ServiceProjeto service;
+	
 	@PostMapping
 	@Transactional
 	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroProjeto dados,
 			UriComponentsBuilder uriBuilder) {
 		
-		var projeto = new Projeto(dados);
-		new ProjetoDaoJpa(repository).executeCreate(projeto);
-		
-		var uri = uriBuilder.path("/projetos/{id}").buildAndExpand(projeto.getId()).toUri();
-		return ResponseEntity.created(uri).body(new DadosDetalhamentoProjeto(projeto));
+		var dto = service.criar(dados);
+		return ResponseEntity.ok(dto);
 	}
 	
 	@GetMapping

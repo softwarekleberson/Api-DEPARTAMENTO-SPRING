@@ -15,5 +15,4 @@ public interface CargoRepository {
 	void exclusionLogic(Long id);
 	void exclusion(Cargo cargo);
 	Page listAssets (Pageable paginacao);
-	
 }
