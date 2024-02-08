@@ -1,6 +1,6 @@
 package api.rh.api.domain.projetos.entity;
 
-public enum SatatusProjeto {
+public enum StatusProjeto {
 
 	ESPERANDO_AUTORIZACAO,
 	INICIALIZADO,

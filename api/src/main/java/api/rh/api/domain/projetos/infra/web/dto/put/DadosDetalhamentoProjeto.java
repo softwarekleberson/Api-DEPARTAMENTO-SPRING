@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import api.rh.api.domain.projetos.entity.Projeto;
-import api.rh.api.domain.projetos.entity.SatatusProjeto;
+import api.rh.api.domain.projetos.entity.StatusProjeto;
 
 public record DadosDetalhamentoProjeto(
 		
@@ -12,7 +12,7 @@ public record DadosDetalhamentoProjeto(
 		String nome,
 		String descricao,
 		BigDecimal custoProjeto,
-		SatatusProjeto status,
+		StatusProjeto status,
 		LocalDate inicioprojeto,
 		LocalDate fimProjeto
 		

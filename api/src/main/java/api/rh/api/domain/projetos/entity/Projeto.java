@@ -41,7 +41,7 @@ public class Projeto {
 	private LocalDate terminoProjeto;
 	
 	@Enumerated(EnumType.STRING)
-	private SatatusProjeto statusProjeto;
+	private StatusProjeto statusProjeto;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "departamentos_id")
@@ -85,7 +85,7 @@ public class Projeto {
 		this.custoProjeto = custoProjeto;
 	}
 	
-	public void setStatusProjeto(SatatusProjeto statusProjeto) {
+	public void setStatusProjeto(StatusProjeto statusProjeto) {
 		this.statusProjeto = statusProjeto;
 	}
 	

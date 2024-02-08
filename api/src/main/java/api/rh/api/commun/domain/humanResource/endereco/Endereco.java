@@ -2,8 +2,10 @@ package api.rh.api.commun.domain.humanResource.endereco;
 
 import java.util.Objects;
 
-import api.rh.api.domain.departamento.entity.Departamento;
+import api.rh.api.commun.domain.humanResource.endereco.dtos.DadosCadastroCidade;
+import api.rh.api.commun.domain.humanResource.endereco.dtos.DadosCadastroEndereco;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,35 +15,27 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Endereco {
-
-	public static final int MENOR_STRING_PAIS_LENGT = 4;
-	private String pais;
 	
 	public static final int MENOR_COMPRIMENTO_STRING = 3;
-	private String estado;
-	private String cidade;
 	private String rua;
 	private String complemento;
 	private String numero;
 	private String cep;
 	
+	@Embedded
+	private Cidade cidade;
+	
 	public Endereco(DadosCadastroEndereco dados) {
 		
-		setPais(dados.pais());
-		setEstado(dados.estado());
-		setCidade(dados.cidade());
 		setRua(dados.rua());
 		setNumero(dados.numero());
 		setCep(dados.cep());
 		setComplemento(dados.complemento());
+		setCidade(dados.cidade());
 	}
-
-	public void setPais(String pais) {
-		String validaPais = Objects.requireNonNull(pais,"Pais não deve ser nulo");
-		if(validaPais.length() < MENOR_STRING_PAIS_LENGT) {
-			throw new IllegalArgumentException("Pais deve conter no minimo : " + MENOR_STRING_PAIS_LENGT + " caracteres");
-		}
-		this.pais = pais;
+	
+	public void setCidade(DadosCadastroCidade dados) {
+		this.cidade = new Cidade(dados);
 	}
 	
 	public void setComplemento(String complemento) {
@@ -49,22 +43,6 @@ public class Endereco {
 			this.complemento = null;
 		}
 		this.complemento = complemento;
-	}
-	
-	public void setEstado(String estado) {
-		String validaEstado = Objects.requireNonNull(estado,"Estado não deve ser nulo");
-		if(validaEstado.length() < MENOR_COMPRIMENTO_STRING) {
-			throw new IllegalArgumentException("Estado deve conter no minimo " + MENOR_COMPRIMENTO_STRING + " caracteres");
-		}
-		this.estado = estado;
-	}
-	
-	public void setCidade(String cidade) {
-		String validaCidade = Objects.requireNonNull(cidade,"Cidade não deve ser nula");
-		if(validaCidade.length() < MENOR_COMPRIMENTO_STRING) {
-			throw new IllegalArgumentException("Cidade deve conter no minimo " + MENOR_COMPRIMENTO_STRING + " caracteres");
-		}
-		this.cidade = cidade;
 	}
 	
 	public void setRua(String rua) {
@@ -92,15 +70,6 @@ public class Endereco {
 	
 	public void atualizarEndereco(DadosCadastroEndereco dados) {
 		
-		if(dados.pais() != null) {
-			setPais(dados.pais());
-		}
-		if(dados.estado() != null) {
-			setEstado(dados.estado());
-		}
-		if(dados.cidade() != null) {
-			setCidade(dados.cidade());
-		}
 		if(dados.rua() != null) {
 			setRua(dados.rua());
 		}
