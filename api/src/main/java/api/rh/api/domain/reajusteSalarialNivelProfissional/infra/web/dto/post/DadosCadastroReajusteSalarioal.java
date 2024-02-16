@@ -14,8 +14,8 @@ public record DadosCadastroReajusteSalarioal(
 		BigDecimal novoSalario,	
 		
 		@NotNull
-		LocalDate diaAtualizacao
+		String motivoAtualizacao
 		
-		) {
+										   ) {
 
 }

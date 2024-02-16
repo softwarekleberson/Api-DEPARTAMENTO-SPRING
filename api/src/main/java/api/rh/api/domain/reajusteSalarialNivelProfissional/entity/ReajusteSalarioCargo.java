@@ -41,7 +41,7 @@ public class ReajusteSalarioCargo {
 	private Funcionario funcionario;
 	
 	public ReajusteSalarioCargo(DadosCadastroReajusteSalarioal dados) {
-		setDiaReajuste(dados.diaAtualizacao());
+		setDiaReajuste(LocalDate.now());
 		setValorReajuste(dados.novoSalario());
 		setFuncionario(dados.idFuncionario());
 	}

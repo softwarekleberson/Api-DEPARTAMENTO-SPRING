@@ -17,7 +17,7 @@ public class ValidarMaiorSalarioPossivelCargo implements ValidarCriacaoCargo{
 		BigDecimal salario_do_cargo = dados.salarioMaximo();
 		
 		if(salario_do_cargo.compareTo(SALARIO_MAXIMO_DOS_CARGOS) > 0) {
-			throw new IllegalArgumentException("O salário máximo não deve ser maior do que : " + SALARIO_MAXIMO_DOS_CARGOS);
+			throw new IllegalArgumentException("O salário máximo não pode exceder o valor de " + SALARIO_MAXIMO_DOS_CARGOS);
 		}
 	}
 }

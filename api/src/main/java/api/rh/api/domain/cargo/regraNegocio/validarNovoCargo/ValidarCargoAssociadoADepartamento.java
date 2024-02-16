@@ -20,7 +20,7 @@ public class ValidarCargoAssociadoADepartamento implements ValidarCriacaoCargo{
 		boolean departamentoAtivo = repository.existsByAtivoTrueAndId(idDepartamento);
 		
 		if(!departamentoAtivo) {
-			throw new ValidacaoException("Departamento Inativo ou inexistente");
+			throw new ValidacaoException("O departamento está inativo ou não existe. Por favor, verifique e selecione um departamento válido.");
 		}
 	}
 }

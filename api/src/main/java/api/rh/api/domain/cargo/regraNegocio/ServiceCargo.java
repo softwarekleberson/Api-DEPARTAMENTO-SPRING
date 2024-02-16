@@ -40,7 +40,7 @@ public class ServiceCargo {
 		System.out.println("A gerente no banco " + verificaExistenciaGerente );
 		
 		if(!departamentRepository.existsById(idDepartamento)) {
-			throw new ValidacaoException("Id do departamento inexistente");
+			throw new ValidacaoException("O ID do departamento fornecido não existe. Por favor, verifique e insira um ID de departamento válido.");
 		}
 				
 		if(!gerentePresenteEmInput && !verificaExistenciaGerente) {

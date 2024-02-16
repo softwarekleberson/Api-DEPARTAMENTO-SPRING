@@ -19,8 +19,7 @@ public class ValidarCargoComNomeIgual implements ValidarCriacaoCargo{
 		var nome = dados.nome().trim();
 		boolean cargoCadastradoAnteriormente = repository.existsByNome(nome);
 		if(cargoCadastradoAnteriormente) {
-			throw new ValidacaoException("Cargo cadastrado anteriormente");
+			throw new ValidacaoException("O cargo já foi cadastrado anteriormente. Por favor, forneça um nome de cargo único.");
 		}
 	}
-
 }

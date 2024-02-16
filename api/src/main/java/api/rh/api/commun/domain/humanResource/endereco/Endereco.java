@@ -48,7 +48,7 @@ public class Endereco {
 	public void setRua(String rua) {
 		String validaRua = Objects.requireNonNull(rua,"Rua não deve ser nula");
 		if(validaRua.length() < MENOR_COMPRIMENTO_STRING) {
-			throw new IllegalArgumentException("Rua deve conter no minimo " + MENOR_COMPRIMENTO_STRING + " caracteres");
+			throw new IllegalArgumentException("Rua deve conter no minimo : " + MENOR_COMPRIMENTO_STRING + " caracteres");
 		}
 		this.rua = rua;
 	}

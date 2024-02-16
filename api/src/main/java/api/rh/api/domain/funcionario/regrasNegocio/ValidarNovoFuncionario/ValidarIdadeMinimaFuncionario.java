@@ -21,7 +21,7 @@ public class ValidarIdadeMinimaFuncionario implements ValidarCriacaoFuncionario{
 		
 		Period idade = Period.between(nacimentoFuncionario, anoAtual);
 		if(idade.getYears() < IDADE_MINIMA) {
-			throw new ValidacaoException("Idade minima para o trabalho deve ser 15 anos");
+			throw new ValidacaoException("A idade mínima para trabalhar é de 15 anos. Por favor, verifique a data de nascimento e insira uma idade válida.");
 		}
 	}
 }

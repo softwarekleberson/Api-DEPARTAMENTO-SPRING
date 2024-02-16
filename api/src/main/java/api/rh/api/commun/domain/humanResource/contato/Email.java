@@ -23,8 +23,10 @@ public class Email {
 	public void setEmail(String email) {
 		String regex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
 	      if (!Pattern.matches(regex, email)) {
-	          throw new IllegalArgumentException("Endereço de e-mail inválido.");
-	        }
+	    	  throw new IllegalArgumentException("O endereço de e-mail fornecido"
+	    	  								   + " é inválido. Por favor, verifique"
+	    	  								   + " e tente novamente.");
+	      }
 		this.email = email;
 	}
 		

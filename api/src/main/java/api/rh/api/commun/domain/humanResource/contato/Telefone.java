@@ -24,21 +24,21 @@ public class Telefone {
 
 	public void setDdd(String ddd) {
 		if(ddd == null || !ddd.matches("\\d{2}")) {
-			throw new IllegalArgumentException("ddd deve conter : 2 digitos");
+			throw new IllegalArgumentException("O DDD (Código de Discagem Direta) deve conter exatamente dois dígitos. Por favor, verifique e tente novamente.");
 		}
 		this.ddd = ddd;
 	}
 	
 	public void setDdi(String ddi) {
 		if(ddi == null || !ddi.matches("\\d{3}")) {
-			throw new IllegalArgumentException("ddi deve conter : 3 digitos");
+			throw new IllegalArgumentException("O DDI (Código de Discagem Direta Internacional) deve conter exatamente três dígitos. Por favor, verifique e tente novamente.");
 		}
 		this.ddi = ddi;
 	}
 	
 	public void setTelefone(String telefone) {
 		if(telefone == null || !telefone.matches("\\d{8}|\\d{9}")) {
-			throw new IllegalArgumentException("Telefone deve conter 8 ou 9 digitos ");
+			throw new IllegalArgumentException("O número de telefone deve conter 8 ou 9 dígitos. Por favor, verifique e tente novamente.");
 		}
 		this.telefone = telefone;
 	}

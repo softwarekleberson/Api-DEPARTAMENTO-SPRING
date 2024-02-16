@@ -4,9 +4,12 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
-
+import api.rh.api.commun.domain.humanResource.ValidacaoException;
 import api.rh.api.domain.departamento.entity.Departamento;
+import api.rh.api.domain.projetos.entity.state.EmAnalise;
+import api.rh.api.domain.projetos.entity.state.State;
 import api.rh.api.domain.projetos.infra.web.dto.post.DadosCadastroProjeto;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -47,16 +50,21 @@ public class Projeto {
 	@JoinColumn(name = "departamentos_id")
 	private Departamento departamento;
 	
+	@Embedded
+	private State state;
+	
 	public Projeto(DadosCadastroProjeto dados) {
 		
 		setNome(dados.nome());
 		setAtivo(true);
-		setStatusProjeto(statusProjeto.INICIALIZADO);
+		setStatusProjeto(statusProjeto.EM_ANALISE);
 		setDescricao(dados.descricao());
 		setCustoProjeto(dados.custo());
 		setInicioProjeto(LocalDate.now());
 		setTerminoProjeto(dados.terminoProjeto());
 		setDepartamento(dados.idDepartamento());
+		
+		this.state = new EmAnalise();
 	}
 	
 	public void setAtivo(boolean ativo) {
@@ -95,5 +103,21 @@ public class Projeto {
 	
 	public void setTerminoProjeto(LocalDate terminoProjeto) {
 		this.terminoProjeto = terminoProjeto;
+	}
+	
+	public void setState(State state) {
+		this.state = state;
+	}
+	
+	public void aprovar() throws ValidacaoException{
+		this.state.aprovar(this);
+	}
+	
+	public void reprovar() throws ValidacaoException{
+		this.state.reprovar(this);
+	}
+	
+	public void finalizar() throws ValidacaoException{
+		this.state.finalizar(this);
 	}
 }

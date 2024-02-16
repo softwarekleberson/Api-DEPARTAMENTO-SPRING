@@ -15,7 +15,7 @@ public class ValidarDiferencaEntreSalarioMaximoEMinimo implements ValidarCriacao
 		var salarioBase = dados.salarioBase();
 		
 		if(salarioBase.compareTo(salarioMaximo) > 0) {
-			throw new ValidacaoException("Salario base superior ao máximo");
+			throw new ValidacaoException("O salário base fornecido é superior ao valor máximo permitido. Por favor, insira um salário dentro do limite estabelecido.");
 		}	
 	}
 }

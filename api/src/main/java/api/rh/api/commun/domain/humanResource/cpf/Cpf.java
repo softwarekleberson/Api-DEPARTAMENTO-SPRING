@@ -37,6 +37,5 @@ public class Cpf {
 	@Override
 	public String toString() {
 		return "Cpf [cpf=" + cpf + "]";
-	}
-	
+	}	
 }
