@@ -40,9 +40,11 @@ public class CargoController {
 	@Transactional
 	@PostMapping
 	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroCargo dados, UriComponentsBuilder uriBuilder) {
-		var dto = service.criar(dados);
-		return ResponseEntity.ok(dto);
+	    var dto = service.criar(dados);
+	    var uri = uriBuilder.path("/cargos/{id}").buildAndExpand(dto.id()).toUri();
+	    return ResponseEntity.created(uri).body(dto);
 	}
+
 	
 	@GetMapping
 	public ResponseEntity<Page<DadosListagemCargo>> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){

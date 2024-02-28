@@ -39,12 +39,12 @@ public class ProjetoController {
 	
 	@PostMapping
 	@Transactional
-	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroProjeto dados,
-			UriComponentsBuilder uriBuilder) {
-		
-		var dto = service.criar(dados);
-		return ResponseEntity.ok(dto);
+	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroProjeto dados, UriComponentsBuilder uriBuilder) {
+	    var dto = service.criar(dados);	    
+	    var uri = uriBuilder.path("/projetos/{id}").buildAndExpand(dto.id()).toUri();
+	    return ResponseEntity.created(uri).body(dto);
 	}
+
 	
 	@GetMapping
 	public ResponseEntity<Page<DadosListagemProjeto>> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){

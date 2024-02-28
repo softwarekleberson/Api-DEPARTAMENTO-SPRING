@@ -42,10 +42,11 @@ public class DepartamentoController {
 	@Transactional
 	@PostMapping
 	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroDepartamento dados, UriComponentsBuilder uriBuilder) {
-		
-		var dto = service.criar(dados);
-		return ResponseEntity.ok(dto);
+	    var dto = service.criar(dados);
+	    var uri = uriBuilder.path("/departamentos/{id}").buildAndExpand(dto.id()).toUri();
+	    return ResponseEntity.created(uri).body(dto);
 	}
+
 	
 	@GetMapping
 	public ResponseEntity<Page<DadosListagemDepartamento>> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){

@@ -40,9 +40,11 @@ public class FuncionarioController {
 	
 	@PostMapping
 	public ResponseEntity cadastra(@RequestBody @Valid DadosCadastroFuncionarios dados, UriComponentsBuilder uriComponentsBuilder) {
-		var dto = service.criar(dados);
-		return ResponseEntity.ok(dto);
+	    var dto = service.criar(dados);	    
+	    var uri = uriComponentsBuilder.path("/funcionarios/{id}").buildAndExpand(dto.id()).toUri();
+	    return ResponseEntity.created(uri).body(dto);
 	}
+
 	
 	@GetMapping
 	public ResponseEntity<Page<DadosListagemFuncionario>> listar(@PageableDefault(size = 10, sort = {"salario"}) Pageable paginacao){
