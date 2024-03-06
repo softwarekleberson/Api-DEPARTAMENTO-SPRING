@@ -15,7 +15,7 @@ public record DadosDetalhamentoReajuste( long id,
 	public DadosDetalhamentoReajuste(ReajusteSalarioCargo reajuste) {
 		this(reajuste.getId(),
 			 reajuste.getDiaReajuste(),
-			 reajuste.getMotivoPromocao(),
+			 reajuste.getMotivoReajuste(),
 			 reajuste.getValorReajuste());
 	}
 }

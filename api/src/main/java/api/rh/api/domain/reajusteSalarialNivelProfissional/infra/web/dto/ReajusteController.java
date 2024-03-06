@@ -25,6 +25,7 @@ public class ReajusteController {
 	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroReajusteSalarioal dados, UriComponentsBuilder uriBuilder) {
 		
 		var dto = service.criar(dados);
+		System.out.println(dados.idFuncionario());
 		var uri = uriBuilder.path("/reajuste/{id}").buildAndExpand(dto.id()).toUri();
 		return ResponseEntity.created(uri).body(dto);
 	}

@@ -1,5 +1,7 @@
 package api.rh.api.domain.funcionario.infra.persistencia.jpa;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,4 +14,9 @@ public interface FuncionarioRepositoryJpa extends JpaRepository<Funcionario, Lon
 	Page<Funcionario> findByAtivoTrue(Pageable paginacao);
 
 	boolean existsByCpfAndAtivoTrue(Cpf cpfconsulta);
+
+	Optional<Funcionario> findByCpfAndAtivoTrue(Cpf cpf);
+
+	Funcionario findByIdAndAtivoTrue(Long idFuncionario);
+	
 }

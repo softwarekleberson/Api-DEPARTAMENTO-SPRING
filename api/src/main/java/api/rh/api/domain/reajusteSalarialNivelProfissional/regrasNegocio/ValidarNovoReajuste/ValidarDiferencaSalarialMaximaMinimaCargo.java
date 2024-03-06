@@ -20,6 +20,7 @@ public class ValidarDiferencaSalarialMaximaMinimaCargo implements ValidarNovoRea
 	@Override
 	public void validar(DadosCadastroReajusteSalarioal dados) {
 		
+		System.out.println("validar diferença salarial");
 		Optional<Funcionario> optionalFuncionario = repository.findById(dados.idFuncionario());
 		BigDecimal reajusteSalarial = dados.novoSalario();
 		
@@ -29,7 +30,7 @@ public class ValidarDiferencaSalarialMaximaMinimaCargo implements ValidarNovoRea
 			BigDecimal salarioMaximo = funcionario.getCargo().getSalario_Maximo();
 			
 			if(reajusteSalarial.compareTo(salarioBase) < 0 || reajusteSalarial.compareTo(salarioMaximo) > 0) {
-				throw new ValidacaoException("Salario inconpativel");
+				throw new ValidacaoException("Salario incompativel");
 			}
 		}
 		

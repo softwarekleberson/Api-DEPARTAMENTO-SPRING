@@ -80,7 +80,6 @@ public class DepartamentoDaoJpa implements DepartamentoRepository{
 
 	@Override
 	public void subtrairCustosDoOrcamento(Departamento departamento, BigDecimal orcamentoAtualizado) {
-		System.out.println("Orcamento atual" + orcamentoAtualizado);
 		departamento.setOrcamento(orcamentoAtualizado);
 	}
 }
