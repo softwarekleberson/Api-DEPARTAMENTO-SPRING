@@ -1,55 +1,166 @@
-                                          GET
-http://localhost:8080/funcionario/1
-http://localhost:8080/departamento/1
-http://localhost:8080/cargo/1
+									POST (DEPARTAMENTO)
+								
 
+http://localhost:8080/departamento
 
-				         DELETE
-http://localhost:8080/funcionario/2
-http://localhost:8080/departamento/1
-http://localhost:8080/cargo/2
-
-					PUT (FUNCIONARIO)
 
 {
-	"id" : "1",
-	"nome" : "Antonio",
+
+	"departamento" : {
+			"nome" : "Segurança da informação",
+			"descricao" : "Depertamento responsavel pela segurança defensiva e ofesinva",
+			"criacao" : "2024-04-28"
+	},
+	
 	"telefone" : {
-		"ddd" : "99",
-		"ddi" : "001",
-		"telefone" : "111122223"
-	}
-}
-
-
-
-					PUT (DEPARTAMENTO)
-
-{
-
-	"id" : "2",
-	"nome" : "Modelagem de dados",
-	"descricao" : "Banco de dados",
-		"telefone" : {
-		 "ddd" : "00",
-		 "ddi" : "888",
-		 "telefone" : "513265400"
+		 "ddd" : "88",
+		 "ddi" : "050",
+		 "telefone" : "195463998"
+	},
+	
+	"email" : {
+		"email" : "segurancainformacao@gmail.com"
 	},
 	
 	"endereco" : {
-		"pais" : "Argentina",
-		"estado" : "Buenos Aeres",
-		"cidade" : "Capital",
-		"rua" : "premier league",
-		"numero" : "01",
-		"cep" : "95120"
+		
+		"cidade" : {
+			"cidade" : "Nova York",
+				"estado" :{
+					"estado" : "Nova York",
+						"pais" : {
+							"pais" : "Estados Unidos"		
+						}
+				}
+		},
+		
+		"rua" : "5 avenida",
+		"numero" : "927410",
+		"cep" : "19000"
+	},
 	
+	"orcamento" : {
+		"ano" : "2024-04-07",
+		"orcamento" : "1500000.77"
 	}
+}
+
+
+
+										POST(CARGO)
+
+
+http://localhost:8080/cargo
+
+{
+	"nome" : "Limpeza dOS sofás", 
+ 	"descricao" : "retirada das manchas e reparos dos sofás",
+	"salarioBase" : "2500.35",
+	"salarioMaximo" : "3500.10",
+	"nivel" : "GERENTE",
+	"idDepartamento" : 1
+}
+
+
+
+
+
+
+										POST(FUNCIONARIO)
+
+http://localhost:8080/funcionario
+
+
+{
+	
+	
+	"idCargo" : 1,
+
+	"funcionario" : {
+		"pessoa" : {
+		"nome" : "Ana alice",
+		"nascimento" : "2000-04-15",
+		
+		"cpf" : {
+			"cpf" : "00384766064"	
+			}
+		},
+
+		"contratacao" : "2020-07-04",
+		"salario" : "3000.74",
+		"horasTrabalhoSemana" : 40,
+
+		"email" : {
+			"email" : "anaalice@gmail.com"
+		},
+		
+		"profissao" : "MARKINTING"
+	}
+	
+}
+								
+
+
+
+
+										POST(PROJETO)
+http://localhost:8080/projeto
+
+
+{
+	
+	"idDepartamento" : 2,
+	"nome" : "Arrumar a parte eletrica do departameto",
+	"descricao" : "está pegando fogo na tomada",
+	"custo" : "1000.00",
+	"terminoProjeto" : "2024-02-08"
+}
+
+									
+
+
+
+										POST(REAJUSTE)
+
+http://localhost:8080/reajuste
+
+{
+
+	"idFuncionario" : 1,
+	
+	"cpf" : {
+		"cpf" : "00384766064"
+	},
+	
+	"novoSalario" : "3444.01",
+	"motivoReajuste" : "Novo reajuste de novo"
 
 }
 
 
-					PUT (CARGO)
+
+
+
+
+										GET
+
+
+http://localhost:8080/cargo
+http://localhost:8080/funcionario
+http://localhost:8080/departamento
+http://localhost:8080/projeto
+
+
+
+
+
+
+
+										PUT(CARGO)
+
+http://localhost:8080/cargo
+
+
 {
 
 	"id" : 1,
@@ -62,86 +173,71 @@ http://localhost:8080/cargo/2
 
 
 
-					POST (CARGO)
+										PUT(DEPARTAMENTO)
 
-{
-	"nome" : "Administrador do faceboock", 
- 	"descricao" : "Administra contas no faceboock add",
-	"salarioBase" : "8500.05",
-	"salarioMaximo" : "10500.77",
-	"nivel" : "SENIOR"
-}
 
-				
-					POST (DEPARTAMENTO)
+http://localhost:8080/departamento						
+
 
 {
 
-	"departamento" : {
-			"nome" : "Departamento de turismo",
-			"descricao" : "Criar programa de turismo no pais",
-			"criacao" : "2010-04-07"
-	},
-	
-	"telefone" : {
-		 "ddd" : "15",
-		 "ddi" : "014",
-		 "telefone" : "99995555"
-	},
-	
-	"email" : {
-		"email" : "turismo@gmail.com"
+	"id" : "1",
+	"nome" : "Modelagem de dados",
+	"descricao" : "Banco de dados",
+		"telefone" : {
+		 "ddd" : "00",
+		 "ddi" : "888",
+		 "telefone" : "513265400"
 	},
 	
 	"endereco" : {
-		"pais" : "França",
-		"estado" : "Hexes",
-		"cidade" : "Paris",
-		"rua" : "Rua dos Cawboys",
-		"complemento" : "perto do estadio dos cowboys",
-		"numero" : "123",
-		"cep" : "96800"
-	
+		
+		"cidade" : {
+			"cidade" : "cidade",
+				"estado" :{
+					"estado" : "estado",
+						"pais" : {
+							"pais" : "pais"		
+						}
+				}
+		},
+		
+		"rua" : "rua",
+		"numero" : "numero",
+		"cep" : "01289"
 	}
 }
 
 
 
-					POST(FUNCIONARIO)
+										PUT(FUNCIONARIO)
+
+http://localhost:8080/funcionario
 
 {
-
-	"funcionario" : {
-		"pessoa" : {
-		"nome" : "Kleberson",
-		"nacimento" : "1994-10-05",
-		
-		"cpf" : {
-			"cpf" : "XXXXXXXXXXX"	
-			}
-		},
-
-		"contratacao" : "2014-07-15",
-		"salario" : "9200.00",
-
-		"email" : {
-			"email" : "klebersonsilva@gmail.com"
-		},
-		
-		"profissao" : "DESENVOLVEDOR_SOFTWARE"
+	"id" : "1",
+	"nome" : "Antonio",
+	"telefone" : {
+		"ddd" : "99",
+		"ddi" : "001",
+		"telefone" : "111122223"
 	}
-	
-}
+}				
 
 
 
 
 
+										DELETE
+
+
+http://localhost:8080/cargo/1
+http://localhost:8080/departamento/1
+http://localhost:8080/funcionario/1
+http://localhost:8080/projeto/1
 
 
 
 
 
-
-
-									
+										

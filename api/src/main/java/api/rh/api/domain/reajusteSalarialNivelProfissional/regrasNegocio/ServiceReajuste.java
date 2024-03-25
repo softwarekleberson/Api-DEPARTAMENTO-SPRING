@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import api.rh.api.domain.departamento.usecase.crud.DepartamentoDaoJpa;
 import api.rh.api.domain.funcionario.entity.Funcionario;
 import api.rh.api.domain.funcionario.infra.persistencia.jpa.FuncionarioRepositoryJpa;
 import api.rh.api.domain.reajusteSalarialNivelProfissional.entity.ReajusteSalarioCargo;
