@@ -1,4 +1,4 @@
-# Projeto de RH da 
+# Projeto de RH 
 
 Bem-vindo ao repositório do projeto de RH da [Nome da Empresa]! Nosso sistema é construído com a poderosa plataforma Spring Boot e projetado com a metodologia de Arquitetura Limpa, visando aprimorar e simplificar os processos de gerenciamento de recursos humanos.
 
