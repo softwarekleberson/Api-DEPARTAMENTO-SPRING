@@ -1,12 +1,10 @@
-Claro! Aqui está o conteúdo formatado como um arquivo README:
-
----
-
 # Gestão Empresarial
 
 ## Descrição do Projeto
 
 Este projeto consiste em uma API de Recursos Humanos (RH) desenvolvida em Java. A API fornece endpoints para gerenciar funcionários, departamentos, projetos e reajustes salariais. Abaixo está um guia detalhado sobre como configurar e utilizar esta API.
+
+## Vídeo do projeto : https://www.linkedin.com/feed/update/urn:li:activity:7175576651852857344/
 
 ## Sumário
 
