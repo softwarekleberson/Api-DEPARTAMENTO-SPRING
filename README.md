@@ -40,98 +40,39 @@ Antes de iniciar a API, você pode precisar configurar o banco de dados e outras
 
 ## Endpoints da API
 
-### Funcionário
+Aqui está o conteúdo formatado como uma tabela em Markdown para ser usado em um `README.md`:  
 
-- **Detalhar Funcionário**
-  - **URL:** `GET /funcionario/{id}`
-  - **Descrição:** Retorna os detalhes de um funcionário específico.
-  - **Parâmetros:**
-    - `id` (path) - ID do funcionário.
+```markdown
+# API JAVA.RH
 
-### Departamento
+Este documento contém a especificação das requisições configuradas no Insomnia para a API JAVA.RH.  
 
-- **Detalhar Departamento**
-  - **URL:** `GET /departamento/{id}`
-  - **Descrição:** Retorna os detalhes de um departamento específico.
-  - **Parâmetros:**
-    - `id` (path) - ID do departamento.
+## Endpoints
 
-### Projeto
-
-- **Deletar Projeto**
-  - **URL:** `DELETE /projeto/{id}`
-  - **Descrição:** Deleta um projeto específico.
-  - **Parâmetros:**
-    - `id` (path) - ID do projeto.
-
-### Reajuste Salarial
-
-- **Cadastrar Reajuste**
-  - **URL:** `POST /reajuste`
-  - **Descrição:** Cadastra um novo reajuste salarial para um funcionário.
-  - **Body:**
-    ```json
-    {
-      "idFuncionario": 1,
-      "cpf": {
-        "cpf": "00384766064"
-      },
-      "novoSalario": "3444.01",
-      "motivoReajuste": "Novo reajuste de novo"
-    }
-    ```
-
-## Exemplos de Requisições
-
-### Detalhar Funcionário
-
-**Requisição:**
-
-```http
-GET /funcionario/1 HTTP/1.1
-Host: localhost:8080
-User-Agent: insomnia/2023.5.8
+| Método  | URL                                | Nome                        | Descrição                              | Cabeçalhos                          | Corpo (JSON)                                                                                   |
+|---------|------------------------------------|-----------------------------|----------------------------------------|-------------------------------------|-----------------------------------------------------------------------------------------------|
+| `GET`   | `/funcionario`                    | Listar Funcionario          | Lista todos os funcionários cadastrados | `User-Agent: insomnia/2023.5.8`   | N/A                                                                                           |
+| `GET`   | `/departamento`                   | Listar Departamentos        | Lista todos os departamentos           | `User-Agent: insomnia/2023.5.8`   | N/A                                                                                           |
+| `GET`   | `/cargo`                          | Listar Cargos               | Lista todos os cargos cadastrados      | `User-Agent: insomnia/2023.5.8`   | N/A                                                                                           |
+| `GET`   | `/projeto`                        | Listar Projetos             | Lista todos os projetos cadastrados    | `User-Agent: insomnia/2023.5.8`   | N/A                                                                                           |
+| `GET`   | `/funcionario/1`                  | Detalhar Funcionario        | Detalha um funcionário específico      | `User-Agent: insomnia/2023.5.8`   | N/A                                                                                           |
+| `GET`   | `/departamento/1`                 | Detalhar Departamento       | Detalha um departamento específico     | `User-Agent: insomnia/2023.5.8`   | N/A                                                                                           |
+| `GET`   | `/cargo/1`                        | Detalhar Cargo              | Detalha um cargo específico            | `User-Agent: insomnia/2023.5.8`   | N/A                                                                                           |
+| `DELETE`| `/funcionario/1`                  | Deleção Lógica Funcionario  | Exclui logicamente um funcionário      | `User-Agent: insomnia/2023.5.8`   | N/A                                                                                           |
+| `DELETE`| `/departamento/1`                 | Deleção Lógica Departamento | Exclui logicamente um departamento     | `User-Agent: insomnia/2023.5.8`   | N/A                                                                                           |
+| `DELETE`| `/cargo/1`                        | Deleção Lógica Cargo        | Exclui logicamente um cargo            | `User-Agent: insomnia/2023.5.8`   | N/A                                                                                           |
+| `DELETE`| `/projeto/1`                      | Delete Projeto              | Exclui um projeto                      | `User-Agent: insomnia/2023.5.8`   | N/A                                                                                           |
+| `PUT`   | `/funcionario`                    | Atualizar Funcionarios      | Atualiza dados de um funcionário       | `Content-Type: application/json`   | `{ "id": "1", "nome": "Antonio", "telefone": { "ddd": "99", "ddi": "001", "telefone": "111122223" } }` |
+| `PUT`   | `/departamento`                   | Atualizar Departamento      | Atualiza dados de um departamento      | `Content-Type: application/json`   | `{ "id": "1", "nome": "Modelagem de dados", "descricao": "Banco de dados", "telefone": {...}, "endereco": {...} }` |
+| `PUT`   | `/cargo`                          | Atualizar Cargo             | Atualiza dados de um cargo             | `Content-Type: application/json`   | `{ "id": 1, "nome": "Marinheiro", "descricao": "Navegador do Good Marry", "salarioBase": "6500.01", "salarioMaximo": "7000.09" }` |
+| `POST`  | `/funcionario`                    | Cadastrar Funcionario       | Cadastra um novo funcionário           | `Content-Type: application/json`   | `{ "idCargo": 1, "funcionario": { "pessoa": {...}, "contratacao": "2020-07-04", "salario": "3000.74", ... } }` |
+| `POST`  | `/departamento`                   | Cadastro Departamento       | Cadastra um novo departamento          | `Content-Type: application/json`   | `{ "departamento": { "nome": "Segurança da informação", "descricao": "...", ... }, "telefone": {...}, "email": {...}, "endereco": {...}, "orcamento": {...} }` |
+| `POST`  | `/cargo`                          | Cadastro Cargo              | Cadastra um novo cargo                 | `Content-Type: application/json`   | `{ "nome": "Limpeza dOS sofás", "descricao": "retirada das manchas...", "salarioBase": "2500.35", ... }` |
+| `POST`  | `/projeto`                        | Cadastro Projeto            | Cadastra um novo projeto               | `Content-Type: application/json`   | `{ "idDepartamento": 2, "nome": "Arrumar a parte eletrica...", "descricao": "...", "custo": "1000.00", ... }` |
 ```
 
-### Detalhar Departamento
+Se precisar de ajustes ou explicações mais detalhadas, é só avisar! 😊
 
-**Requisição:**
-
-```http
-GET /departamento/1 HTTP/1.1
-Host: localhost:8080
-User-Agent: insomnia/2023.5.8
-```
-
-### Deletar Projeto
-
-**Requisição:**
-
-```http
-DELETE /projeto/1 HTTP/1.1
-Host: localhost:8080
-User-Agent: insomnia/2023.5.8
-```
-
-### Cadastrar Reajuste
-
-**Requisição:**
-
-```http
-POST /reajuste HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
-User-Agent: insomnia/2023.5.8
-
-{
-  "idFuncionario": 1,
-  "cpf": {
-    "cpf": "00384766064"
-  },
-  "novoSalario": "3444.01",
-  "motivoReajuste": "Novo reajuste de novo"
-}
-```
 
 ## Contribuições
 
