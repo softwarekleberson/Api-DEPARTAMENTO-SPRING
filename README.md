@@ -71,15 +71,4 @@ Este documento contém a especificação das requisições configuradas no Insom
 
 Se precisar de ajustes ou explicações mais detalhadas, é só avisar! 😊
 
-
-## Contribuições
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
-
-## Licença
-
-Este projeto está licenciado sob a MIT License. Veja o arquivo `LICENSE` para mais detalhes.
-
----
-
 Espero que este README forneça uma visão clara e abrangente do projeto e de como utilizá-lo. Se precisar de mais alguma coisa ou tiver alguma dúvida, estou à disposição!
